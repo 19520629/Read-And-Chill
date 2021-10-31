@@ -22,29 +22,29 @@ function loadSong(song) {
     var a = songIndex
     if(a == 0) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/NhungBanNhacPianoNheNhang-Yiruma-4071375.mp3`
-        cover.src = `./assets/img/music/nhac-piano.png`
+        audio.src = `./asset/music/hoa-ost-full-soundtrack.mp3`
+        cover.src = `./asset/img/music/nhac-piano.png`
     }
     else if(a == 1) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/XichLinh.mp3`
-        cover.src = `./assets/img/music/nhac-xich-linh.jpg`
+        audio.src = `./asset/music/XichLinh.mp3`
+        cover.src = `./asset/img/music/nhac-xich-linh.jpg`
        
     }
     else if(a == 2) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/TyBaHanh.mp3`
-        cover.src = `./assets/img/music/nhac-dan-ty-ba.jpg`
+        audio.src = `./asset/music/TyBaHanh.mp3`
+        cover.src = `./asset/img/music/nhac-dan-ty-ba.jpg`
     }
     else if(a == 3) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/KiepSauNguyenLamMotDoaSenDanTranhCover-DanTranh-5975590.mp3`
-        cover.src = `./assets/img/music/nhac-dan-tranh.png`
+        audio.src = `./asset/music/KiepSauNguyenLamMotDoaSenDanTranhCover-DanTranh-5975590.mp3`
+        cover.src = `./asset/img/music/nhac-dan-tranh.png`
     }
     else if(a == 4) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/hoa-ost-full-soundtrack.mp3`
-        cover.src = `./assets/img/music/nhac-game-hoa.jpg`
+        audio.src = `./asset/music/hoa-ost-full-soundtrack.mp3`
+        cover.src = `./asset/img/music/nhac-game-hoa.jpg`
     }
 
 }
