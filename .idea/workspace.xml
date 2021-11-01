@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="11b14123-09b2-4521-87b2-a0c068071ba1" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/media/248202753_393021329232267_8556112147206600606_n.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/read_app/migrations/0002_auto_20211101_1123.py" afterDir="false" />
@@ -127,6 +128,9 @@
       <change beforePath="$PROJECT_DIR$/read_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_app/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/read_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_app/models.py" afterDir="false" />
     </list>
+=======
+    <list default="true" id="11b14123-09b2-4521-87b2-a0c068071ba1" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,6 +201,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -208,4 +213,6 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+=======
+>>>>>>> Stashed changes
 </project>
