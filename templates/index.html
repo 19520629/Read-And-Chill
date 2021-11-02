@@ -1,13 +1,7 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static '/assets/img/shortcut icon.png' %}">
-    <title>Read & Chill</title>
-    <meta name="description" content="Trang web vừa đọc sách vừa nghe nhạc trực tuyến...">
+
+{% block cssblock %}
     <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
     <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
@@ -17,113 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <script src="{% static 'main.js"></script>
-</head>
-<body>
+{% endblock %}
+{% block content %}
     <div id="main">
-        <div id="header">
-            <div class="navbar">
-                <div class="header_logo">
-                    <a href="/" class="header_logo-link">
-                        <img src="{% static '/assets/img/logo.png' %}
-" alt="Logo" class="header_logo-img">
-                    </a>
-                </div>
-
-                <div class="header_search">
-                    <div class="header_search-input-wrap">
-                        <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
-                        <div class="header_search-history">
-                            <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
-                            <ul class="header_search-history-list">
-                                <li class="header_search-history-item">
-                                    <a href="">Mắt biếc</a>
-                                </li>
-                                <li class="header_search-history-item">
-                                    <a href="">Xích linh</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="header_search-history">
-
-                    </div>
-                    <button class="header_search-btn">
-                        <i class="fas fa-search header_search-btn-icon"></i>
-                    </button>
-                </div>
-
-                <div class="header_navbar">
-                    <ul class="header_navbar-list">
-                        <li class="header_navbar-item header_navbar-item-book">
-                            <a href="http://127.0.0.1:5500/book-page.html" class="header_navbar-item-link">
-                                Đọc sách
-                            </a>
-                            <div class="header_book">
-                                <ul class="header_book-list">
-                                    <li class="header_book-list-item">
-                                        <a href="" class="header_book-list-item-link">Sách Việt Nam</a>
-                                    </li>
-                                    <li class="header_book-list-item">
-                                        <a href="" class="header_book-list-item-link">Sách nước ngoài</a>
-                                    </li>
-                                </ul>
-                            </div>                            
-
-                        </li>
-                        <li class="header_navbar-item header_navbar-item-music">
-                            <a href="http://127.0.0.1:5500/music-page.html" class="header_navbar-item-link">
-                                Nghe nhạc
-                            </a>
-
-                            <div class="header_music">
-                                <ul class="header_music-list">
-                                    <li class="header_music-list-item">
-                                        <a href="" class="header_music-list-item-link">Nhạc Việt Nam</a>
-                                    </li>
-                                    <li class="header_music-list-item">
-                                        <a href="" class="header_music-list-item-link">Nhạc nước ngoài</a>
-                                    </li>
-                                </ul>
-                               
-                            </div>                            
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="header_btn">
-                    <button class="header_btn-sign-in btn">Đăng nhập</button>
-                    <button class="header_btn-sign-up btn">Đăng ký</button>
-
-                </div>
-
-                <div class="header_user">
-                    <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="header_user-img">
-                    <span class="header_user-name">Khoa Đặng</span>
-                    <!-- <div class="header_user__">
-                        <ul class="header_user-list">
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Trang cá nhân</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Sách yêu thích</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Nhạc yêu thích</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Đăng xuất</a>
-                            </li>
-                        </ul>
-                    </div> -->
-                    
-                </div>
-
-
-
-            </div>
-            
-        </div>
-        
+        <!--header-->
         <div class="slider">
             <div class="slides">
 
@@ -621,34 +512,7 @@
             <h3 class="web-content_heading"></h3>   
         </div>
 
-        <footer class="footer">
-            <div class="footer_bottom">
-                <span class="footer_heading">Nhóm 17: Website đọc sách trực tuyến kết hợp với nghe nhạc thư giãn trong lúc đọc
-                </span>
-                <div class="grid wide">
-                    <div class="row">
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/nguyentranhoang.loi/" class="footer_menber-item-link">Nguyễn Trần Hoàng Lợi <br> 19520152 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/anhkhoa240601" class="footer_menber-item-link">Đặng Trần Anh Khoa <br> 19520629 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/khanhduy912" class="footer_menber-item-link">Đặng Ngọc Khánh Duy <br> 18520656 </a>
-                        </div>
 
-                        </div>
-                    </div>
-                </div>
-                <p class="footer_text">Địa chỉ: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP Hồ Chí Minh. Tổng đài hỗ trợ: 0702817585. Email: 19520152@gm.uit.edu.vn <br>
-                    Design & Front-end: Nguyễn Trần Hoàng Lợi <br>
-                    Design & Back-end: Đặng Trần Anh Khoa <br>
-                    Front-end & Back-end: Đặng Ngọc Khánh Duy <br>
-                    © 2021 - Bản quyền thuộc về Công ty TNHH LKD
-                
-                </p>
-            </div>
-        </footer>
 
     </div>
 
@@ -727,6 +591,9 @@
             </div>
         </div>
     </div>
+    {% endblock %}
+
+    {% block jsblock %}
 
     <script>
 
@@ -1026,8 +893,4 @@
         selectBook.addEventListener('click',showBook)
     </script>
 
-
-
-
-</body>
-</html>
+    {% endblock %}
