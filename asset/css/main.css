@@ -172,6 +172,10 @@
     margin: 0 27px 0 20px;
 }
 
+.header_btn.no-display {
+    display: none;
+}
+
 .header_user {
     display: flex;
     justify-content: center;
@@ -179,6 +183,10 @@
     align-items: center;
     margin: 0 27px 0 20px;
     cursor: pointer;
+}
+
+.header_user.no-display {
+    display: none;
 }
 
 .header_user:hover {
@@ -497,6 +505,7 @@
     will-change: transform;
     display: block;
     text-decoration: none;
+    margin-bottom: 12px;
 }
 
 .book-item_img {
@@ -510,7 +519,7 @@
 }
 
 .book-item_name {
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 500;
     color: #333;
     line-height: 1.9rem;
@@ -536,7 +545,7 @@
 }
 
 .book-item_author_name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #333;
     font-weight: 500;
 }
