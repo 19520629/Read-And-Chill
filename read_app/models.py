@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -57,16 +57,30 @@ class Favorite(models.Model):
     song_id=models.ForeignKey(Nhac, on_delete=models.CASCADE)
 
 
-class User(models.Model):
-    sex_choice=(
+# class User(models.Model):
+#     sex_choice=(
+#         ('F', 'Nu'),
+#         ('M', 'NAM'),
+#         ('A', 'Khac')
+#     )
+#     user_id=models.IntegerField(null=False)
+#     hoten=models.CharField(max_length=255)
+#     gioitinh=models.CharField(max_length=1, choices=sex_choice,)
+#     user_avt=models.FileField()
+#     def __str__(self):
+#         return self.hoten
+
+
+class Account(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    sex_choice = (
         ('F', 'Nu'),
         ('M', 'NAM'),
         ('A', 'Khac')
     )
-    user_id=models.IntegerField(null=False)
-    hoten=models.CharField(max_length=255)
-    gioitinh=models.CharField(max_length=1, choices=sex_choice,)
-    user_avt=models.FileField()
-    def __str__(self):
-        return self.gioitinh
+    hoten = models.CharField(max_length=255)
+    gioitinh = models.CharField(max_length=1, choices=sex_choice, )
+    user_avt = models.FileField()
 
+    def __str__(self):
+        return self.user.username
