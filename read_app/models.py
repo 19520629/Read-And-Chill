@@ -25,7 +25,7 @@ class Sach(models.Model):
     book_quocgia=models.CharField(max_length=100)
     book_tacgia=models.ForeignKey(TacGia, on_delete=models.CASCADE)
     book_noidung=models.FileField(upload_to='pdf')
-    book_anhbia=models.FileField()
+    book_anhbia=models.ImageField(upload_to='cover_book')
     book_tomtat=models.CharField(max_length=255)
     book_danhgia=models.FloatField(default=0)# Sua thanh float vi danh gia tính trung binh nen em sợ có số lẻ
     slug=models.SlugField(max_length=100)
