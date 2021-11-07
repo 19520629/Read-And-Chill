@@ -19,12 +19,7 @@ def register(request):
     return render(request, 'dangki.html', {'form':form})
 
 
-def gallery(request):
-    img = Sach.objects.filter(file_type='book_anhbia')
-    return render(request,'gallery.html',{"img":img, 'media_url':settings.MEDIA_URL})
-
-
-def music(request):
-    return render(request, 'music-page.html', {})
+def book_page(request):
+    return render(request, 'book-page.html', {})
 
 

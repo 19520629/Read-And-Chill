@@ -1,28 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="./asset/img/shortcut icon.png">
-    <title>Read & Chill</title>
-    <meta name="description" content="Trang web vừa đọc sách vừa nghe nhạc trực tuyến...">
-    <link rel="stylesheet" href="./asset/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link rel="stylesheet" href="./asset/css/base.css">
-    <link rel="stylesheet" href="./asset/css/grid.css">
-    <link rel="stylesheet" href="./asset/css/main.css">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-</head>
-<body>
+    <script src="{% static 'main.js"></script>
+{% endblock %}
+{% block content %}
     <div id="main">
         <div id="header">
             <div class="navbar">
                 <div class="header_logo">
                     <a href="http://127.0.0.1:5500/index.html" class="header_logo-link">
-                        <img src="./asset/img/logo.png" alt="Logo" class="header_logo-img">
+                        <img src="{% static '/assets/img/logo.png' %}" alt="Logo" class="header_logo-img">
                     </a>
                 </div>
 
@@ -48,7 +44,10 @@
                         <i class="fas fa-search header_search-btn-icon"></i>
                     </button>
                 </div>
-
+                {% block xyz %}
+                    {% block xyzt %}
+                    {% endblock %}
+                {% endblock %}
                 <div class="header_navbar">
                     <ul class="header_navbar-list">
                         <li class="header_navbar-item header_navbar-item-book">
@@ -526,34 +525,6 @@
             <h3 class="web-content_heading"></h3>   
         </div>
 
-        <footer class="footer">
-            <div class="footer_bottom">
-                <span class="footer_heading">Nhóm 17: Website đọc sách trực tuyến kết hợp với nghe nhạc thư giãn trong lúc đọc
-                </span>
-                <div class="grid wide">
-                    <div class="row">
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/nguyentranhoang.loi/" class="footer_menber-item-link">Nguyễn Trần Hoàng Lợi <br> 19520152 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/anhkhoa240601" class="footer_menber-item-link">Đặng Trần Anh Khoa <br> 19520629 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/khanhduy912" class="footer_menber-item-link">Đặng Ngọc Khánh Duy <br> 18520656 </a>
-                        </div>
-
-                        </div>
-                    </div>
-                </div>
-                <p class="footer_text">Địa chỉ: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP Hồ Chí Minh. Tổng đài hỗ trợ: 0702817585. Email: 19520152@gm.uit.edu.vn <br>
-                    Design & Front-end: Nguyễn Trần Hoàng Lợi <br>
-                    Design & Back-end: Đặng Trần Anh Khoa <br>
-                    Front-end & Back-end: Đặng Ngọc Khánh Duy <br>
-                    © 2021 - Bản quyền thuộc về Công ty TNHH LKD
-                
-                </p>
-            </div>
-        </footer>
 
     </div>
 
@@ -632,7 +603,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
+    {% block jsblock %}
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -914,9 +887,4 @@
             selectSong.addEventListener('click',showSong)
             selectBook.addEventListener('click',showBook)
         </script>
-
-
-
-
-</body>
-</html>
+    {% endblock %}

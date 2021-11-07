@@ -10,5 +10,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('register/', views.register, name='register'),
     path('login/',auth_views.LoginView.as_view(template_name="login.html"), name="login"),
-    path('music/', views.music, name='music'),
+    path('book/', views.book_page, name='book'),
 ]
