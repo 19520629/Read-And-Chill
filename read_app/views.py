@@ -24,3 +24,7 @@ def gallery(request):
     return render(request,'gallery.html',{"img":img, 'media_url':settings.MEDIA_URL})
 
 
+def music(request):
+    return render(request, 'music-page.html', {})
+
+

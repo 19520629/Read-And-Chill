@@ -1,30 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/shortcut icon.png">
-    <title>Read & Chill</title>
-    <meta name="description" content="Trang web vừa đọc sách vừa nghe nhạc trực tuyến...">
-    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/grid.css">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssblock %}
+    <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
+    <link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="./assets/css/music-player.css">
-    <script src="./main.js"></script>
-</head>
-<body>
+    <script src="{% static 'main.js"></script>
+{% endblock %}
+{% block content %}
     <div id="main">
         <div id="header">
             <div class="navbar">
                 <div class="header_logo">
                     <a href="http://127.0.0.1:5500/index.html" class="header_logo-link">
-                        <img src="./assets/img/logo.png" alt="Logo" class="header_logo-img">
+                        <img src="{% static '/assets/img/logo.png' %}" alt="Logo" class="header_logo-img">
                     </a>
                 </div>
 
@@ -166,7 +160,7 @@
                         <div class="row sm-gutterr">
                             <div class="col l-3">
                                 <div class="book-item song" data-index=0>
-                                    <div class="book-item_img" style="background-image: url(./assets/img/music/nhac-piano.png);"></div>
+                                    <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-piano.png' %});"></div>
                                     <div class="book-item_name">Nhạc đàn piano thư giãn</div>
                                     <div class="book-item_author">
                                         <span class="book-item_author-tittle">Thể loại</span>
@@ -198,7 +192,7 @@
                             </div>
                             <div class="col l-3">
                                 <div class="book-item song" data-index=1>
-                                    <div class="book-item_img" style="background-image: url(./assets/img/music/nhac-xich-linh.jpg);"></div>
+                                    <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-xich-linh.jpg' %});"></div>
                                     <div class="book-item_name">Xích linh</div>
                                     <div class="book-item_author">
                                         <span class="book-item_author-tittle">Tác giả</span>
@@ -229,7 +223,7 @@
                             </div>
                             <div class="col l-3">
                                 <div class="book-item song" data-index=2>
-                                    <div class="book-item_img" style="background-image: url(./assets/img/music/nhac-dan-ty-ba.jpg);"></div>
+                                    <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-dan-ty-ba.jpg' %});"></div>
                                     <div class="book-item_name">Tỳ bà hành</div>
                                     <div class="book-item_author">
                                         <span class="book-item_author-tittle">Thể loại</span>
@@ -261,7 +255,7 @@
                             </div>
                             <div class="col l-3">
                                 <div class="book-item song" data-index=3>
-                                    <div class="book-item_img" style="background-image: url(./assets/img/music/nhac-dan-tranh.png);"></div>
+                                    <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-dan-tranh.png' %});"></div>
                                     <div class="book-item_name">Nhạc đàn tranh thư giãn</div>
                                     <div class="book-item_author">
                                         <span class="book-item_author-tittle">Thể loại</span>
@@ -294,7 +288,7 @@
 
                             <div class="col l-3">
                                 <div class="book-item song" data-index=4>
-                                    <div class="book-item_img" style="background-image: url(./assets/img/music/nhac-game-hoa.jpg);"></div>
+                                    <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-game-hoa.jpg' %});"></div>
                                     <div class="book-item_name">Game Hoa OST</div>
                                     <div class="book-item_author">
                                         <span class="book-item_author-tittle">Thể loại</span>
@@ -338,34 +332,7 @@
             <h3 class="web-content_heading"></h3>   
         </div>
 
-        <footer class="footer">
-            <div class="footer_bottom">
-                <span class="footer_heading">Nhóm 17: Website đọc sách trực tuyến kết hợp với nghe nhạc thư giãn trong lúc đọc
-                </span>
-                <div class="grid wide">
-                    <div class="row">
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/nguyentranhoang.loi/" class="footer_menber-item-link">Nguyễn Trần Hoàng Lợi <br> 19520152 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/anhkhoa240601" class="footer_menber-item-link">Đặng Trần Anh Khoa <br> 19520629 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/khanhduy912" class="footer_menber-item-link">Đặng Ngọc Khánh Duy <br> 18520656 </a>
-                        </div>
 
-                        </div>
-                    </div>
-                </div>
-                <p class="footer_text">Địa chỉ: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP Hồ Chí Minh. Tổng đài hỗ trợ: 0702817585. Email: 19520152@gm.uit.edu.vn <br>
-                    Design & Front-end: Nguyễn Trần Hoàng Lợi <br>
-                    Design & Back-end: Đặng Trần Anh Khoa <br>
-                    Front-end & Back-end: Đặng Ngọc Khánh Duy <br>
-                    © 2021 - Bản quyền thuộc về Công ty TNHH LKD
-                
-                </p>
-            </div>
-        </footer>
 
         <div class="music-player">
             <!-- <div class="music-player_navbar">
@@ -416,7 +383,7 @@
             <audio src="./assets/music/XichLinh.mp3" id="audio"></audio>
 
             <div class="img-container">
-                <img src="./assets/img/music/nhac-xich-linh.jpg" alt="music-cover" id="cover">
+                <img src="{% static '/assets/img/music/nhac-xich-linh.jpg' %}" alt="music-cover" id="cover">
             </div>
 
             <div class="music-player-navigation">
@@ -518,7 +485,9 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
+    {% block jsblock %}
     <script>
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -800,6 +769,4 @@
             selectBook.addEventListener('click',showBook)
         </script>
 
-
-</body>
-</html>
+    {% endblock %}
