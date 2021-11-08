@@ -1,3 +1,5 @@
+{% load static %}
+
 const musicContainer = document.querySelector('.music-player')
 const playBtn = document.querySelector('#play')
 const prevBtn = document.querySelector('#prev')
@@ -22,8 +24,8 @@ function loadSong(song) {
     var a = songIndex
     if(a == 0) {
         titleSong.innerHTML = song
-        audio.src = `./assets/music/NhungBanNhacPianoNheNhang-Yiruma-4071375.mp3`
-        cover.src = `./assets/img/music/nhac-piano.png`
+        audio.src = `{% static 'assets/music/hoa-ost-full-soundtrack.mp3' %}`
+        cover.src = `{% static 'assets/img/music/nhac-piano.png' %}`
     }
     else if(a == 1) {
         titleSong.innerHTML = song

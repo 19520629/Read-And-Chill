@@ -380,7 +380,7 @@
                 </div>
             </div>
 
-            <audio src="./assets/music/XichLinh.mp3" id="audio"></audio>
+            <audio src="{% static 'assets/music/XichLinh.mp3' %}" id="audio"></audio>
 
             <div class="img-container">
                 <img src="{% static '/assets/img/music/nhac-xich-linh.jpg' %}" alt="music-cover" id="cover">
@@ -398,8 +398,8 @@
                 </button>
             </div>
         </div>
-        <img src="./assets/music/Nhạc đàn piano thư giãn.mp3" alt="">
-        <script src="/music-player.js">
+
+        <script src="{% static 'music-player.js' %}">
             
         </script>
 
