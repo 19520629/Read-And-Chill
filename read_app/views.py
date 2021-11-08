@@ -5,7 +5,7 @@ from .models import Sach
 # Create your views here.
 def home(request):
     recommended_book=Sach.objects.all()
-    context={"titles":recommended_book}
+    context={"titles":recommended_book[0:10]}
     return render(request, 'index.html', context)
 
 

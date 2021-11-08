@@ -1,670 +1,348 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block cssblock %}
+<link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<script src="{% static 'main.js"></script>
+{% endblock %} {% block content %}
+<div id="main">
+    <!--header-->
+    <div class="slider">
+        <div class="slides">
 
-{% block cssblock %}
-    <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
-    <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
-    <link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <script src="{% static 'main.js"></script>
-{% endblock %}
-{% block content %}
-    <div id="main">
-        <!--header-->
-        <div class="slider">
-            <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
 
-                <input type="radio" name="radio-btn" id="radio1" checked>
-                <input type="radio" name="radio-btn" id="radio2">
-                <input type="radio" name="radio-btn" id="radio3">
-                <input type="radio" name="radio-btn" id="radio4">
-
-                <div class="slide first">
-                    <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
-                </div>
-                <div class="slide">
-                    <img src="{% static '/assets/img/slide2.png' %}" alt="">
-                </div>
-                <div class="slide">
-                    <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
-                </div>
-                <div class="slide">
-                    <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
-                </div>
-
-
-                <div class="navigation-auto">
-                    <div class="auto-btn1"></div>
-                    <div class="auto-btn2"></div>
-                    <div class="auto-btn3"></div>
-                    <div class="auto-btn4"></div>
-                </div>
-
+            <div class="slide first">
+                <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide2.png' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
             </div>
 
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                </div>
 
-                
-
-           
-            
-        </div>
-
-        <div class="container">
-            <h3 class="web-content_heading">Sách bạn nên đọc</h3>
-            <div class="grid wide">
-                <div class="row sm-gutter">
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif);"></div>
-                            <div class="book-item_name">Mắt biếc</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Nguyễn Nhật Ánh</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://toplist.vn/images/800px/toi-thay-hoa-vang-tren-co-xanh-372236.jpg);"></div>
-                            <div class="book-item_name">Tôi thấy hoa vàng trên cỏ xanh</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Nguyễn Nhật Ánh</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(http://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg);"></div>
-                            <div class="book-item_name">Đi qua hoa cúc</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Nguyễn Nhật Ánh</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894);"></div>
-                            <div class="book-item_name">Đảo mộng mơ</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Nguyễn Nhật Ánh</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-                    </div>
-                    {% block content_tensach %}
-                        {% for item in titles %}
-                        {% if titles %}
-
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-
-<!--                                <img src="{{ item.book_anhbia.url }}" alt="book_cover">-->
-                                <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
-
-                            <div class="book-item_name">
-
-
-
-                                        {{ item.book_tensach }}
-
-
-
-                            </div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">
-
-                                    {% if titles %}
-
-                                        {{ item.book_tacgia }}
-
-                                    {% endif %}
-
-                                </span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                    {% endblock %}
-
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif);"></div>
-                            <div class="book-item_name">Harry Potter và Hòn đá phù thủy</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">J.K. Rowling</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/archive/8/88/20210321032329%21Harry_Potter_v%C3%A0_Chi%E1%BA%BFc_c%E1%BB%91c_l%E1%BB%ADa_b%C3%ACa.jpg);"></div>
-                            <div class="book-item_name">Harry Potter và Chiếc cốc lửa</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">J.K. Rowling</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/archive/7/74/20210321032501%21Harry_Potter_v%C3%A0_H%E1%BB%99i_ph%C6%B0%E1%BB%A3ng_ho%C3%A0ng.jpg);"></div>
-                            <div class="book-item_name">Harry Potter và Hội phượng hoàng</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">J.K. Rowling</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://vcdn.tikicdn.com/media/catalog/product/n/h/nha-gia-kim.u84.d20161102.t102644.515752.jpg);"></div>
-                            <div class="book-item_name">Nhà giả kim</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Paulo Coelho</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-                                </span>
-                                <div class="book-item_action_rating">
-                                    <input type="radio" name="rate" id="rate-5">
-                                    <label class ="fas fa-star" for="rate-5"></label>
-                                    <input type="radio" name="rate" id="rate-4">
-                                    <label class ="fas fa-star" for="rate-4"></label>
-                                    <input type="radio" name="rate" id="rate-3">
-                                    <label class ="fas fa-star" for="rate-3"></label>
-                                    <input type="radio" name="rate" id="rate-2">
-                                    <label class ="fas fa-star" for="rate-2"></label>
-                                    <input type="radio" name="rate" id="rate-1">
-                                    <label class ="fas fa-star" for="rate-1"></label>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-eye book-item_seen-icon"></i>
-                                12 lượt xem
-                            </div>
-
-                        </a>
-
-
-                    </div>
-       
-                    
-                </div>
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
             </div>
-            <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
-            <div class="grid wide">
-                <div class="row sm-gutter">
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://avatar-nct.nixcdn.com/song/2019/08/19/d/e/0/d/1566147959020_640.jpg);"></div>
-                            <div class="book-item_name">Xích linh</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Tác giả</span>
-                                <span class="book-item_author_name">Nhạc tiktok</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-                                </span>
-                                <div class="music-item_action_rating">
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
 
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-music book-item_seen-icon"></i>
-                                24 lượt nghe
-                            </div>
-
-                        </a>
-
-
-                    </div>
-
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://file.vfo.vn/hinh/2018/05/hinh-ve-tranh-ve-my-nhan-dep-nhat-my-nhan-co-trang-trung-quoc-13.png);"></div>
-                            <div class="book-item_name">Nhạc đàn tranh thư giãn</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Thể loại</span>
-                                <span class="book-item_author_name">Nhạc không lời</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-                                </span>
-                                <div class="music-item_action_rating">
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-music book-item_seen-icon"></i>
-                                24 lượt nghe
-                            </div>
-
-                        </a>
-
-
-                    </div>
-
-                    <div class="col l-2-4">
-                        <a href="#" class="book-item">
-                            <div class="book-item_img" style="background-image: url(https://i.pinimg.com/originals/0f/13/26/0f1326c13552887d8f212817001340ad.png);"></div>
-                            <div class="book-item_name">Nhạc đàn piano thư giãn</div>
-                            <div class="book-item_author">
-                                <span class="book-item_author-tittle">Thể loại</span>
-                                <span class="book-item_author_name">Nhạc không lời</span>
-                            </div>
-                            <div class="book-item_action">
-                                <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-                                </span>
-                                <div class="music-item_action_rating">
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star music-item_action_rating--gold"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                            </div>
-
-                            <div class="book-item_seen">
-                                <i class="fas fa-music book-item_seen-icon"></i>
-                                24 lượt nghe
-                            </div>
-
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>     
-            <h3 class="web-content_heading"></h3>   
         </div>
+
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+
+
 
 
 
     </div>
 
+    <div class="container">
+        <h3 class="web-content_heading">Sách bạn nên đọc</h3>
+        <div class="grid wide">
+            <div class="row sm-gutter">
 
-    <div class="modal-login">
-        <div class="modal-login_container">
-            <div class="modal-login_close">
-                <i class="fas fa-times modal-login_close-icon"></i>
-            </div>
-            <header class="modal-login_header">
-                Đăng nhập tài khoản
-            </header>
-            <div class="modal-login_body">
 
-                <form action="" method="POST" class="form" id="form-2">
+                {% block content_tensach %} {% for item in titles %} {% if titles %}
 
-                    <div class="form-group">
-                      <label for="email" class="form-label">Email</label>
-                      <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
+                <div class="col l-2-4">
+                    <a href="#" class="book-item">
 
-                    <div class="form-group">
-                      <label for="password" class="form-label">Mật khẩu</label>
-                      <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
+                        <!--                                <img src="{{ item.book_anhbia.url }}" alt="book_cover">-->
+                        <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
 
-                    <button class="form-submit">Đăng nhập</button>
-                </form>
+                        <div class="book-item_name">
 
+
+
+                            {{ item.book_tensach }}
+
+
+
+                        </div>
+                        <div class="book-item_author">
+                            <span class="book-item_author-tittle">Tác giả</span>
+                            <span class="book-item_author_name">
+                                        {{ item.book_tacgia }}  
+                            </span>
+                        </div>
+                        <div class="book-item_action">
+                            <span class="book-item_action_like">
+                                    <i class="fas fa-heart"></i>
+
+
+                                </span>
+                            <div class="book-item_action_rating">
+                                <input type="radio" name="rate" id="rate-5">
+                                <label class="fas fa-star" for="rate-5"></label>
+                                <input type="radio" name="rate" id="rate-4">
+                                <label class="fas fa-star" for="rate-4"></label>
+                                <input type="radio" name="rate" id="rate-3">
+                                <label class="fas fa-star" for="rate-3"></label>
+                                <input type="radio" name="rate" id="rate-2">
+                                <label class="fas fa-star" for="rate-2"></label>
+                                <input type="radio" name="rate" id="rate-1">
+                                <label class="fas fa-star" for="rate-1"></label>
+                            </div>
+
+                        </div>
+
+                        <div class="book-item_seen">
+                            <i class="fas fa-eye book-item_seen-icon"></i> 12 lượt xem
+                        </div>
+                    </a>
+                </div>
+                {% endif %} {% endfor %} {% endblock %}
             </div>
         </div>
+
+        <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
+        <div class="grid wide">
+            <div class="row sm-gutter">
+                <div class="col l-2-4">
+                    <a href="#" class="book-item">
+                        <div class="book-item_img" style="background-image: url(https://avatar-nct.nixcdn.com/song/2019/08/19/d/e/0/d/1566147959020_640.jpg);"></div>
+                        <div class="book-item_name">Xích linh</div>
+                        <div class="book-item_author">
+                            <span class="book-item_author-tittle">Tác giả</span>
+                            <span class="book-item_author_name">Nhạc tiktok</span>
+                        </div>
+                        <div class="book-item_action">
+                            <span class="book-item_action_like">
+                                    <i class="fas fa-heart"></i>
+                                </span>
+                            <div class="music-item_action_rating">
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="book-item_seen">
+                            <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+                <div class="col l-2-4">
+                    <a href="#" class="book-item">
+                        <div class="book-item_img" style="background-image: url(https://file.vfo.vn/hinh/2018/05/hinh-ve-tranh-ve-my-nhan-dep-nhat-my-nhan-co-trang-trung-quoc-13.png);"></div>
+                        <div class="book-item_name">Nhạc đàn tranh thư giãn</div>
+                        <div class="book-item_author">
+                            <span class="book-item_author-tittle">Thể loại</span>
+                            <span class="book-item_author_name">Nhạc không lời</span>
+                        </div>
+                        <div class="book-item_action">
+                            <span class="book-item_action_like">
+                                    <i class="fas fa-heart"></i>
+
+                                </span>
+                            <div class="music-item_action_rating">
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="book-item_seen">
+                            <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+                <div class="col l-2-4">
+                    <a href="#" class="book-item">
+                        <div class="book-item_img" style="background-image: url(https://i.pinimg.com/originals/0f/13/26/0f1326c13552887d8f212817001340ad.png);"></div>
+                        <div class="book-item_name">Nhạc đàn piano thư giãn</div>
+                        <div class="book-item_author">
+                            <span class="book-item_author-tittle">Thể loại</span>
+                            <span class="book-item_author_name">Nhạc không lời</span>
+                        </div>
+                        <div class="book-item_action">
+                            <span class="book-item_action_like">
+                                    <i class="fas fa-heart"></i>
+
+                                </span>
+                            <div class="music-item_action_rating">
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="book-item_seen">
+                            <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
+                        </div>
+
+                    </a>
+
+
+                </div>
+            </div>
+        </div>
+        <h3 class="web-content_heading"></h3>
     </div>
 
 
-    <div class="modal-register">
-        <div class="modal-register_container">
-            <div class="modal-register_close">
-                <i class="fas fa-times modal-register_close-icon"></i>
-            </div>
-            <header class="modal-register_header">
-                Đăng ký tài khoản
-            </header>
-            <div class="modal-register_body">
 
-                <form action="" method="POST" class="form" id="form-1">
+</div>
 
-                    <div class="form-group">
-                      <label for="fullname" class="form-label">Tên đầy đủ</label>
-                      <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
 
-                    <div class="form-group">
-                      <label for="email" class="form-label">Email</label>
-                      <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
+<div class="modal-login">
+    <div class="modal-login_container">
+        <div class="modal-login_close">
+            <i class="fas fa-times modal-login_close-icon"></i>
+        </div>
+        <header class="modal-login_header">
+            Đăng nhập tài khoản
+        </header>
+        <div class="modal-login_body">
 
-                    <div class="form-group">
-                      <label for="password" class="form-label">Mật khẩu</label>
-                      <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
+            <form action="" method="POST" class="form" id="form-2">
 
-                    <div class="form-group">
-                      <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-                      <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                      <span class="form-message"></span>
-                    </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                    <span class="form-message"></span>
+                </div>
 
-                    <button class="form-submit">Đăng ký</button>
-                  </form>
-            
-            </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <button class="form-submit">Đăng nhập</button>
+            </form>
+
         </div>
     </div>
-    {% endblock %}
+</div>
 
-    {% block jsblock %}
 
-    <script>
+<div class="modal-register">
+    <div class="modal-register_container">
+        <div class="modal-register_close">
+            <i class="fas fa-times modal-register_close-icon"></i>
+        </div>
+        <header class="modal-register_header">
+            Đăng ký tài khoản
+        </header>
+        <div class="modal-register_body">
 
-        document.addEventListener('DOMContentLoaded', function () {
-          // Mong muốn của chúng ta
-          Validator({
+            <form action="" method="POST" class="form" id="form-1">
+
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Tên đầy đủ</label>
+                    <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <button class="form-submit">Đăng ký</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %} {% block jsblock %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mong muốn của chúng ta
+        Validator({
             form: '#form-1',
             formGroupSelector: '.form-group',
             errorSelector: '.form-message',
             rules: [
-              Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-              Validator.isEmail('#email'),
-              Validator.minLength('#password', 6),
-              Validator.isRequired('#password_confirmation'),
-              Validator.isConfirmed('#password_confirmation', function () {
-                return document.querySelector('#form-1 #password').value;
-              }, 'Mật khẩu nhập lại không chính xác')
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirmed('#password_confirmation', function() {
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mật khẩu nhập lại không chính xác')
             ],
-            onSubmit: function (data) {
-              // Call API
-              console.log(data);
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
             }
-          });
-    
-    
-          Validator({
+        });
+
+
+        Validator({
             form: '#form-2',
             formGroupSelector: '.form-group',
             errorSelector: '.form-message',
             rules: [
-              Validator.isEmail('#email'),
-              Validator.minLength('#password', 6),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
             ],
-            onSubmit: function (data) {
-              // Call API
-              console.log(data);
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
             }
-          });
         });
-    
-    </script>
+    });
+</script>
 
-    <script>
-        // Hiệu ứng thả tym yêu thích
-        const likedBtn = document.querySelectorAll(".book-item_action_like");
-        var elements = Array.from(likedBtn)
+<script>
+    // Hiệu ứng thả tym yêu thích
+    const likedBtn = document.querySelectorAll(".book-item_action_like");
+    var elements = Array.from(likedBtn)
 
-        elements.forEach(function liked(e) {
-            e.addEventListener('click', () => {
+    elements.forEach(function liked(e) {
+        e.addEventListener('click', () => {
             if (e.classList.contains("liked")) {
                 e.classList.remove("liked");
             } else {
@@ -672,247 +350,251 @@
             }
         });
     })
-
-    </script>
+</script>
 
 <!--  -->
-    <!-- Hiệu ứng chuyển trang slideshow sau 5s -->
-    <script type="text/javascript">
+<!-- Hiệu ứng chuyển trang slideshow sau 5s -->
+<script type="text/javascript">
     var counter = 1;
-    setInterval(function(){
+    setInterval(function() {
         document.getElementById('radio' + counter).checked = true;
         counter++;
-        if(counter > 4){
+        if (counter > 4) {
             counter = 1;
         }
     }, 5000);
-    
-    </script>
-    
+</script>
 
 
 
-    <!-- JS Đăng nhập, đăng ký -->
-    <script src="{% static '/validator.js' %}">
-    </script>
-    <!--  -->
 
-    <script>
-        const modalLogin = document.querySelector(".modal-login")
-        const modalLoginClose = document.querySelector(".modal-login_close")
-        const modalLoginContainer = document.querySelector(".modal-login_container")
-        const loginBtn = document.querySelector(".header_btn-sign-in")
+<!-- JS Đăng nhập, đăng ký -->
+<script src="{% static '/validator.js' %}">
+</script>
+<!--  -->
 
-        function showModalLogin() {
-            modalLogin.classList.add("open")
-        }
+<script>
+    const modalLogin = document.querySelector(".modal-login")
+    const modalLoginClose = document.querySelector(".modal-login_close")
+    const modalLoginContainer = document.querySelector(".modal-login_container")
+    const loginBtn = document.querySelector(".header_btn-sign-in")
 
-        function hideModalLogin() {
-            modalLogin.classList.remove("open")
-        }
+    function showModalLogin() {
+        modalLogin.classList.add("open")
+    }
 
-        loginBtn.addEventListener('click', showModalLogin)
-        loginBtn.addEventListener('click', hideModalregister)
-        modalLoginClose.addEventListener('click', hideModalLogin)
-        modalLogin.addEventListener('click', hideModalLogin)
-        modalLoginContainer.addEventListener('click', function(e) {
-            e.stopPropagation()
-        })
+    function hideModalLogin() {
+        modalLogin.classList.remove("open")
+    }
+
+    loginBtn.addEventListener('click', showModalLogin)
+    loginBtn.addEventListener('click', hideModalregister)
+    modalLoginClose.addEventListener('click', hideModalLogin)
+    modalLogin.addEventListener('click', hideModalLogin)
+    modalLoginContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
 
 
 
-        const modalregister = document.querySelector(".modal-register")
-        const modalregisterClose = document.querySelector(".modal-register_close")
-        const modalregisterContainer = document.querySelector(".modal-register_container")
-        const registerBtn = document.querySelector(".header_btn-sign-up")
+    const modalregister = document.querySelector(".modal-register")
+    const modalregisterClose = document.querySelector(".modal-register_close")
+    const modalregisterContainer = document.querySelector(".modal-register_container")
+    const registerBtn = document.querySelector(".header_btn-sign-up")
 
-        function showModalregister() {
-            modalregister.classList.add("open")
-        }
+    function showModalregister() {
+        modalregister.classList.add("open")
+    }
 
-        function hideModalregister() {
-            modalregister.classList.remove("open")
-        }
+    function hideModalregister() {
+        modalregister.classList.remove("open")
+    }
 
-        registerBtn.addEventListener('click', showModalregister)
-        registerBtn.addEventListener('click', hideModalLogin)
-        modalregisterClose.addEventListener('click', hideModalregister)
-        modalregister.addEventListener('click', hideModalregister)
-        modalregisterContainer.addEventListener('click', function(e) {
-            e.stopPropagation()
-        })
+    registerBtn.addEventListener('click', showModalregister)
+    registerBtn.addEventListener('click', hideModalLogin)
+    modalregisterClose.addEventListener('click', hideModalregister)
+    modalregister.addEventListener('click', hideModalregister)
+    modalregisterContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+</script>
 
-    </script>
+<!-- Modal user -->
+<div class="modal_user js-modal_user">
+    <div class="modal_user-container js-modal_user-container">
 
-    <!-- Modal user -->
-    <div class="modal_user js-modal_user">
-        <div class="modal_user-container js-modal_user-container">
-            
-            <button class="modal_user-close js-modal_user-close">
+        <button class="modal_user-close js-modal_user-close">
                 <i class="fas fa-times modal-user_close-icon"></i>
             </button>
 
-            <header class="modal_user-header">
-                <i class="modal_user-heading-icon ti-briefcase"></i>
-                Góc người dùng
-            </header>
+        <header class="modal_user-header">
+            <i class="modal_user-heading-icon ti-briefcase"></i> Góc người dùng
+        </header>
 
-            <div class="modal_user-body row">
-                <div class="modal_user-body-selection column">
-                    <div class="modal_user-avt">
-                        <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="modal_user-img">
-                        <p class="modal_user-name">User name</p>
-                        <button class="modal_user-avt-btn " >Đổi ảnh</button>
-                    </div>
-                    <ul class="modal_user-li">
-                        <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
-                        <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
-                        <li><button class="modal_user-select js_select-fav-song">Nhạc yêu thích</button></li>
-                        <li><button class="modal_user-select">Đăng xuất</button></li>
-                    </ul>
+        <div class="modal_user-body row">
+            <div class="modal_user-body-selection column">
+                <div class="modal_user-avt">
+                    <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="modal_user-img">
+                    <p class="modal_user-name">User name</p>
+                    <button class="modal_user-avt-btn ">Đổi ảnh</button>
                 </div>
-                <div class="modal_user-body-info  js-modal_user-body-info">
-                    <ul class="modal_info-input ">
-                        <li>
-                            <p>Họ tên</p>
-                            <input type="text" class="info-input" placeholder="Đặng Ngọc Khánh Duy">
-                        </li>
-    
-                        <li>
-                            <p>Giới tính</p>
-                            <div class="info-input-radio">
-                                <input checked="checked" type="radio" name="gender" id="raido-gender1" value="Nam"> Nam
-                                <input type="radio" name="gender" id="raido-gender2" value="Nữ"> Nữ
-                                <input type="radio" name="gender" id="raido-gender3" value="Khác"> Khác
-                            </div>
-                            
-                        </li>
+                <ul class="modal_user-li">
+                    <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
+                    <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
+                    <li><button class="modal_user-select js_select-fav-song">Nhạc yêu thích</button></li>
+                    <li><button class="modal_user-select">Đăng xuất</button></li>
+                </ul>
+            </div>
+            <div class="modal_user-body-info  js-modal_user-body-info">
+                <ul class="modal_info-input ">
+                    <li>
+                        <p>Họ tên</p>
+                        <input type="text" class="info-input" placeholder="Đặng Ngọc Khánh Duy">
+                    </li>
 
-                        <li>
-                            <p>Độ tuổi</p>
-                            <input type="number" class="info-input" placeholder="21">
-                        </li>
-    
-                        <li>
-                            <p>Địa chỉ email</p>
-                            <input type="email" class="info-input" placeholder="18520656@gm.uit.edu.vn">
-                        </li>
-                    </ul>
-                    
-                    <div class="modal_info-button">
-                        <button>Đổi mật khẩu</button>
-                        <button>Lưu thông tin</button>
-                    </div>
+                    <li>
+                        <p>Giới tính</p>
+                        <div class="info-input-radio">
+                            <input checked="checked" type="radio" name="gender" id="raido-gender1" value="Nam"> Nam
+                            <input type="radio" name="gender" id="raido-gender2" value="Nữ"> Nữ
+                            <input type="radio" name="gender" id="raido-gender3" value="Khác"> Khác
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <p>Độ tuổi</p>
+                        <input type="number" class="info-input" placeholder="21">
+                    </li>
+
+                    <li>
+                        <p>Địa chỉ email</p>
+                        <input type="email" class="info-input" placeholder="18520656@gm.uit.edu.vn">
+                    </li>
+                </ul>
+
+                <div class="modal_info-button">
+                    <button>Đổi mật khẩu</button>
+                    <button>Lưu thông tin</button>
                 </div>
+            </div>
 
-                <div class="modal_user-body-book js-modal_user-body-book">
-                    <div class="modal_fav-book">
-                        <img src="https://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg" alt="" class="modal_fav-book-img" >
-                        <img src="https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894" alt="" class="modal_fav-book-img">
-                        <img src="https://nhungcuonsachhay.com/wp-content/uploads/2021/05/Thang-quy-nho-Nguyen-Nhat-Anh.jpg" alt="" class="modal_fav-book-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif" alt="" class="modal_fav-book-img">
-                        <img src="https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif" alt="" class="modal_fav-book-img">
-                    </div>
-                    <div class="modal_fav-book-button">
-                        <button>Thêm sách</button>
-                        <button>Xóa sách</button>
-                    </div>
+            <div class="modal_user-body-book js-modal_user-body-book">
+                <div class="modal_fav-book">
+                    <img src="https://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg" alt="" class="modal_fav-book-img">
+                    <img src="https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894" alt="" class="modal_fav-book-img">
+                    <img src="https://nhungcuonsachhay.com/wp-content/uploads/2021/05/Thang-quy-nho-Nguyen-Nhat-Anh.jpg" alt="" class="modal_fav-book-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif" alt="" class="modal_fav-book-img">
+                    <img src="https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif" alt="" class="modal_fav-book-img">
                 </div>
+                <div class="modal_fav-book-button">
+                    <button>Thêm sách</button>
+                    <button>Xóa sách</button>
+                </div>
+            </div>
 
-                <div class="modal_user-body-song js-modal_user-body-song">
-                    <ul class="modal_fav-song">
-                        <li><div class="modal_fav-song-li row">
+            <div class="modal_user-body-song js-modal_user-body-song">
+                <ul class="modal_fav-song">
+                    <li>
+                        <div class="modal_fav-song-li row">
                             <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>
                             </div>
-                            <i class="fas fa-play fav-song-icon-play"></i> 
-                        </div></li>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
 
-                        <li><div class="modal_fav-song-li row">
+                    <li>
+                        <div class="modal_fav-song-li row">
                             <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>
                             </div>
-                            <i class="fas fa-play fav-song-icon-play"></i> 
-                        </div></li>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
 
-                        <li><div class="modal_fav-song-li row">
+                    <li>
+                        <div class="modal_fav-song-li row">
                             <img src="{% static 'assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>
                             </div>
-                            <i class="fas fa-play fav-song-icon-play"></i> 
-                        </div></li>
-                    </ul>
-                    <div class="modal_fav-song-button">
-                        <button>Thêm nhạc</button>
-                        <button>Xóa nhạc</button>
-                    </div>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
+                </ul>
+                <div class="modal_fav-song-button">
+                    <button>Thêm nhạc</button>
+                    <button>Xóa nhạc</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <script> /* <!-- Đóng mở hộp user --> */
-        const userBtn = document.querySelector('.header_user')
-        const modal = document.querySelector('.js-modal_user')
-        const modalClose = document.querySelector('.js-modal_user-close')
-        const modalContainer= document.querySelector('.js-modal_user-container')
+<script>
+    /* <!-- Đóng mở hộp user --> */
+    const userBtn = document.querySelector('.header_user')
+    const modal = document.querySelector('.js-modal_user')
+    const modalClose = document.querySelector('.js-modal_user-close')
+    const modalContainer = document.querySelector('.js-modal_user-container')
 
-        //Ham hien thi modal
-        function showBuyTickets(){
-            modal.classList.add('open_user')
-        }
-        
-        //Ham an modal
-        function hideBuyTickets(){
-            modal.classList.remove('open_user')
-        }
+    //Ham hien thi modal
+    function showBuyTickets() {
+        modal.classList.add('open_user')
+    }
 
-        userBtn.addEventListener('click',showBuyTickets)
-        modalClose.addEventListener('click',hideBuyTickets)
+    //Ham an modal
+    function hideBuyTickets() {
+        modal.classList.remove('open_user')
+    }
 
-        modal.addEventListener('click',hideBuyTickets)
+    userBtn.addEventListener('click', showBuyTickets)
+    modalClose.addEventListener('click', hideBuyTickets)
 
-        modalContainer.addEventListener('click',function(event){
-            event.stopPropagation()
-        })
-    </script>
+    modal.addEventListener('click', hideBuyTickets)
 
-    <script> /* Tương tác trong hộp user */
-        const selectBook =document.querySelector('.js_select-fav-book')
-        const selectInfo =document.querySelector('.js_select-info')
-        const selectSong = document.querySelector('.js_select-fav-song')
-        const infoUser = document.querySelector('.js-modal_user-body-info')
-        const favBook=document.querySelector('.js-modal_user-body-book')
-        const favSong=document.querySelector('.js-modal_user-body-song')
+    modalContainer.addEventListener('click', function(event) {
+        event.stopPropagation()
+    })
+</script>
 
-        function showBook(){
-            favBook.classList.add('open-modal-info')
-            infoUser.classList.add('close-modal-info')
-            favSong.classList.remove('open-modal-info')
-        }
+<script>
+    /* Tương tác trong hộp user */
+    const selectBook = document.querySelector('.js_select-fav-book')
+    const selectInfo = document.querySelector('.js_select-info')
+    const selectSong = document.querySelector('.js_select-fav-song')
+    const infoUser = document.querySelector('.js-modal_user-body-info')
+    const favBook = document.querySelector('.js-modal_user-body-book')
+    const favSong = document.querySelector('.js-modal_user-body-song')
 
-        function showSong(){
-            favSong.classList.add('open-modal-info')
-            favBook.classList.remove('open-modal-info')
-            infoUser.classList.add('close-modal-info')
-        }
+    function showBook() {
+        favBook.classList.add('open-modal-info')
+        infoUser.classList.add('close-modal-info')
+        favSong.classList.remove('open-modal-info')
+    }
 
-        function showInfo(){
-            favBook.classList.remove('open-modal-info')
-            favSong.classList.remove('open-modal-info')
-            infoUser.classList.remove('close-modal-info')
-        }
+    function showSong() {
+        favSong.classList.add('open-modal-info')
+        favBook.classList.remove('open-modal-info')
+        infoUser.classList.add('close-modal-info')
+    }
 
-        selectInfo.addEventListener('click',showInfo)
-        selectSong.addEventListener('click',showSong)
-        selectBook.addEventListener('click',showBook)
-    </script>
+    function showInfo() {
+        favBook.classList.remove('open-modal-info')
+        favSong.classList.remove('open-modal-info')
+        infoUser.classList.remove('close-modal-info')
+    }
 
-    {% endblock %}
+    selectInfo.addEventListener('click', showInfo)
+    selectSong.addEventListener('click', showSong)
+    selectBook.addEventListener('click', showBook)
+</script>
+
+{% endblock %}
