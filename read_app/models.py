@@ -33,14 +33,14 @@ class Sach(models.Model):
         return self.book_tensach
 
 class CaSi(models.Model):
-    song_casi_id=models.IntegerField(null=False)
+
     song_casi_ten=models.CharField(default='',max_length=255)
     def __str__(self):
         return self.song_casi_ten
 
 
 class Nhac(models.Model):
-    song_id=models.IntegerField(null=False)
+
     song_tenbaihat=models.CharField(max_length=255)
     song_anhbia=models.FileField()
     song_quocgia=models.CharField(max_length=100)
