@@ -24,9 +24,9 @@ def book_page(request):
     context = {"titles": recommended_book}
     return render(request, 'book-page.html', context)
 
-def readbook(request):
+def readbook(request, slug):
     return render(request, 'read-book.html', {})
 
-def previewbook(request):
+def previewbook(request, slug):
     book_preview = Sach.objects.get(slug=slug)
     return render(request, 'intro-book.html', {'book_preview':book_preview})

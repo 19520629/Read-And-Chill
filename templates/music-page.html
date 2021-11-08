@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
 <script src="{% static 'main.js"></script>
 {% endblock %} {% block content %}
 <div id="main">
@@ -88,22 +90,7 @@
             <div class="header_user">
                 <img src="./assets/img/slide1.jpg" alt="" class="header_user-img">
                 <span class="header_user-name">Khoa Đặng</span>
-                <!-- <div class="header_user__">
-                        <ul class="header_user-list">
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Trang cá nhân</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Sách yêu thích</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Nhạc yêu thích</a>
-                            </li>
-                            <li class="header_user-list-item">
-                                <a href="" class="header_user-list-item-link">Đăng xuất</a>
-                            </li>
-                        </ul>
-                    </div> -->
+
 
             </div>
 
@@ -154,13 +141,14 @@
 
                 <div class="col l-9">
                     <div class="row sm-gutterr">
+                        {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
                         <div class="col l-3">
                             <div class="book-item song" data-index=0>
-                                <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-piano.png' %});"></div>
-                                <div class="book-item_name">Nhạc đàn piano thư giãn</div>
+                                <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
+                                <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                                 <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Thể loại</span>
-                                    <span class="book-item_author_name">Nhạc không lời</span>
+                                    <span class="book-item_author-tittle">Ca sĩ</span>
+                                    <span class="book-item_author_name">{{ item.song_casi_id}}</span>
                                 </div>
                                 <div class="book-item_action">
                                     <span class="book-item_action_like">
@@ -185,130 +173,7 @@
 
 
                         </div>
-                        <div class="col l-3">
-                            <div class="book-item song" data-index=1>
-                                <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-xich-linh.jpg' %});"></div>
-                                <div class="book-item_name">Xích linh</div>
-                                <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Tác giả</span>
-                                    <span class="book-item_author_name">Nhạc cổ phong</span>
-                                </div>
-                                <div class="book-item_action">
-                                    <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-                                        </span>
-                                    <div class="music-item_action_rating">
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-
-                                </div>
-
-                                <div class="book-item_seen">
-                                    <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                        <div class="col l-3">
-                            <div class="book-item song" data-index=2>
-                                <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-dan-ty-ba.jpg' %});"></div>
-                                <div class="book-item_name">Tỳ bà hành</div>
-                                <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Thể loại</span>
-                                    <span class="book-item_author_name">Nhạc cổ phong</span>
-                                </div>
-                                <div class="book-item_action">
-                                    <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-        
-                                        </span>
-                                    <div class="music-item_action_rating">
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-
-                                </div>
-
-                                <div class="book-item_seen">
-                                    <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                        <div class="col l-3">
-                            <div class="book-item song" data-index=3>
-                                <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-dan-tranh.png' %});"></div>
-                                <div class="book-item_name">Nhạc đàn tranh thư giãn</div>
-                                <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Thể loại</span>
-                                    <span class="book-item_author_name">Nhạc không lời</span>
-                                </div>
-                                <div class="book-item_action">
-                                    <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-        
-                                        </span>
-                                    <div class="music-item_action_rating">
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-
-                                </div>
-
-                                <div class="book-item_seen">
-                                    <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-                        <div class="col l-3">
-                            <div class="book-item song" data-index=4>
-                                <div class="book-item_img" style="background-image: url({% static '/assets/img/music/nhac-game-hoa.jpg' %});"></div>
-                                <div class="book-item_name">Game Hoa OST</div>
-                                <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Thể loại</span>
-                                    <span class="book-item_author_name">Nhạc không lời</span>
-                                </div>
-                                <div class="book-item_action">
-                                    <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-        
-                                        </span>
-                                    <div class="music-item_action_rating">
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star music-item_action_rating--gold"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-
-                                </div>
-
-                                <div class="book-item_seen">
-                                    <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                                </div>
-
-                            </div>
-
-
-                        </div>
+                        {% endif %} {% endfor %} {% endblock %}
 
 
 
@@ -325,73 +190,40 @@
 
 
 
-    <div class="music-player">
-        <!-- <div class="music-player_navbar">
-                <div class="player">
-                    <div class="img-music"></div>
-
-                    <div class="name-music">
-                        <h3>Bài hát đang phát: </h3>
-                        <h2>Xích Linh</h2>
-                    </div>   
-
-                    <input id="progress" class="progress" type="range" name="" value="0" step="1" min="0" max="100">
-
-                    <div class="control">
-                        <div class="music-player_btn btn-repeat">
-                            <i class="fas fa-redo"></i>
-                        </div>
-                        <button class="music-player_btn btn-prev">
-                            <i class="fas fa-step-backward"></i>
-                        </button>
-                        <div class="music-player_btn btn-toggle-play">
-                            <i class="fas fa-pause icon-pause"></i>
-                            <i class="fas fa-play icon-play"></i>
-                        </div>
-                        <button class="music-player_btn btn-next">
-                            <i class="fas fa-step-forward"></i>
-                        </button>
-                        <div class="music-player_btn btn-random">
-                            <i class="fas fa-random"></i>
-                        </div>
+    <div class="music-player-container">
+        <div class="contain">
+            <div class="container">
+                <div class="music-player">
+                    {% for item in page_obj %}
+                    <div class="cover">
+                        <img alt="" src="{{item.song_anhbia.url}}"/>
                     </div>
+                    <div class="titre">
+                        <h3>
+                            {{item.song_casi_ten}}
+                        </h3>
+                        <h1>
+                         {{item.song_tenbaihat}}
+                        </h1>
+                    </div>
+                    <center><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a> &nbsp; &nbsp; &nbsp; <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a></center>
+                   <div class="lecteur">
+                        <audio class="fc-media" style="width: 100%;">
+                            <source src="{% if item.song_file %}{{item.song_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
+                        </audio>
 
-                    <audio id="audio" src=""></audio>
-
-
+                   </div>
+                    {% endfor %}
                 </div>
-                
-
-            </div> -->
-
-        <div class="music-info">
-            <h3 id="title-song">Xích Linh</h3>
-            <div class="progress-container">
-                <div class="progress"></div>
             </div>
         </div>
 
-        <audio src="./assets/music/XichLinh.mp3" id="audio"></audio>
-
-        <div class="img-container">
-            <img src="{% static '/assets/img/music/nhac-xich-linh.jpg' %}" alt="music-cover" id="cover">
-        </div>
-
-        <div class="music-player-navigation">
-            <button id="prev" class="action-btn">
-                    <i class="fas fa-backward"></i>
-                </button>
-            <button id="play" class="action-btn action-btn-big">
-                    <i class="fas fa-play"></i>
-                </button>
-            <button id="next" class="action-btn">
-                    <i class="fas fa-forward"></i>
-                </button>
-        </div>
     </div>
-    <img src="./assets/music/Nhạc đàn piano thư giãn.mp3" alt="">
-    <script src="/music-player.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js">
+    </script>
+    <script src="{% static './music-player.js' %}"> </script>
 
 
 

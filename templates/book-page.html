@@ -170,7 +170,7 @@
                     <div class="row sm-gutterr">
                         {% block content_tensach %} {% for item in titles %} {% if titles %}
                         <div class="col l-2-4">
-                            <a href="#" class="book-item">
+                            <a href="{% url 'book_detail' book.slug %}" class="book-item">
                                 <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.book_tensach }}</div>
                                 <div class="book-item_author">
