@@ -22,4 +22,8 @@ def register(request):
 def book_page(request):
     return render(request, 'book-page.html', {})
 
+def readbook(request):
+    return render(request, 'read-book.html', {})
 
+def previewbook(request):
+    return render(request, 'intro-book.html', {})
