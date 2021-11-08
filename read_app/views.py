@@ -20,10 +20,13 @@ def register(request):
 
 
 def book_page(request):
-    return render(request, 'book-page.html', {})
+    recommended_book = Sach.objects.all()
+    context = {"titles": recommended_book}
+    return render(request, 'book-page.html', context)
 
 def readbook(request):
     return render(request, 'read-book.html', {})
 
 def previewbook(request):
-    return render(request, 'intro-book.html', {})
+    book_preview = Sach.objects.get(slug=slug)
+    return render(request, 'intro-book.html', {'book_preview':book_preview})

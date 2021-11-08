@@ -45,7 +45,7 @@ class Nhac(models.Model):
     song_anhbia=models.FileField()
     song_quocgia=models.CharField(max_length=100)
     song_danhgia=models.FloatField(default=0)
-    song_file=models.FileField()
+    song_file=models.FileField(upload_to='music')
     song_casi_id=models.ForeignKey(CaSi, on_delete=models.CASCADE)
     def __str__(self):
         return self.song_tenbaihat
