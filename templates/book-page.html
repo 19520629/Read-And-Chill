@@ -171,7 +171,7 @@
                         {% block content_tensach %} {% for item in titles %} {% if titles %}
                         <div class="col l-2-4">
                             <a href="{% url 'introbook' item.slug %}" class="book-item">
-                                <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
+                                <div class="book-item_img" style="background-image: url({{  item.book_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.book_tensach }}</div>
                                 <div class="book-item_author">
                                     <span class="book-item_author-tittle">Tác giả</span>

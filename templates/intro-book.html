@@ -113,18 +113,20 @@
             
         </div>
         
-        
+{% block preview %}
+        {% for item in titles %}
+        {% if item.slug == slug %}
         <h3 class="space-navbar-content"></h3>
         <div class="container">
             <div class="intro-book-container col">
                 <div class="introduce-book row">
                     <div class="intro-book-img">
-                        <img src="https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif" alt="matbiec">
+                        <img src="{{ item.book_anhbia.url }}" alt="matbiec">
                     </div>
                     <div class="intro-book-decription">
-                        <h1>MẮT BIẾC</h1>
-                        <h2>Tác giả: Nguyễn Nhật Ánh</h2>
-                        <p style="font-weight: bold;">Giới thiệu chung:</p><p> Mắt Biếc là cuốn tiểu thuyết kể về cuộc đời của Ngạn. Ngạn sinh ra và lớn lên ở một ngôi làng tên Đo Đo, thuộc xã Bình Quế, huyện Thăng Bình, tỉnh Quảng Nam, đây cũng là quê quán của tác giả. Lớn lên cùng với Ngạn là cô bạn hàng xóm có đôi mắt đẹp tuyệt trần tên Hà Lan. Tuổi thơ của Ngạn và Hà Lan đã gắn bó với nhau cùng với những kỉ niệm đẹp như đồi sim, đánh trống trường. Lớn lên, họ gặp lại nhau khi đi học trên thành phố, lúc này, Dũng, người bà con của Ngạn, một cậu ấm ăn chơi tình cờ gặp Hà Lan và đem lòng yêu mến cô ấy. Cuộc tình giờ đây đã có thêm nhiều trắc trở và trở nên chông gai hơn bao giờ hết . . .</p>
+                        <h1>{{ item.book_tensach }}</h1>
+                        <h2>Tác giả: {{ item.book_tacgia }}</h2>
+                        <p style="font-weight: bold;">Giới thiệu chung:</p><p> {{ item.book_tomtat }}</p>
                     </div>
 
                     <div class="introduce-button row">
@@ -133,7 +135,7 @@
                         <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button></a>
                     </div>
                 </div>
-                
+
                 <div class="introduce-comment col">
                     <div class="comment-header">Nhận Xét Sách</div>
                     <div class="comment-body col">
@@ -149,34 +151,9 @@
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <div class="footer_bottom">
-                <span class="footer_heading">Nhóm 17: Website đọc sách trực tuyến kết hợp với nghe nhạc thư giãn trong lúc đọc
-                </span>
-                <div class="grid wide">
-                    <div class="row">
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/nguyentranhoang.loi/" class="footer_menber-item-link">Nguyễn Trần Hoàng Lợi <br> 19520152 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/anhkhoa240601" class="footer_menber-item-link">Đặng Trần Anh Khoa <br> 19520629 </a>
-                        </div>
-                        <div class="footer_menber-item col l-4">
-                            <a href="https://www.facebook.com/khanhduy912" class="footer_menber-item-link">Đặng Ngọc Khánh Duy <br> 18520656 </a>
-                        </div>
-
-                        </div>
-                    </div>
-                </div>
-                <p class="footer_text">Địa chỉ: Khu phố 6, phường Linh Trung, quận Thủ Đức, TP Hồ Chí Minh. Tổng đài hỗ trợ: 0702817585. Email: 19520152@gm.uit.edu.vn <br>
-                    Design & Front-end: Nguyễn Trần Hoàng Lợi <br>
-                    Design & Back-end: Đặng Trần Anh Khoa <br>
-                    Front-end & Back-end: Đặng Ngọc Khánh Duy <br>
-                    © 2021 - Bản quyền thuộc về Công ty TNHH LKD
-                
-                </p>
-            </div>
-        </footer>
+        {% endif %}
+        {% endfor %}
+       {% endblock %}
 
     </div>
 
