@@ -143,7 +143,7 @@
                     <div class="row sm-gutterr">
                         {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
                         <div class="col l-3">
-                            <a href="page={{ page_obj.number }}" class="book-item song" data-index=0>
+                            <a href="?page={{ id }}" class="book-item song" data-index=0>
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                                 <div class="book-item_author">
