@@ -28,6 +28,6 @@ def readbook(request, slug):
     book = Sach.objects.get(slug=slug)
     return render(request, 'read-book.html', {})
 
-def previewbook(request, slug):
+def introbook(request, slug):
     book = Sach.objects.get(slug=slug)
     return render(request, 'intro-book.html', {'book_preview':book})

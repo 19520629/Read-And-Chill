@@ -12,5 +12,5 @@ urlpatterns = [
     path('login/',auth_views.LoginView.as_view(template_name="login.html"), name="login"),
     path('book/', views.book_page, name='book'),
     path('bookdetail/<slug:slug>', views.readbook, name = 'book_detail'),
-    path('preview/<slug:slug>', views.previewbook, name = 'preview_book'),
+    path('book/<slug:slug>', views.introbook, name = 'introbook'),
 ]
