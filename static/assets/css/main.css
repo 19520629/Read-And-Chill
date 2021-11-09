@@ -1398,130 +1398,6 @@
 }
 
 
-/* Music Player */
-
-.music-player {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 20px 20px 0 rgb(252 169 169 / 60%);
-    display: flex;
-    padding: 0 30px;
-    position: fixed;
-    bottom: 15px;
-    left: 60px;
-}
-
-.img-container {
-    position: relative;
-    width: 110px;
-}
-
-.img-container::after {
-    content: '';
-    background-color: rgb(255, 255, 255);
-    height: 20px;
-    width: 20px;
-    position: absolute;
-    left: 50%;
-    bottom: 65%;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: transla;
-}
-
-.img-container img {
-    width: inherit;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-
-    animation: rotate 3s linear infinite;
-
-    animation-play-state: paused;
-}
-
-.music-player.play .img-container img {
-    animation-play-state: running;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.music-player-navigation {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-}
-
-.action-btn {
-    background-color: transparent;
-    border: 0;
-    color: #8d8989;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 10px;
-    margin: 0 20px;
-}
-
-.action-btn-big {
-    color: #f05454;
-    font-size: 3rem;
-}
-
-.action-btn:focus {
-    outline: 0;
-}
-
-.music-info {
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 10px 10px 0 0;
-    position: absolute;
-    top: 0;
-    left: 20px;
-    width: calc(100% - 40px);
-    transform: translateY(0%);
-    padding: 10px 10px 10px 150px;
-    opacity: 0;
-    transition: all 0.3s ease-in;
-}
-
-.music-info h3 {
-    font-size: 1.6rem;
-    margin: 0;
-}
-
-
-.music-player.play .music-info {
-    opacity: 1;
-    transform: translateY(-100%);
-}
-
-.progress-container {
-    background: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px 0;
-    height: 4px;
-    width: 100%;
-}
-
-.progress {
-    background-color: #fe8daa;
-    border-radius: 5px;
-    height: 100%;
-    width: 0%;
-    transition: width 0.1s linear;
-}
 
 .login-container {
     position: fixed;
@@ -1622,56 +1498,52 @@
 
 
 
-.music-player-container h1 {
+.titre h1 {
     margin: 0;
     font-size: 33px;
     color: #fff;
     padding: 0 10%;
 }
-.music-player-container h3 {
+.titre h3 {
     margin: 0;
     font-size: 17px;
     font-weight: 500;
     color: #ccc;
     padding: 0 10%;
 }
-.music-player-container .container {
-    display: block;
-    width: 100%;
-    height: 750px;
-    margin: auto;
-    overflow: hidden;
-    background-repeat: repeat;
-    background-size: cover;
-}
-.music-player-container .music-player {
-display: flex;
+
+.music-player {
+    display: flex;
     flex-direction: column;
     position: relative;
-    width: 400px;
-    height: 570px;
-    margin: auto;
-    margin-top: 6%;
-    border-radius: 0 0 10px 10px;
-    background: transparent linear-gradient(to bottom,rgba(10,11,31,0.9) 50%,rgb(10,11,31) 70%) repeat scroll 0 0;
-    box-shadow: 1px 10px 20px 5px #222;
+    width: 335px;
+    height: 555px;
+    margin-left: 36px;
+    margin-top: 5%;
+    border-radius: 10px;
+    background: transparent linear-gradient(to bottom,rgb(14 19 127 / 90%) 50%,rgb(10,11,31) 70%) repeat scroll 0 0;
+    box-shadow: 4px 4px 4px 4px #999;
+    justify-content: center;
+    align-items: center;
 }
-.music-player-container .cover {
-    height: 300px;
+.music-player .cover {
+    width: 128%;
+    height: 52%;
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
-.music-player-container .cover img {
-    display: block;
-    width: 80%;
-    height: 50%;
-    text-align: center;
+.music-player .cover img {
+    position: relative;
+    top: -16%;
+    width: 70%;
+    border-radius: 10px;
 }
-.music-player-container .titre {
+.titre {
     float: left;
     width: 100%;
 }
-.music-player-container .lecteur {
+.lecteur {
     width: 100%;
     display: block;
     height: auto;
@@ -1682,15 +1554,15 @@ display: flex;
     outline: 0px dotted #999;
 }
 .mejs__container {
-    position: relative;
-    background-color: transparent;
+    position: relative !important;
+    background-color: transparent !important;
     min-width: auto !important;
 }
 .mejs__controls {
-    padding: 0 10%;
+    padding: 0 10% !important;
     background: transparent !important;
-    display: block;
-    position: relative;
+    display: block !important;
+    position: relative !important;
 }
 .mejs__controls div {
     display: block;
@@ -1844,4 +1716,16 @@ display: flex;
 }
 .mejs__controls .mejs__horizontal-volume-slider .mejs__horizontal-volume-current {
     background: #fff;
+}
+
+.music-player-contain {
+    position: fixed;
+    bottom: 18px;
+    transform: translateY(95%);
+    transition: all 0.3s ease-in;
+}
+
+.music-player-contain:hover {
+    transform: translateY(0);
+    transition: all 0.3s ease-in;
 }
