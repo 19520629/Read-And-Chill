@@ -79,9 +79,9 @@ class Account(models.Model):
         ('M', 'NAM'),
         ('A', 'Khac')
     )
-    hoten = models.CharField(max_length=255)
-    gioitinh = models.CharField(max_length=1, choices=sex_choice, )
-    user_avt = models.FileField()
-
+    hoten = models.CharField(max_length=255, null=True)
+    gioitinh = models.CharField(max_length=1, choices=sex_choice, null=True)
+    user_avt = models.ImageField(upload_to='avt')
+    tuoi=models.IntegerField(default=0)
     def __str__(self):
         return self.user.username

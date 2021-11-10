@@ -33,7 +33,7 @@
         <div class="header_navbar">
             <ul class="header_navbar-list">
                 <li class="header_navbar-item header_navbar-item-book">
-                    <a href="book/" class="header_navbar-item-link">
+                    <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
                                 Đọc sách
                             </a>
                     <div class="header_book">
@@ -49,7 +49,7 @@
 
                 </li>
                 <li class="header_navbar-item header_navbar-item-music">
-                    <a href="music/" class="header_navbar-item-link">
+                    <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
                                 Nghe nhạc
                             </a>
 
@@ -69,8 +69,8 @@
         </div>
         {% if user.is_authenticated %}
         <div class="header_user">
-            <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="header_user-img">
-            <span class="header_user-name">Khoa Đặng</span>
+            <img src="{{ user.account.user_avt.url }}" alt="" class="header_user-img">
+            <span class="header_user-name">{{ user.username }}</span>
             <!-- <div class="header_user__">
                         <ul class="header_user-list">
                             <li class="header_user-list-item">
@@ -96,5 +96,6 @@
 
 
     </div>
+
     {% endif %}
 </div>

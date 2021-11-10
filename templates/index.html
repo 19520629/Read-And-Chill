@@ -445,7 +445,7 @@
                 <ul class="modal_info-input ">
                     <li>
                         <p>Họ tên</p>
-                        <input type="text" class="info-input" placeholder="Đặng Ngọc Khánh Duy">
+                        <input type="text" class="info-input" placeholder="{{ user.account.hoten }}">
                     </li>
 
                     <li>
@@ -460,12 +460,12 @@
 
                     <li>
                         <p>Độ tuổi</p>
-                        <input type="number" class="info-input" placeholder="21">
+                        <input type="number" class="info-input" placeholder="{{ user.account.tuoi }}">
                     </li>
 
                     <li>
                         <p>Địa chỉ email</p>
-                        <input type="email" class="info-input" placeholder="18520656@gm.uit.edu.vn">
+                        <input type="email" class="info-input" placeholder="{{ user.email }}">
                     </li>
                 </ul>
 
