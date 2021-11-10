@@ -28,6 +28,7 @@ class Sach(models.Model):
     book_anhbia=models.ImageField(upload_to='cover_book')
     book_tomtat=models.CharField(max_length=255)
     book_danhgia=models.FloatField(default=0)# Sua thanh float vi danh gia tính trung binh nen em sợ có số lẻ
+    book_luotxem=models.IntegerField(default=0)
     slug=models.SlugField(max_length=100)
     def __str__(self):
         return self.book_tensach

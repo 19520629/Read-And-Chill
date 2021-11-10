@@ -25,11 +25,14 @@ def book_page(request):
     context = {"titles": recommended_book}
     return render(request, 'book-page.html', context)
 
-# def readbook(request, slug):
-#     book = Sach.objects.get(slug=slug)
-#     return render(request, 'read-book.html', {})
 
 def introbook(request, slug):
     recommended_book = Sach.objects.all()
     context = {"titles": recommended_book, "slug":slug}
-    return render(request, 'intro-book.html', context)
+    return render(request, 'read-book.html', context)
+
+
+def readbook(request, slug):
+    recommended_book = Sach.objects.all()
+    context = {"titles": recommended_book, "slug":slug}
+    return render(request, 'read-book.html', context)
