@@ -67,13 +67,7 @@
                 </li>
             </ul>
         </div>
-
-        <div class="header_btn">
-            <a class="header_btn-sign-up btn" href="login/" class="csw-btn-button" rel="nofollow" target="_blank">Đăng nhập</a>
-            <button class="header_btn-sign-up btn" onclick="register/">Đăng ký</button>
-
-        </div>
-
+        {% if user.is_authenticated %}
         <div class="header_user">
             <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="header_user-img">
             <span class="header_user-name">Khoa Đặng</span>
@@ -94,5 +88,13 @@
                         </ul>
                     </div> -->
         </div>
+        </div>
+        {% else %}
+    <div class="header_btn">
+            <a class="header_btn-sign-up btn" href="login/" class="csw-btn-button" rel="nofollow" target="_blank">Đăng nhập</a>
+            <button class="header_btn-sign-up btn" onclick="register/">Đăng ký</button>
+
+
     </div>
+    {% endif %}
 </div>
