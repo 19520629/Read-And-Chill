@@ -13,8 +13,8 @@
     <div id="header">
         <div class="navbar">
             <div class="header_logo">
-                <a href="http://127.0.0.1:5500/index.html" class="header_logo-link">
-                    <img src="{% static '/asset/img/logo.png' %}" alt="Logo" class="header_logo-img">
+                <a href="/" class="header_logo-link">
+                    <img src="{% static '/assets/img/logo.png' %}" alt="Logo" class="header_logo-img">
                 </a>
             </div>
 
@@ -60,7 +60,7 @@
 
                     </li>
                     <li class="header_navbar-item header_navbar-item-music">
-                        <a href="http://127.0.0.1:5500/music-page.html" class="header_navbar-item-link">
+                        <a href="/music" class="header_navbar-item-link">
                                 Nghe nhạc
                             </a>
 
@@ -122,10 +122,9 @@
 
 
         <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-        <script src="./read_pdf.js"></script>
+        <script src="{% static 'assets/read_pdf.js' %}"></script>
 
     </div>
-
 
 
 
@@ -141,7 +140,7 @@
     <audio src="{% static '/asset/music/XichLinh.mp3' %}" id="audio"></audio>
 
     <div class="img-container">
-        <img src="./asset/img/music/nhac-xich-linh.jpg" alt="music-cover" id="cover">
+        <img src="{% static '/asset/img/music/nhac-xich-linh.jpg' %}" alt="music-cover" id="cover">
     </div>
 
     <div class="music-player-navigation">
@@ -156,9 +155,8 @@
                 </button>
     </div>
 </div>
-<script src="/music-player.js">
+<script src="{% static 'assets/music-player.js' %}">
 </script>
-
 
 </div>
 {% endblock %}
