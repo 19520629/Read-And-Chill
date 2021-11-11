@@ -430,7 +430,7 @@
         <div class="modal_user-body row">
             <div class="modal_user-body-selection column">
                 <div class="modal_user-avt">
-                    <img src="{% static '/assets/img/slide1.jpg' %}" alt="" class="modal_user-img">
+                    <img src="{{ user.account.user_avt.url }}" alt="" class="modal_user-img">
                     <p class="modal_user-name">User name</p>
                     <button class="modal_user-avt-btn ">Đổi ảnh</button>
                 </div>
@@ -438,7 +438,7 @@
                     <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
                     <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
                     <li><button class="modal_user-select js_select-fav-song">Nhạc yêu thích</button></li>
-                    <li><button class="modal_user-select">Đăng xuất</button></li>
+                    <a href="logout/"><li><button href="logout" class="modal_user-select">Đăng xuất</button></li></a>
                 </ul>
             </div>
             <div class="modal_user-body-info  js-modal_user-body-info">

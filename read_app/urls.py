@@ -6,6 +6,7 @@ from .views import home
 from . import views
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('register/', views.register, name='register'),
@@ -13,4 +14,6 @@ urlpatterns = [
     path('book/', views.book_page, name='book'),
     path('book/<slug:slug>', views.introbook, name = 'introbook'),
     path('read/<slug:slug>', views.readbook, name = 'book_detail'),
+    path('logout/', views.logout_view, name='logout'),
+    # path('/', auth_views.LogoutView.as_view(template_name='index.html')),
 ]
