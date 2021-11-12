@@ -40,7 +40,7 @@ def introbook(request, slug):
     return render(request, 'intro-book.html', context)
 
 
-def readbook(request, slug):
+def readbook(request, slug, slug2):
     recommended_book = Sach.objects.all()
     context = {"titles": recommended_book, "slug":slug}
     return render(request, 'read-book.html', context)
