@@ -41,7 +41,6 @@ class CaSi(models.Model):
 
 
 class Nhac(models.Model):
-
     song_tenbaihat=models.CharField(max_length=255)
     song_anhbia=models.FileField()
     song_quocgia=models.CharField(max_length=100)

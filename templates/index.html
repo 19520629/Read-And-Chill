@@ -64,7 +64,7 @@
                 {% block content_tensach %} {% for item in titles %} {% if titles %}
 
                 <div class="col l-2-4">
-                    <a href="#" class="book-item">
+                    <a href="{% url 'introbook' item.slug %}" class="book-item">
 
 
                         <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
@@ -111,74 +111,12 @@
         </div>
 
         <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
+        {% block content_nhac %} {% for item in nhac %} {% if titles %}
         <div class="grid wide">
             <div class="row sm-gutter">
                 <div class="col l-2-4">
                     <a href="#" class="book-item">
-                        <div class="book-item_img" style="background-image: url(https://avatar-nct.nixcdn.com/song/2019/08/19/d/e/0/d/1566147959020_640.jpg);"></div>
-                        <div class="book-item_name">Xích linh</div>
-                        <div class="book-item_author">
-                            <span class="book-item_author-tittle">Tác giả</span>
-                            <span class="book-item_author_name">Nhạc tiktok</span>
-                        </div>
-                        <div class="book-item_action">
-                            <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-                                </span>
-                            <div class="music-item_action_rating">
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-
-                        </div>
-
-                        <div class="book-item_seen">
-                            <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                        </div>
-
-                    </a>
-
-
-                </div>
-
-                <div class="col l-2-4">
-                    <a href="#" class="book-item">
-                        <div class="book-item_img" style="background-image: url(https://file.vfo.vn/hinh/2018/05/hinh-ve-tranh-ve-my-nhan-dep-nhat-my-nhan-co-trang-trung-quoc-13.png);"></div>
-                        <div class="book-item_name">Nhạc đàn tranh thư giãn</div>
-                        <div class="book-item_author">
-                            <span class="book-item_author-tittle">Thể loại</span>
-                            <span class="book-item_author_name">Nhạc không lời</span>
-                        </div>
-                        <div class="book-item_action">
-                            <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-                                </span>
-                            <div class="music-item_action_rating">
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-
-                        </div>
-
-                        <div class="book-item_seen">
-                            <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
-                        </div>
-
-                    </a>
-
-
-                </div>
-
-                <div class="col l-2-4">
-                    <a href="#" class="book-item">
-                        <div class="book-item_img" style="background-image: url(https://i.pinimg.com/originals/0f/13/26/0f1326c13552887d8f212817001340ad.png);"></div>
+                        <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                         <div class="book-item_name">Nhạc đàn piano thư giãn</div>
                         <div class="book-item_author">
                             <span class="book-item_author-tittle">Thể loại</span>
@@ -202,95 +140,17 @@
                         <div class="book-item_seen">
                             <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
                         </div>
-
                     </a>
-
-
                 </div>
             </div>
         </div>
+        {% endif %} {% endfor %} {% endblock %}
         <h3 class="web-content_heading"></h3>
     </div>
 
-
-
 </div>
 
 
-<div class="modal-login">
-    <div class="modal-login_container">
-        <div class="modal-login_close">
-            <i class="fas fa-times modal-login_close-icon"></i>
-        </div>
-        <header class="modal-login_header">
-            Đăng nhập tài khoản
-        </header>
-        <div class="modal-login_body">
-
-            <form action="" method="POST" class="form" id="form-2">
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng nhập</button>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="modal-register">
-    <div class="modal-register_container">
-        <div class="modal-register_close">
-            <i class="fas fa-times modal-register_close-icon"></i>
-        </div>
-        <header class="modal-register_header">
-            Đăng ký tài khoản
-        </header>
-        <div class="modal-register_body">
-
-            <form action="" method="POST" class="form" id="form-1">
-
-                <div class="form-group">
-                    <label for="fullname" class="form-label">Tên đầy đủ</label>
-                    <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng ký</button>
-            </form>
-
-        </div>
-    </div>
-</div>
 {% endblock %} {% block jsblock %}
 
 <script>
