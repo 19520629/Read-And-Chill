@@ -64,7 +64,7 @@
                 {% else %}
                 <p>Không có sách hoặc bài hát cần tìm</p>
                 {% endif %} {% endfor %} {% endblock %}
-                {% block content_tennhac %} {% for item in music %} {% if music %}{% if slug == item.song_tenbaihat %}
+                {% block content_tennhac %} {% for item in nhac %} {% if nhac %}{% if slug == item.song_tenbaihat %}
                         <div class="col l-3">
                             <a href="?page={{ id }}" class="book-item song" data-index=0>
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
@@ -99,7 +99,7 @@
                 {% endif %}
                 {% else %}
                 <p>Khong tim thay bai hat</p>
-                        {% endif %} {% endfor %} {% endblock %}
+                {% endif %} {% endfor %} {% endblock %}
             </div>
         </div>
 

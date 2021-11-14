@@ -47,9 +47,23 @@ def readbook(request, slug, slug2):
     return render(request, 'read-book.html', context)
 
 
-def search(request, slug):
+# def search(request):
+#     recommended_book = Sach.objects.all()
+#     context = {"titles": recommended_book, "slug": slug}
+#     recommended_music = Nhac.objects.all()
+#     context = {"titles": recommended_book, "slug": slug, "music":recommended_music}
+#     return render(request, 'search-page.html', context)
+
+
+def search(request):
+    # search_term = ''
+    # if 'search' in request.POST:
+    #     search_term = request.POST['search']
+    # book = Sach.objects.all()
+    # return render(request, 'search-page.html', {'items': book, 'slug': search_term})
+    dulieu=request.POST['search']
     recommended_book = Sach.objects.all()
-    context = {"titles": recommended_book, "slug": slug}
     recommended_music = Nhac.objects.all()
-    context = {"titles": recommended_book, "slug": slug, "music":recommended_music}
+    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
+
