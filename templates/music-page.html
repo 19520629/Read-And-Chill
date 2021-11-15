@@ -9,10 +9,96 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
-<script src="{% static 'main.js"></script>
+<script src="{% static 'main.js'%}"></script>
 {% endblock %} {% block content %}
 <div id="main">
-    <!--heaeder-->
+    <div id="header">
+        <div class="navbar">
+            <div class="header_logo">
+                <a href="/" class="header_logo-link">
+                    <img src="{% static '/assets/img/logo.png' %}" alt="Logo" class="header_logo-img">
+                </a>
+            </div>
+
+            <div class="header_search">
+                <div class="header_search-input-wrap">
+                    <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
+                    <div class="header_search-history">
+                        <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
+                        <ul class="header_search-history-list">
+                            <li class="header_search-history-item">
+                                <a href="">Mắt biếc</a>
+                            </li>
+                            <li class="header_search-history-item">
+                                <a href="">Xích linh</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header_search-history">
+
+                </div>
+                <button class="header_search-btn">
+                        <i class="fas fa-search header_search-btn-icon"></i>
+                    </button>
+            </div>
+
+            <div class="header_navbar">
+                <ul class="header_navbar-list">
+                    <li class="header_navbar-item header_navbar-item-book">
+                        <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
+                                Đọc sách
+                            </a>
+                        <div class="header_book">
+                            <ul class="header_book-list">
+                                <li class="header_book-list-item">
+                                    <a href="" class="header_book-list-item-link">Sách Việt Nam</a>
+                                </li>
+                                <li class="header_book-list-item">
+                                    <a href="" class="header_book-list-item-link">Sách nước ngoài</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="header_navbar-item header_navbar-item-music">
+                        <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
+                                Nghe nhạc
+                            </a>
+
+                        <div class="header_music">
+                            <ul class="header_music-list">
+                                <li class="header_music-list-item">
+                                    <a href="" class="header_music-list-item-link">Nhạc Việt Nam</a>
+                                </li>
+                                <li class="header_music-list-item">
+                                    <a href="" class="header_music-list-item-link">Nhạc nước ngoài</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="header_btn">
+                    <button class="header_btn-sign-in btn">Đăng nhập</button>
+                    <button class="header_btn-sign-up btn">Đăng ký</button>
+
+                </div> -->
+
+            <div class="header_user">
+                <img src="./assets/img/slide1.jpg" alt="" class="header_user-img">
+                <span class="header_user-name">Khoa Đặng</span>
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
 
 
     <h3 class="space-navbar-content"></h3>
@@ -57,7 +143,7 @@
                     <div class="row sm-gutterr">
                         {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
                         <div class="col l-3">
-                            <a href="?page={{ id }}" class="book-item song" data-index=0>
+                            <div class="book-item song" data-index={{ item.id }}>
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                                 <div class="book-item_author">
@@ -67,7 +153,7 @@
                                 <div class="book-item_action">
                                     <span class="book-item_action_like">
                                             <i class="fas fa-heart"></i>
-        
+
                                         </span>
                                     <div class="music-item_action_rating">
                                         <i class="fas fa-star music-item_action_rating--gold"></i>
@@ -83,7 +169,7 @@
                                     <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
                                 </div>
 
-                            </a>
+                            </div>
 
 
                         </div>
@@ -102,84 +188,396 @@
         <h3 class="web-content_heading"></h3>
     </div>
 
-
-
-    <div class="music-player-contain">
-
-        <div class="music-player">
-            {% for item in page_obj %}
-            <div class="cover">
-                <img alt="" src="{{item.song_anhbia.url}}"/>
-            </div>
-            <div class="titre">
-                <h3>
-                    {{item.song_casi_id}}
-                </h3>
-                <h1>
-                    {{item.song_tenbaihat}}
-                </h1>
-            </div>
-            <center><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a> &nbsp; &nbsp; &nbsp; <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a></center>
-           <div class="lecteur">
-                <audio class="fc-media" style="width: 100%;">
-                    <source src="{% if item.song_file %}{{item.song_file.url}} {% else %} {{item.audio_link}} {% endif %}" type="audio/mp3"/>
-                </audio>
-
-           </div>
-            {% endfor %}
-        </div>
-
-    </div>
-
-
-    <script type="text/javascript">
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js">
-    </script>
-    <script src="{% static './music-player.js' %}"> </script>
-
-
-
-
 </div>
 
+        <div class="player" style="background-image: url({% static '/assets/img/icon-5974828_1280.png' %});">
+            <div class="name-music">
+                <h3>Bài hát đang phát: </h3>
+                <h2>Xích Linh</h2>
+                <label for="nav-mobile-input" class="option nav-mobile-input">
+                    <i class="fas fa-ellipsis-h"></i>
+                </label>
+            </div>
+
+            <div class="img-music" style="background-image: url({{ song_anhbia.url }});"></div>
+
+            <div class="control">
+                <div class="btn-music btn-repeat">
+                    <i class="fas fa-redo"></i>
+                </div>
+                <button class="btn-music btn-prev">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <div class="btn-music btn-toggle-play">
+                    <i class="fas fa-pause icon-pause"></i>
+                    <i class="fas fa-play icon-play"></i>
+                </div>
+                <button class="btn-music btn-next">
+                    <i class="fas fa-step-forward"></i>
+                </button>
+                <div class="btn-music btn-random">
+                    <i class="fas fa-random"></i>
+                </div>
+            </div>
+
+            <input id="progress" class="progress" type="range" name="" value="0" step="1" min="0" max="100">
+            {% for item in nhac %} {% if nhac %}
+            <audio id="audio" src="{{ item.song_file }}"></audio>
+            {% endif %} {% endfor %}
+
+        </div>
+
+        <div class="play-list">
+
+        </div>
+
+
+        <input type="checkbox" hidden name="" class="nav__input" id="nav-mobile-input">
+
+        <label for="nav-mobile-input" class="nav__overlay"></label>
+        <nav class="nav__mobile">
+        <label for="nav-mobile-input" class="nav__mobile-close">
+            <i class="fas fa-times"></i>
+        </label>
+        <ul class="nav__mobile-list">
+            <li class="nav__mobile-item mute-Btn">
+                <span class="mute-Btn-off"> Tắt âm thanh </span>
+                <span class="mute-Btn-on"> Mở âm thanh </span>
+                <i class="fas fa-volume-mute volume-mute-icon"></i>
+                <i class="fas fa-volume-up volume-open-icon"></i>
+            </li>
+            <li class="nav__mobile-item">
+                Chỉnh âm lượng
+                <input id="volume" class="volume" type="range" name="" value="100" step="1" min="0" max="100">
+            </li>
+            <li class="nav__mobile-item info-song">
+                Thông tin
+                <i class="fas fa-address-card info-icon"></i>
+            </li>
+
+        </ul>
+        <div class="nav__mobile-img"></div>
+        </nav>
+        <script>
+
+            const $ = document.querySelector.bind(document);
+            const $$ = document.querySelectorAll.bind(document);
+            const heading = $('.name-music h2')
+            const cdThumb = $('.img-music')
+            const audio = $('#audio')
+            const cd = $('.img-music')
+            const playBtn = $('.btn-toggle-play')
+            const player = $('.player')
+            const progress = $('.progress')
+            const nextBtn = $('.btn-next')
+            const prevBtn = $('.btn-prev')
+            const randomBtn = $('.btn-random')
+            const repeatBtn = $('.btn-repeat')
+            const playList = $('.play-list')
+            const PLAYER_STORAGE_KEY = 'LEVIN_PLAYER'
+
+            const muteBtn = $('.nav__mobile-item.mute-Btn')
+            const volumeBtn = $('#volume')
+            const firstPage = $('.first-background')
+            const infoBtn = $('.info-song')
+            const musicBtn = $$('.book-item')
+
+
+
+            const app = {
+                currentIndex: 0,
+                isPlaying: false,
+                isRandom: false,
+                isRepeat: false,
+                isMuted: false,
+                isInfo: false,
+                config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {} ,
+                setConfig: function(key, value) {
+                    this.config[key] = value
+                    localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
+                },
+                songs : [
+                                    {% block content_nhac %} {% for item in nhac %} {% if nhac %}
+                                    {
+                                        name: '{{ item.song_tenbaihat }}',
+                                        singer: '{{ item.song_casi_id}}',
+                                        path: '{{ item.song_file.url}}',
+                                        img: '{{ item.song_anhbia.url }}',
+                                        id:'{{ item.id }}'
+                                    },
+                                    {% endif %} {% endfor %} {% endblock %}
+                         ],
+                 render: function() {
+                    const htmls = this.songs.map((song,index) => {
+                        return `
+                            <div data-index=${song.id} class="song ${index === this.currentIndex ? 'active' : ''} ">
+                                <div class="thumb" style="background-image: url(${song.img});">
+                                </div>
+                                <div class="body">
+                                    <h3 class="title">${song.name}</h3>
+                                    <p class="author">${song.singer}</p>
+                                </div>
+                                <label for="nav-mobile-input" class="option nav-mobile-input">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </label>
+                            </div>
+                        `
+                    })
+                    $('.play-list').innerHTML = htmls.join('');
+                },
+                defineProperties: function() {
+                    Object.defineProperty(this, 'currentSong', {
+                        get: function() {
+                            return this.songs[this.currentIndex]
+                        }
+                    })
+                },
+                handleEvents: function() {
+                    const _this = this
+                    const cdWidth = cd.offsetWidth
+                    const cdHeight = cd.offsetHeight
+
+                    // Xử lý phóng to, thu nhỏ CD khi kéo thanh cuộn
+                    document.onscroll = function() {
+                        const scrollTop = window.scrollY || document.documentElement.scrollTop
+                        const newCdWidth = cdWidth - scrollTop
+                        const newCdHeight = cdHeight - scrollTop
+
+                        cd.style.width = newCdWidth > 5 ? newCdWidth + 'px' : 0
+                        cd.style.height = newCdHeight > 5 ? newCdHeight + 'px' : 0
+                        cd.style.opacity = newCdHeight / cdHeight
+                    }
+
+                    // Xử lý khi click Play
+                    playBtn.onclick = function() {
+                        if(_this.isPlaying)
+                        {
+                            audio.pause()
+                        } else {
+                            audio.play()
+                        }
+                    }
+
+                    //Khi bài hát được phát
+                    audio.onplay = function() {
+                        _this.isPlaying = true
+                        player.classList.add('playing')
+                        heading.classList.add('playing')
+                        cdThumbAnimate.play()
+                    }
+
+                    //Khi bài hát dừng lại
+                    audio.onpause = function() {
+                        _this.isPlaying = false
+                        player.classList.remove('playing')
+                        heading.classList.remove('playing')
+                        cdThumbAnimate.pause()
+                    }
+
+                    //Khi tiến độ bài hát thay đổi
+                    audio.ontimeupdate = function() {
+                        if(audio.duration) {
+                            const progressPercent = Math.floor(audio.currentTime / audio.duration *100)
+                            progress.value = progressPercent
+                        }
+                    }
+
+                    //Khi tua bài hát thì xử lý onchang
+                    progress.oninput = function(e) {
+                        audio.currentTime = e.target.value * audio.duration / 100
+                    }
+
+                    //Xử lý khi CD xoay vòng / dừng lại
+                    const cdThumbAnimate = cdThumb.animate([
+                        {transform: 'rotate(360deg)'}
+                    ],{
+                        duration: 10000,
+                        iterations: Infinity
+                    })
+                    cdThumbAnimate.pause()
+
+                    //Khi next bài hát
+                    nextBtn.onclick = function () {
+                        if(_this.isRandom) {
+                            _this.randomSong()
+                        } else {
+                            _this.nextSong()
+                        }
+                        audio.play()
+                        _this.render()
+                        _this.scrollToActiveSong()
+                    }
+
+                     //Khi prev bài hát
+                     prevBtn.onclick = function () {
+                        if(_this.isRandom) {
+                            _this.randomSong()
+                        } else {
+                            _this.prevSong()
+                        }
+                        audio.play()
+                        _this.render()
+                        _this.scrollToActiveSong()
+                    }
+
+                    //Khi random bài hát
+                    randomBtn.onclick = function () {
+                        _this.isRandom = !_this.isRandom
+                        _this.setConfig('isRandom', _this.isRandom)
+                        randomBtn.classList.toggle('active', _this.isRandom)
+                    }
+
+                    //Khi hết bài thì next/repeat song
+                    audio.onended = function() {
+                        if(_this.isRepeat){
+                            audio.play()
+                        } else {
+                            nextBtn.click()
+                        }
+                    }
+
+                    //Xử lý lặp lại 1 bài hát
+                    repeatBtn.onclick = function () {
+                        _this.isRepeat = !_this.isRepeat
+                        _this.setConfig('isRepeat', _this.isRepeat)
+                        repeatBtn.classList.toggle('active', _this.isRepeat)
+                    }
+
+                    //Lắng nghe hành vi click vào playlist
+                    playList.onclick = function(e) {
+                        const songNode = e.target.closest('.song:not(.active)')
+
+                        console.log(songNode)
+                        if( songNode || e.target.closest('.option')) {
+
+                            //Khi click vào song
+                            if(songNode) {
+                                _this.currentIndex = Number(songNode.dataset.index)
+                                _this.loadCurrentSong()
+                                _this.render()
+                                audio.play()
+                            }
+
+                            //Khi click vào option
+                             if(e.target.closest('.option')) {
+
+                             }
+                        }
+                    }
+
+                    musicBtn.forEach(function musicPlay(e) {
+                        e.addEventListener('click', () => {
+                            _this.currentIndex = e.dataset.index -2
+                            _this.loadCurrentSong()
+                            _this.render()
+                            audio.play()
+                        });
+                    })
+
+                    //Xử lý khi nhấn mute / unmute
+                    muteBtn.onclick = function() {
+                        muteBtn.classList.toggle('muted', _this.isMuted)
+                        if (_this.isMuted) {
+                            audio.muted = true
+
+                        } else {
+                            audio.muted = false
+                        }
+                        _this.isMuted = !_this.isMuted
+                    }
+
+
+
+                    // Khi tua âm lương xử lý onchange
+                    volumeBtn.oninput = function(e) {
+                        audio.volume = e.target.value / 100
+                    }
+
+                    firstPage.onclick = function() {
+                        firstPage.classList.add('move-out')
+                    }
+
+                },
+                loadCurrentSong: function() {
+
+                    heading.textContent = this.currentSong.name + ' --- ' +this.currentSong.singer
+                    cdThumb.style.backgroundImage = `url(${this.currentSong.img})`
+                    audio.src = this.currentSong.path
+                },
+                loadConfig: function() {
+                    this.isRandom = this.config.isRandom
+                    this.isRepeat = this.config.isRepeat
+                },
+                nextSong: function() {
+                    this.currentIndex++
+                    if(this.currentIndex >= this.songs.length) {
+                        this.currentIndex = 0
+                    }
+                    this.loadCurrentSong()
+                },
+                prevSong: function() {
+                    this.currentIndex--
+                    if(this.currentIndex < 0) {
+                        this.currentIndex = this.songs.length - 1
+                    }
+                    this.loadCurrentSong()
+                },
+                randomSong: function() {
+                    let newIndex
+                    do {
+                        newIndex = Math.floor(Math.random() * this.songs.length)
+                    } while (newIndex == this.currentIndex)
+
+                    this.currentIndex = newIndex
+                    this.loadCurrentSong()
+
+                },
+                scrollToActiveSong: function() {
+                    setTimeout(() => {
+                        if(this.currentIndex == 0 || this.currentIndex == 1 || this.currentIndex == 2 || this.currentIndex == 3) {
+                            $('.song.active').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center' })
+                        } else {
+                            $('.song.active').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'nearest' })
+                        }
+                    },350)
+
+                },
+                start: function() {
+                    //Gắn cầu hình từ config vào ứng dụng
+                    this.loadConfig()
+
+                    // Định nghĩa các thuộc tính cho Object
+                    this.defineProperties()
+
+                    // Lắng nghe / xử lý các sự kiện
+                    this. handleEvents()
+
+                    // Tải thông tin bài hát đầu tiên vào UI khi chạy ứng dụng
+                    this.loadCurrentSong()
+
+                    // Render playlist
+                    this.render()
+
+                    //Hiển thị trạng thái ban đầu của button random & repeat
+                    randomBtn.classList.toggle('active', this.isRandom)
+                    repeatBtn.classList.toggle('active', this.isRepeat)
+                }
+            }
+
+
+
+            app.start();
+
+
+
+
+
+
+        </script>
 
 
 
@@ -369,8 +767,8 @@
     <div class="modal_user-container js-modal_user-container">
 
         <button class="modal_user-close js-modal_user-close">
-                <i class="fas fa-times modal-user_close-icon"></i>
-            </button>
+                    <i class="fas fa-times modal-user_close-icon"></i>
+                </button>
 
         <header class="modal_user-header">
             <i class="modal_user-heading-icon ti-briefcase"></i> Góc người dùng
@@ -379,7 +777,7 @@
         <div class="modal_user-body row">
             <div class="modal_user-body-selection column">
                 <div class="modal_user-avt">
-                    <img src="{{ user.account.user_avt.url }}" alt="" class="modal_user-img">
+                    <img src="./assets/img/slide1.jpg" alt="" class="modal_user-img">
                     <p class="modal_user-name">User name</p>
                     <button class="modal_user-avt-btn ">Đổi ảnh</button>
                 </div>
@@ -387,20 +785,19 @@
                     <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
                     <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
                     <li><button class="modal_user-select js_select-fav-song">Nhạc yêu thích</button></li>
-                    <a href="logout/"><li><button href="logout" class="modal_user-select">Đăng xuất</button></li></a>
+                    <li><button class="modal_user-select">Đăng xuất</button></li>
                 </ul>
             </div>
             <div class="modal_user-body-info  js-modal_user-body-info">
                 <ul class="modal_info-input ">
                     <li>
                         <p>Họ tên</p>
-                        <input type="text" class="info-input" placeholder="{{ user.account.hoten }}">
+                        <input type="text" class="info-input" placeholder="Đặng Ngọc Khánh Duy">
                     </li>
 
                     <li>
                         <p>Giới tính</p>
                         <div class="info-input-radio">
-
                             <input checked="checked" type="radio" name="gender" id="raido-gender1" value="Nam"> Nam
                             <input type="radio" name="gender" id="raido-gender2" value="Nữ"> Nữ
                             <input type="radio" name="gender" id="raido-gender3" value="Khác"> Khác
@@ -410,12 +807,12 @@
 
                     <li>
                         <p>Độ tuổi</p>
-                        <input type="number" class="info-input" placeholder="{{ user.account.tuoi }}">
+                        <input type="number" class="info-input" placeholder="21">
                     </li>
 
                     <li>
                         <p>Địa chỉ email</p>
-                        <input type="email" class="info-input" placeholder="{{ user.email }}">
+                        <input type="email" class="info-input" placeholder="18520656@gm.uit.edu.vn">
                     </li>
                 </ul>
 
@@ -443,7 +840,7 @@
                 <ul class="modal_fav-song">
                     <li>
                         <div class="modal_fav-song-li row">
-                            <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <img src="./assets/img/music/nhac-piano.png" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>
@@ -454,7 +851,7 @@
 
                     <li>
                         <div class="modal_fav-song-li row">
-                            <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <img src="./assets/img/music/nhac-piano.png" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>
@@ -465,7 +862,7 @@
 
                     <li>
                         <div class="modal_fav-song-li row">
-                            <img src="{% static 'assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <img src="./assets/img/music/nhac-piano.png" alt="" class="fav-song-img">
                             <div class="fav-song-info ">
                                 <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
                                 <p>Thể loại: Nhạc không lời</p>

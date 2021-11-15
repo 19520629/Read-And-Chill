@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-<script src="{% static 'main.js"></script>
 {% endblock %} {% block content %}
 <div id="main">
     <!--header-->
@@ -111,9 +110,9 @@
         </div>
 
         <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
-        {% block content_nhac %} {% for item in nhac %} {% if titles %}
         <div class="grid wide">
             <div class="row sm-gutter">
+                {% block content_nhac %} {% for item in nhac %} {% if titles %}
                 <div class="col l-2-4">
                     <a href="#" class="book-item">
                         <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
@@ -142,9 +141,9 @@
                         </div>
                     </a>
                 </div>
+                {% endif %} {% endfor %} {% endblock %}
             </div>
         </div>
-        {% endif %} {% endfor %} {% endblock %}
         <h3 class="web-content_heading"></h3>
     </div>
 
@@ -152,6 +151,7 @@
 
 
 {% endblock %} {% block jsblock %}
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

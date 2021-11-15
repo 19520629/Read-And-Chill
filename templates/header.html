@@ -6,7 +6,7 @@
                 <img src="{% static '/assets/img/logo.png' %}" alt="Logo" class="header_logo-img">
             </a>
         </div>
-        <form action="{% url 'search' %}" method="post">
+        <form action="{% url 'search' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
             {% csrf_token %}
         <div class="header_search">
 

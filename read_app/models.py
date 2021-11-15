@@ -80,7 +80,7 @@ class Account(models.Model):
     )
     hoten = models.CharField(max_length=255, null=True)
     gioitinh = models.CharField(max_length=1, choices=sex_choice, null=True)
-    user_avt = models.ImageField(upload_to='avt')
+    user_avt = models.ImageField(upload_to='avt', default='static/assets/img/default-avatar.png')
     tuoi=models.IntegerField(default=0)
     def __str__(self):
         return self.user.username
