@@ -101,7 +101,15 @@
     </div>
 
 
+    {% if user.is_authenticated %}
+
     <h3 class="space-navbar-content"></h3>
+
+    {% else %}
+
+    <h3 class="space-navbar-content" style="padding: 0;"></h3>
+
+    {% endif %}
 
     <div class="container">
 
