@@ -5,4 +5,5 @@ from django.conf.urls.static import static
 from . import views
 urlpatterns = [
     path('music/', views.music, name='music'),
+
 ]

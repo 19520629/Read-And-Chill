@@ -9,7 +9,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 {% endblock %} {% block content %}
 <div id="main">
+    {% if user.is_authenticated %}
+
     <h3 class="space-navbar-content"></h3>
+
+    {% else %}
+
+    <h3 class="space-navbar-content" style="padding: 0;"></h3>
+
+    {% endif %}
     {% block preview %} {% for item in titles %} {% if item.slug == slug %}
     <div class="container">
         <div class="intro-book-container col">

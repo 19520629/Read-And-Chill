@@ -1,4 +1,4 @@
-const url = './asset/pdf/Lab-3-Vulnerability-Scanning.pdf';
+
 
 let pdfDoc = null,
   pageNum = 1,

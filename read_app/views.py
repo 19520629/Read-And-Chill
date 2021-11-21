@@ -42,8 +42,9 @@ def introbook(request, slug):
 
 
 def readbook(request, slug, slug2):
+    recommended_music = Nhac.objects.all()
     recommended_book = Sach.objects.all()
-    context = {"titles": recommended_book, "slug":slug}
+    context = {"titles": recommended_book, "slug":slug, "nhac": recommended_music}
     return render(request, 'read-book.html', context)
 
 

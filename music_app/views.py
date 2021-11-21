@@ -13,6 +13,12 @@ def music(request):
     context={"page_obj":page_obj, "nhac": recommended_music}
     return render(request,"music-page.html",context)
 
+# def music2(request):
+#     recommended_music = Nhac.objects.all()
+#     context={"nhac": recommended_music}
+#     return render(request,"read-book.html",context)
+
+
 # Create your views here.
 
 # def music(request):
