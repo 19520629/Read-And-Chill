@@ -23,7 +23,7 @@
     {% for item in titles %}{% if item.slug == slug %}
     <div class="container">
         <div class="read-book-container col">
-            <div class="read-book-header row">
+            <div class="read-book-header">
                 <button class="prev-page">
                         <i class="fas fa-arrow-circle-left"></i>Trang Trước
                     </button>
@@ -42,18 +42,7 @@
                 <canvas id="pdf-render"></canvas>
             </div>
 
-            <div class="read-book-header row">
-                <button class="prev-page">
-                        <i class="fas fa-arrow-circle-left"></i>Trang Trước
-                    </button>
-                <button class="select-page">
-                        <span class="page-info">
-                            Trang <span class="page-num"></span> of <span class="page-count"></span>
-                        </span>
-                    </button>
-                <button class="next-page">
-                        Trang Sau<i class="fas fa-arrow-circle-right"></i>
-                    </button>
+
 
         </div>
 

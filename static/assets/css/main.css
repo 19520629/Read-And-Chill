@@ -1571,10 +1571,12 @@
 }
 
 .read-book-header{
+    flex-direction: column;
     height: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    right: 0;
+    position: fixed;
+
 }
 
 .read-book-header button{
