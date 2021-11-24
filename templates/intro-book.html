@@ -40,17 +40,49 @@
             </div>
 
             <div class="introduce-comment col">
-                <div class="comment-header">Nhận Xét Sách</div>
+                <div class="comment-header">Nhận Xét Sách ({{comments.count}}):</div>
+
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    {% if request.user.is_authenticated %}
+                    <input type="submit" value="Nhận xét"> </input>
+                    {% else %}
+                    <input type="submit" value="Đăng nhập để bình luận" disabled> </input>
+                    {% endif %}
+                </form>
+
+
+                <a href="">Viết bình luận</a>
+
+
                 <div class="comment-body col">
-                    <div class="comment-user">
-                        <h1>Hà Minh Hùng</h1>
-                        <p>Sách hay quá ạ, mình đọc xong mà nhớ thiên thần của mình quá! </p>
-                    </div>
-                    <div class="comment-user">
-                        <h1>Trương Thảo Tiên</h1>
-                        <p>Cuốn sách này thật tuyệt, nhờ nó mà mình có niềm tin hơn vào tình yêu. Cảm ơn web đã mang đến cho mình những cuốn sách thật ý nghĩa
-                            <3 </p>
-                    </div>
+
+                    {% if not comments %}
+
+                        <div class="comment-user">
+                            <h1>Chưa có bình luận nào!</h1>
+                            <a href="#">Thêm bình luận.</a>
+                        </div>
+                    {% else %}
+                        {% for comment in comments %}
+                            <div class="comment-user">
+                                <h1>{{ comment.user }}</h1> <h4 style="padding-left:10px">{{ comment.date_added }}</h4>
+                                <p>{{ comment.body }}</p>
+                            </div>
+
+                        {% endfor %}
+                    {% endif %}
+
+
+
+
+
+
+
+
+
                 </div>
             </div>
         </div>

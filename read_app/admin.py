@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Sach, Nhac, CaSi, TacGia, TheLoai, Favorite, Account
+from .models import  Sach, Nhac, CaSi, TacGia, TheLoai, Favorite, Account, Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
@@ -23,3 +23,4 @@ admin.site.register(Favorite)
 admin.site.register(Sach)
 admin.site.unregister(User)
 admin.site.register(User, CustomizedUserAdmin)
+admin.site.register(Comment)

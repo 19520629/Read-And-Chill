@@ -84,3 +84,16 @@ class Account(models.Model):
     tuoi=models.IntegerField(default=0)
     def __str__(self):
         return self.user.username
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Sach, related_name="comments" ,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s' % (self.post.book_tensach, self.user.username)
+
+
+
