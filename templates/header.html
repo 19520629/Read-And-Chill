@@ -34,43 +34,51 @@
 
         </div>
 </form>
-        <div class="header_navbar">
-            <ul class="header_navbar-list">
-                <li class="header_navbar-item header_navbar-item-book">
-                    <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
-                                Đọc sách
-                            </a>
-                    <div class="header_book">
-                        <ul class="header_book-list">
-                            <li class="header_book-list-item">
-                                <a href="" class="header_book-list-item-link">Sách Việt Nam</a>
-                            </li>
-                            <li class="header_book-list-item">
-                                <a href="" class="header_book-list-item-link">Sách nước ngoài</a>
-                            </li>
-                        </ul>
-                    </div>
 
-                </li>
-                <li class="header_navbar-item header_navbar-item-music">
-                    <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
-                                Nghe nhạc
-                            </a>
+            <div class="header_navbar">
+                <ul class="header_navbar-list">
+                    <li class="header_navbar-item header_navbar-item-book">
+                        <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
+                                    Đọc sách
+                                </a>
+                        <div class="header_book">
+                            <ul class="header_book-list">
+                                <form action="{% url 'search1' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                    {% csrf_token %}
+                                    <li class="header_book-list-item">
+                                        <a href="" class="header_book-list-item-link"><button name="search1">Sách Việt Nam</button></a>
+                                    </li>
+                                </form>
+                                <form action="{% url 'search2' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                    {% csrf_token %}
+                                    <li class="header_book-list-item">
+                                        <a href="" class="header_book-list-item-link"><button name="search2">Sách nước ngoài</button></a>
+                                    </li>
+                                </form>
+                            </ul>
+                        </div>
 
-                    <div class="header_music">
-                        <ul class="header_music-list">
-                            <li class="header_music-list-item">
-                                <a href="" class="header_music-list-item-link">Nhạc Việt Nam</a>
-                            </li>
-                            <li class="header_music-list-item">
-                                <a href="" class="header_music-list-item-link">Nhạc nước ngoài</a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="header_navbar-item header_navbar-item-music">
+                        <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
+                                    Nghe nhạc
+                                </a>
 
-                    </div>
-                </li>
-            </ul>
-        </div>
+                        <div class="header_music">
+                            <ul class="header_music-list">
+                                <li class="header_music-list-item">
+                                    <a href="" class="header_music-list-item-link"><button>Nhạc Việt Nam</button></a>
+                                </li>
+                                <li class="header_music-list-item">
+                                    <a href="" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
         {% if user.is_authenticated %}
         <div class="header_user">
             <img src="{{ user.account.user_avt.url }}" alt="" class="header_user-img">
