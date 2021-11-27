@@ -14,7 +14,7 @@
         <h3 class="web-content_heading">Sách bạn nên đọc</h3>
         <div class="grid wide">
             <div class="row sm-gutter">
-    {% block timkiem %} {% for item in titles %} {% if titles %}{% if item.book_tensach == slug %}
+    {% block timkiem %} {% for item in titles %} {% if titles %}
 
                 <div class="col l-2-4">
                     <a href="{% url 'introbook' item.slug %}" class="book-item">
@@ -59,60 +59,48 @@
                         </div>
                     </a>
                 </div>
-                {% endif %}
+
                 {% else %}
                 <p>Không có sách hoặc bài hát cần tìm</p>
                 {% endif %} {% endfor %} {% endblock %}
-                {% block timkiem_VN %} {% for item in titles %} {% if titles %}{% if item.book_quocgia == slug %}
 
-                <div class="col l-2-4">
-                    <a href="{% url 'introbook' item.slug %}" class="book-item">
+                {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
+                        <div class="col l-3">
+                            <a href="?page={{ id }}" class="book-item song" data-index=0>
+                                <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
+                                <div class="book-item_name">{{ item.song_tenbaihat }}</div>
+                                <div class="book-item_author">
+                                    <span class="book-item_author-tittle">Ca sĩ</span>
+                                    <span class="book-item_author_name">{{ item.song_casi_id}}</span>
+                                </div>
+                                <div class="book-item_action">
+                                    <span class="book-item_action_like">
+                                            <i class="fas fa-heart"></i>
 
+                                        </span>
+                                    <div class="music-item_action_rating">
+                                        <i class="fas fa-star music-item_action_rating--gold"></i>
+                                        <i class="fas fa-star music-item_action_rating--gold"></i>
+                                        <i class="fas fa-star music-item_action_rating--gold"></i>
+                                        <i class="fas fa-star music-item_action_rating--gold"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
 
-                        <div class="book-item_img" style="background-image: url({{ item.book_anhbia.url }});"></div>
+                                </div>
 
-                        <div class="book-item_name">
+                                <div class="book-item_seen">
+                                    <i class="fas fa-music book-item_seen-icon"></i> 24 lượt nghe
+                                </div>
 
-                            {{ item.book_tensach }}
+                            </a>
 
-                        </div>
-                        <div class="book-item_author">
-                            <span class="book-item_author-tittle">Tác giả</span>
-                            <span class="book-item_author_name">
-                                        {{ item.book_tacgia }}
-                            </span>
-                        </div>
-                        <div class="book-item_action">
-                            <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
-
-
-                                </span>
-                            <div class="book-item_action_rating">
-                                <input type="radio" name="rate" id="rate-5">
-                                <label class="fas fa-star" for="rate-5"></label>
-                                <input type="radio" name="rate" id="rate-4">
-                                <label class="fas fa-star" for="rate-4"></label>
-                                <input type="radio" name="rate" id="rate-3">
-                                <label class="fas fa-star" for="rate-3"></label>
-                                <input type="radio" name="rate" id="rate-2">
-                                <label class="fas fa-star" for="rate-2"></label>
-                                <input type="radio" name="rate" id="rate-1">
-                                <label class="fas fa-star" for="rate-1"></label>
-                            </div>
 
                         </div>
 
-                        <div class="book-item_seen">
-                            <i class="fas fa-eye book-item_seen-icon"></i> 12 lượt xem
-                        </div>
-                    </a>
-                </div>
-                {% endif %}
                 {% else %}
-                <p>Không có sách hoặc bài hát cần tìm</p>
+                <p>Khong tim thay bai hat</p>
                 {% endif %} {% endfor %} {% endblock %}
-                {% block content_tennhac %} {% for item in nhac %} {% if nhac %}{% if slug == item.song_tenbaihat %}
+                {% block content_tennhac_filter %} {% for item in nhac %} {% if nhac %}{% if item.Song_quocgia == slug %}
                         <div class="col l-3">
                             <a href="?page={{ id }}" class="book-item song" data-index=0>
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>

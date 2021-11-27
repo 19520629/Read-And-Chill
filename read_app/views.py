@@ -69,38 +69,40 @@ def readbook(request, slug, slug2):
 
 def search(request):
     dulieu=request.POST['search']
-    recommended_book = Sach.objects.all()
-    recommended_music = Nhac.objects.all()
+    recommended_book = Sach.objects.filter(book_tensach=dulieu) | Sach.objects.filter(book_tacgia=dulieu)
+    recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
     context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
 
-def search1(request):
+def search_book1(request):
     dulieu='VN'
-    recommended_book = Sach.objects.all()
-    recommended_music = Nhac.objects.all()
-    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
+    recommended_book = Sach.objects.filter(book_quocgia=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
 
-def search2(request):
+def search_book2(request):
     dulieu='nuocngoai'
-    recommended_book = Sach.objects.all()
-    recommended_music = Nhac.objects.all()
-    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
+    national=dulieu
+    recommended_book = Sach.objects.filter(book_quocgia=national)
+    context = {"titles": recommended_book,  "slug":dulieu}
     return render(request, 'search-page.html', context)
 
-# class AddComment(request):
-#
-#     model = Comment
-#     form_class = CommentForm
-#     template_name = 'intro-book.html'
-#     # fields = '__all__'
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
-#
-#     success_url = reverse_lazy('introbook')
+
+def search_music1(request):
+    dulieu='VN'
+    recommended_music = Nhac.objects.filter(song_quocgia=dulieu)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'search-page.html', context)
+
+
+
+def search_music2(request):
+    dulieu='nuocngoai'
+    recommended_music = Nhac.objects.filter(song_quocgia=dulieu)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'search-page.html', context)
 

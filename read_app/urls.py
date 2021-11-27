@@ -16,6 +16,8 @@ urlpatterns = [
     path('book/<slug:slug>/<slug:slug2>', views.readbook, name = 'readbook'),
     path('logout/', views.logout_view, name='logout'),
     path('search/', views.search, name='search'),
-    path('search1/', views.search1, name='search1'),
-    path('search2/', views.search2, name='search2'),
+    path('search1/', views.search_book1, name='search1'),
+    path('search2/', views.search_book2, name='search2'),
+    path('search3/', views.search_music1, name='search3'),
+    path('search4/', views.search_music2, name='search4'),
 ]

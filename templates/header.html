@@ -66,12 +66,18 @@
 
                         <div class="header_music">
                             <ul class="header_music-list">
+                                 <form action="{% url 'search3' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                     {% csrf_token %}
                                 <li class="header_music-list-item">
                                     <a href="" class="header_music-list-item-link"><button>Nhạc Việt Nam</button></a>
                                 </li>
+                                </form>
+                                <form action="{% url 'search4' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                    {% csrf_token %}
                                 <li class="header_music-list-item">
-                                    <a href="" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
+                                        <a href="" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
                                 </li>
+                                </form>
                             </ul>
 
                         </div>
