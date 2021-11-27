@@ -58,18 +58,22 @@ def introbook(request, slug):
 
 
 def readbook(request, slug, slug2):
+    book = get_object_or_404(Sach, slug=slug2)
+    book.book_luotxem += 0.5
+    book.save()
     recommended_music = Nhac.objects.all()
     recommended_book = Sach.objects.all()
+
+
     context = {"titles": recommended_book, "slug":slug, "nhac": recommended_music}
+    book.save()
     return render(request, 'read-book.html', context)
-
-
 
 
 
 def search(request):
     dulieu=request.POST['search']
-    recommended_book = Sach.objects.filter(book_tensach=dulieu) | Sach.objects.filter(book_tacgia=dulieu)
+    recommended_book = Sach.objects.filter(book_tensach=dulieu)
     recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
     context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)

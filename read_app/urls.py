@@ -20,4 +20,5 @@ urlpatterns = [
     path('search2/', views.search_book2, name='search2'),
     path('search3/', views.search_music1, name='search3'),
     path('search4/', views.search_music2, name='search4'),
+
 ]
