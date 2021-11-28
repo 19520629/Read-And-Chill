@@ -35,15 +35,23 @@
                 <div class="introduce-button row">
                     <a href="{% url 'readbook' item.slug item.slug %}"><button><i class="fas fa-book-open"></i> Đọc Ngay</button></a>
                     <a href=""><button><i class="fas fa-heart"></i> Yêu Thích</button></a>
-                    <a href=""><button onclick="Hello()"><i class="fas fa-share"></i> Chia Sẻ</button></a>
+                    <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
+                    <a href=""><button onclick="Hello()" ><i class="fas fa-share"></i> Chia Sẻ</button></a>
 
                     <script>
                       function Hello() {
-                      var copyText = '{% url 'introbook' item.slug %}';
+                      var copyText = document.getElementById("Copy");
+
+                      /* Select the text field */
                       copyText.select();
-                      document.execCommand('copy')
-                      console.log('Copied Text')
-                    }
+                      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                       /* Copy the text inside the text field */
+                      navigator.clipboard.writeText(copyText.value);
+
+                      /* Alert the copied text */
+                      alert("Copied the link to clipboard: " + copyText.value);
+                       }
                     </script>
                 </div>
             </div>
