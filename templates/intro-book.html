@@ -35,7 +35,16 @@
                 <div class="introduce-button row">
                     <a href="{% url 'readbook' item.slug item.slug %}"><button><i class="fas fa-book-open"></i> Đọc Ngay</button></a>
                     <a href=""><button><i class="fas fa-heart"></i> Yêu Thích</button></a>
-                    <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button></a>
+                    <a href=""><button onclick="Hello()"><i class="fas fa-share"></i> Chia Sẻ</button></a>
+
+                    <script>
+                      function Hello() {
+                      var copyText = '{% url 'introbook' item.slug %}';
+                      copyText.select();
+                      document.execCommand('copy')
+                      console.log('Copied Text')
+                    }
+                    </script>
                 </div>
             </div>
 
