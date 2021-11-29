@@ -21,12 +21,26 @@
         <div id="header">
             <div class="navbar">
                 <div class="header_logo">
-                    <a href="http://127.0.0.1:5500/index.html" class="header_logo-link">
+                    <a href="http://127.0.0.1:5500/index.html" class="header_logo-link hide-on-mobile-tablet">
                         <img src="./asset/img/logo.png" alt="Logo" class="header_logo-img">
                     </a>
                 </div>
 
-                <div class="header_search">
+                <div class="header_bars_mobile">
+                    <label for="nav-mobile-input">
+                        <i class="fas fa-bars"></i>
+
+                    </label>
+                </div>
+
+                <div class="header_search_mobile">
+                    <label for="mobile-search-checkbox" class="header__mobile-search">
+                        <i class="fas fa-search header_search-btn-icon"></i>
+
+                    </label>
+                </div>
+
+                <div class="header_search hide-on-mobile">
                     <div class="header_search-input-wrap">
                         <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
                         <div class="header_search-history">
@@ -44,12 +58,12 @@
                     <div class="header_search-history">
 
                     </div>
-                    <button class="header_search-btn">
+                    <button class="header_search-btn ">
                         <i class="fas fa-search header_search-btn-icon"></i>
                     </button>
                 </div>
 
-                <div class="header_navbar">
+                <div class="header_navbar hide-on-mobile-tablet">
                     <ul class="header_navbar-list">
                         <li class="header_navbar-item header_navbar-item-book">
                             <a href="http://127.0.0.1:5500/book-page.html" class="header_navbar-item-link">
@@ -120,6 +134,50 @@
             </div>
             
         </div>
+
+        <input type="checkbox" hidden class="nav__input" id="nav-mobile-input">
+        <label for="nav-mobile-input" class="nav__overlay"></label>
+        <nav class="nav__mobile">
+            <label for="nav-mobile-input" class="nav__mobile-close">
+                <i class="fas fa-times"></i>
+            </label>
+            <ul class="nav__mobile-list">
+                <li>
+                    <a href="" class="nav__mobile-link">Sách Việt Nam</a>
+                </li>
+                <li>
+                    <a href="" class="nav__mobile-link">Sách nước ngoài</a>
+                </li>
+                <li>
+                    <a href="" class="nav__mobile-link">Nhạc Việt Nam</a>
+                </li>
+                <li>
+                    <a href="" class="nav__mobile-link">Nhạc nước ngoài</a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
+        <div class="header__search">
+            <div class="header_search-input-wrap">
+                <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
+                <div class="header_search-history">
+                    <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
+                    <ul class="header_search-history-list">
+                        <li class="header_search-history-item">
+                            <a href="">Mắt biếc</a>
+                        </li>
+                        <li class="header_search-history-item">
+                            <a href="">Xích linh</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="header_search-btn">
+                <i class="fas fa-search header_search-btn-icon"></i>
+            </button>
+        </div>
         
         
         <h3 class="space-navbar-content"></h3>
@@ -128,7 +186,7 @@
 
            <div class="grid wide">
                 <div class="row sm-gutter">
-                    <div class="col l-2">
+                    <div class="col l-2 m-12 c-12">
                         <nav class="category">
                             <span class="category_book-type">Xuất xứ</span>
                             <ul class="category_book-type-list">
@@ -174,9 +232,9 @@
                     </div>
 
 
-                    <div class="col l-10">
+                    <div class="col l-10 m-12 c-12">
                         <div class="row sm-gutterr">
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="./intro-book.html" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif);"></div>
                                     <div class="book-item_name">Mắt biếc</div>
@@ -209,7 +267,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://toplist.vn/images/800px/toi-thay-hoa-vang-tren-co-xanh-372236.jpg);"></div>
                                     <div class="book-item_name">Tôi thấy hoa vàng trên cỏ xanh</div>
@@ -242,7 +300,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(http://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg);"></div>
                                     <div class="book-item_name">Đi qua hoa cúc</div>
@@ -275,7 +333,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894);"></div>
                                     <div class="book-item_name">Đảo mộng mơ</div>
@@ -308,7 +366,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://nhungcuonsachhay.com/wp-content/uploads/2021/05/Thang-quy-nho-Nguyen-Nhat-Anh.jpg);"></div>
                                     <div class="book-item_name">Thằng quỷ nhỏ</div>
@@ -341,7 +399,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif);"></div>
                                     <div class="book-item_name">Harry Potter và Hòn đá phù thủy</div>
@@ -374,7 +432,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/archive/8/88/20210321032329%21Harry_Potter_v%C3%A0_Chi%E1%BA%BFc_c%E1%BB%91c_l%E1%BB%ADa_b%C3%ACa.jpg);"></div>
                                     <div class="book-item_name">Harry Potter và Chiếc cốc lửa</div>
@@ -407,7 +465,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://upload.wikimedia.org/wikipedia/vi/archive/7/74/20210321032501%21Harry_Potter_v%C3%A0_H%E1%BB%99i_ph%C6%B0%E1%BB%A3ng_ho%C3%A0ng.jpg);"></div>
                                     <div class="book-item_name">Harry Potter và Hội phượng hoàng</div>
@@ -439,7 +497,7 @@
         
         
                             </div>
-                            <div class="col l-2-4">
+                            <div class="col l-2-4 m-6 c-12">
                                 <a href="#" class="book-item">
                                     <div class="book-item_img" style="background-image: url(https://vcdn.tikicdn.com/media/catalog/product/n/h/nha-gia-kim.u84.d20161102.t102644.515752.jpg);"></div>
                                     <div class="book-item_name">Nhà giả kim</div>
@@ -487,13 +545,13 @@
                 </span>
                 <div class="grid wide">
                     <div class="row">
-                        <div class="footer_menber-item col l-4">
+                        <div class="footer_menber-item col l-4 m-4 c-12">
                             <a href="https://www.facebook.com/nguyentranhoang.loi/" class="footer_menber-item-link">Nguyễn Trần Hoàng Lợi <br> 19520152 </a>
                         </div>
-                        <div class="footer_menber-item col l-4">
+                        <div class="footer_menber-item col l-4 m-4 c-12">
                             <a href="https://www.facebook.com/anhkhoa240601" class="footer_menber-item-link">Đặng Trần Anh Khoa <br> 19520629 </a>
                         </div>
-                        <div class="footer_menber-item col l-4">
+                        <div class="footer_menber-item col l-4 m-4 c-12">
                             <a href="https://www.facebook.com/khanhduy912" class="footer_menber-item-link">Đặng Ngọc Khánh Duy <br> 18520656 </a>
                         </div>
 

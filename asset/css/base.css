@@ -103,6 +103,15 @@ html {
     }
 }
 
+@keyframes FadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
 .space-navbar-content {
     padding: 32px;
 }
@@ -126,16 +135,5 @@ html {
 
 .music-player_btn + .music-player_btn {
     margin-left: 8px;
-}
-
-@keyframes modalFadeIn{
-    from{
-        opacity: 0;
-        transform: translateX(-150px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 

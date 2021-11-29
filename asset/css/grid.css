@@ -1,3 +1,209 @@
+@media (max-width: 1023px) {
+    .hide-on-mobile-tablet {
+        display: none !important;
+    }
+
+    #header {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .header_bars_mobile {
+        display: flex !important;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    .modal_fav-book {
+        overflow: scroll;
+    }
+
+    .modal_fav-song {
+        overflow: scroll;
+    }
+
+
+
+}
+
+@media (max-width: 739px) {
+
+    .header_search_mobile {
+        display: flex !important;
+        padding-right: 20px !important;
+    }
+
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    .header_search-btn-icon {
+        font-size: 2.4rem !important;
+    }
+    #header {
+        justify-content: space-between !important;
+    }
+    #main {
+        overflow: hidden;
+    }
+    .header__search {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        right: 0;
+        height: 46px;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+        z-index: 1;
+        animation: FadeIn linear 0.5s;
+        display: none;
+        background-color: #fff;
+        border-radius: 0px ;
+    }
+
+    .header_btn {
+        margin: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+
+    .header_btn .btn {
+        min-width: 110px;
+    }
+
+    .header_search-btn {
+        margin: 7px !important;
+    }
+
+    .header_user {
+        margin: 0 27px 0 70px !important;
+    }
+
+    .modal_user-img {
+        margin-top: 25px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .modal_user-name {
+        font-size: 16px !important;
+        margin-top: 7px !important;
+ 
+    }
+    .modal_user-avt-btn {
+        min-width: 100% !important;
+        font-size: 16px !important;
+        height: 32px !important;
+    }
+
+    .modal_user-select {
+        min-width: 100% !important;
+        height: 42px !important;
+        font-size: 16px !important;
+    }
+
+    .modal_info-input>li {
+        margin-left: 0 !important;
+    }
+
+    .info-input {
+        height: 35px !important;
+        width: 100% !important;
+        padding-left: 5px !important;
+    }
+    .info-input-radio {
+        width: auto !important;
+    }
+
+    .modal_info-button>button {
+        margin: 0 5px !important;
+        font-size: 16px !important;
+    }
+
+    .modal_fav-book-button>button, .modal_fav-song-button>button {
+        margin: 0 5px !important;
+        font-size: 16px !important;
+    }
+
+    .fav-song-img {
+        width: 18% !important;
+        height: 35px !important;
+    }
+
+    .modal_fav-song-li {
+        display: flex !important;
+        justify-content: center !important;
+        height: auto !important;
+        width: auto !important;
+        padding: 5px !important;
+    }
+
+    .fav-song-info {
+        text-align: center;
+        font-size: 14px !important;
+        width: 82% !important;
+    }
+
+    .fav-song-info>p {
+        margin: 3px !important;
+    }
+
+    .introduce-book {
+        width: 102% !important;
+        border-radius: 10px !important;
+        height: 394px !important;
+    }
+
+    .intro-book-img>img {
+        width: 100px !important;
+        height: 150px !important;
+        margin: 10px !important;
+    }
+
+    .intro-book-decription {
+        padding: 4px 4px 4px 30px !important;
+        width: 75% !important;
+        height: 290px !important;
+        overflow: scroll;
+    }
+
+    .intro-book-container {
+        width: 90% !important;
+        margin: 0 20px !important;
+        padding: 25px 0 !important;
+    }
+    
+    .introduce-button button {
+        padding: 2px 12px !important;
+        height: 36px !important;
+        margin: 10px 8px !important;
+        border-radius: 5px !important;
+        font-size: 14px !important;
+    }
+
+    .introduce-button {
+        margin-left: -4px !important;
+    }
+
+    .read-book-container {
+        width: 86% !important;
+    }
+
+    #pdf-render {
+        height: 421px !important;
+        width: 297px !important;
+    }
+
+    .read-book-header button {
+        padding: 7px 7px !important;
+        height: 38px !important;
+        margin: 20px 5px !important;
+        font-size: 12px !important;
+    }
+}
+
+
 .grid {
     width: 100%;
     display: block;
@@ -32,7 +238,7 @@
 }
 
 .c-0 {
-    display: none;
+    display: none !important;
 }
 
 .c-1 {
@@ -435,6 +641,49 @@
 @media (min-width: 740px) and (max-width: 1023px) {
     .wide {
         width: 644px;
+    }
+
+    .header_btn .btn {
+        min-width: 112px;
+    }
+
+    .header_search {
+        width: 310px;
+    }
+
+    .footer_heading {
+        padding: 0 74px;
+        text-align: center;
+    }
+    
+    .footer_text {
+        padding: 12px 76px !important;
+    }
+
+    .introduce-book {
+        border-radius: 10px !important;
+    }
+
+    .intro-book-img>img {
+        width: 100px !important;
+        height: 150px !important;
+        margin: 10px !important;
+    }
+
+    .intro-book-decription {
+        padding: 4px !important;
+        width: 75% !important;
+        height: 290px !important;
+        overflow: scroll;
+    }
+
+    .read-book-container {
+        width: 75% !important;
+    }
+
+    #pdf-render {
+        height: 631.5px !important;
+        width: 446px !important;
     }
 }
 
