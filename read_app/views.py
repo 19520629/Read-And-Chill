@@ -1,9 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .forms import RegistrationForm, CommentForm
 from django.http import HttpResponseRedirect
-from .models import Sach, Nhac, Account, Comment
+from .models import Sach, Nhac, Account, Comment, Favorite
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -19,7 +20,7 @@ def register(request):
 
 def home(request):
     recommended_book = Sach.objects.all()
-    recommended_music = Nhac.objects.all()
+    recommended_music = Nhac.objects.all()          
     context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5]}
     return render(request, 'index.html', context)
 
@@ -28,13 +29,13 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-
+@login_required(login_url='/login/')
 def book_page(request):
     recommended_book = Sach.objects.all()
     context = {"titles": recommended_book}
     return render(request, 'book-page.html', context)
 
-
+@login_required(login_url='/login/')
 def introbook(request, slug):
     post = get_object_or_404(Sach, slug=slug)
     recommended_book = Sach.objects.all()
@@ -50,13 +51,14 @@ def introbook(request, slug):
             return HttpResponseRedirect(request.path_info)
         else:
             comment_form= CommentForm()
-
+        
+    
 
     context = {"titles": recommended_book, "slug":slug,
                "comments": comment_object,"comment_form": comment_form}
     return render(request, 'intro-book.html', context)
 
-
+@login_required(login_url='/login/')
 def readbook(request, slug, slug2):
     book = get_object_or_404(Sach, slug=slug2)
     book.book_luotxem += 0.5
@@ -73,40 +75,39 @@ def readbook(request, slug, slug2):
 
 def search(request):
     dulieu=request.POST['search']
-    recommended_book = Sach.objects.filter(book_tensach=dulieu)
+    recommended_book = Sach.objects.filter(book_tensach__icontains=dulieu)
     recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
     context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
-
+@login_required(login_url='/login/')
 def search_book1(request):
     dulieu='VN'
-    recommended_book = Sach.objects.filter(book_quocgia=dulieu)
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
     context = {"titles": recommended_book, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
-
+@login_required(login_url='/login/')
 def search_book2(request):
     dulieu='nuocngoai'
     national=dulieu
-    recommended_book = Sach.objects.filter(book_quocgia=national)
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=national)
     context = {"titles": recommended_book,  "slug":dulieu}
     return render(request, 'search-page.html', context)
 
-
+@login_required(login_url='/login/')
 def search_music1(request):
     dulieu='VN'
-    recommended_music = Nhac.objects.filter(song_quocgia=dulieu)
+    recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
     context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
-
+@login_required(login_url='/login/')
 def search_music2(request):
     dulieu='nuocngoai'
-    recommended_music = Nhac.objects.filter(song_quocgia=dulieu)
+    recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
     context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
-

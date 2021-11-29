@@ -53,9 +53,9 @@ class Nhac(models.Model):
 
 
 class Favorite(models.Model):
-    favlist_id=models.IntegerField(null=False)
-    book_id=models.ForeignKey(Sach, on_delete=models.CASCADE)
-    song_id=models.ForeignKey(Nhac, on_delete=models.CASCADE)
+    favlist_id=models.ForeignKey(User, on_delete=models.CASCADE)
+    item_id=models.ForeignKey(Sach, on_delete=models.CASCADE)
+    is_Sach=models.BooleanField(null=False)
 
 
 # class User(models.Model):

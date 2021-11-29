@@ -4,7 +4,9 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.core.paginator import Paginator
 from read_app.models import Nhac
+from django.contrib.auth.decorators import login_required
 #
+@login_required(login_url='/login/')
 def music(request):
     paginator = Paginator(Nhac.objects.all(),1)
     recommended_music = Nhac.objects.all()
