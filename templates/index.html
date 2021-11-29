@@ -100,7 +100,7 @@
 
                 {% block content_tensach %} {% for item in titles %} {% if titles %}
 
-                <div class="col l-4">
+                <div class="col l-4 m-6 c-12">
 
 
                         <ul class="align">
@@ -166,9 +166,9 @@
 
         <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
         <div class="grid wide">
-            <div class="row sm-gutter">
+            <div class="row sm-gutter music-row">
                 {% block content_nhac %} {% for item in nhac %} {% if titles %}
-                <div class="col l-2-4">
+                <div class="col l-2-4 m-6 c-12">
                     <a href="#" class="book-item">
                         <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                         <div class="book-item_name">Nhạc đàn piano thư giãn</div>

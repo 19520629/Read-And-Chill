@@ -15,12 +15,16 @@
 
 </head>
 <body>
-    {% include 'header.html' %}
-    {% block content %}
+    <div id="main" style="overflow: hidden;">
 
-    {% endblock %}
-    {% include 'footer.html' %}
-    {% block jsblock %}
-    {% endblock %}
+        {% include 'header.html' %}
+        {% block content %}
+
+        {% endblock %}
+        {% include 'footer.html' %}
+        {% block jsblock %}
+        {% endblock %}
+    </div>
+
 </body>
 </html>

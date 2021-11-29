@@ -2655,3 +2655,91 @@ ul.align li {
 
 
 
+
+
+.header_bars_mobile {
+    font-size: 2.8rem;
+    color: #fff;
+    display: none;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.nav__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    display: none;
+    animation: FadeIn linear 0.4s;
+}
+
+.nav__input:checked ~ .nav__overlay {
+    display: block;
+}
+
+.nav__mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: #fff;
+    z-index: 100;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all linear 0.3s;
+}
+
+.nav__mobile-close {
+    font-size: 2.6rem;
+    color: #666;
+    position: absolute;
+    top: 2.2rem;
+    right: 2.2rem;
+}
+
+.nav__mobile-list {
+    margin-top: 64px;
+    list-style: none;
+    padding: 0;
+}
+
+.nav__mobile-link {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 16px 32px;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all linear 0.3s;
+}
+
+.nav__input:checked ~ .nav__mobile {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.header_search_mobile {
+    display: none;
+    align-items: center;
+    padding-right: 30px;
+}
+
+.header__search {
+    display: none;
+}
+
+.header__search-checkbox:checked ~ .header__search {
+    display: flex;
+}
+
+#main {
+    overflow: hidden;
+}
+
