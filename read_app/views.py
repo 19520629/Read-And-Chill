@@ -43,20 +43,33 @@ def introbook(request, slug):
     comment_form = CommentForm(request.POST)
 
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST or None)
-        if comment_form.is_valid():
-            body = request.POST.get('body')
-            comment = Comment.objects.create(post=post, user=request.user, body=body)
-            comment.save()
+        if 'comment' in request.POST:
+            comment_form = CommentForm(request.POST or None)
+            if comment_form.is_valid():
+                body = request.POST.get('body')
+                comment = Comment.objects.create(post=post, user=request.user, body=body)
+                comment.save()
+                return HttpResponseRedirect(request.path_info)
+            else:
+                comment_form= CommentForm()
+        elif 'delete' in request.POST:
+            comment = Comment.objects.get(id=request.POST['comment_id'])
+            comment.delete()
             return HttpResponseRedirect(request.path_info)
-        else:
-            comment_form= CommentForm()
         
     
 
     context = {"titles": recommended_book, "slug":slug,
                "comments": comment_object,"comment_form": comment_form}
     return render(request, 'intro-book.html', context)
+
+@login_required(login_url='/login/')
+def delete_comment(request):
+    post = get_object_or_404(Sach, slug=slug)
+    comment = Comment.objects.get(id=request.POST['comment_id'])
+    comment.delete()
+    return HttpResponseRedirect(request.path_info)
+
 
 @login_required(login_url='/login/')
 def readbook(request, slug, slug2):

@@ -2033,7 +2033,7 @@
 }
 
 #volume {
-  padding: 12px 0;
+  padding: 5px 20px 0 5px;
 }
 
 
@@ -2713,11 +2713,19 @@ ul.align li {
     text-decoration: none;
     color: var(--text-color);
     display: block;
-    padding: 16px 32px;
+    padding: 8px 32px;
     font-size: 2rem;
     font-weight: 500;
     transition: all linear 0.3s;
 }
+
+.nav__mobile-link button {
+    width: 200px;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
 
 .nav__input:checked ~ .nav__mobile {
     transform: translateX(0);
@@ -2743,3 +2751,94 @@ ul.align li {
     overflow: hidden;
 }
 
+ul.errorlist {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+}
+
+.introduce-comment form p label {
+    display: none;
+}
+
+.btn-comment {
+    padding: 5px 15px;
+    height: 35px;
+    border-radius: 5px;
+    border-style: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+textarea#id_body {
+    font-size: 1.5rem !important;
+    height: 110px;
+}
+
+
+.music-nav__input:checked ~ .music-nav__mobile {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.music-nav__mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: #fff;
+    z-index: 100;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all linear 0.3s;
+}
+
+.music-nav__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99;
+    display: none;
+    animation: FadeIn linear 0.4s;
+}
+
+
+.music-nav__mobile-close {
+    font-size: 2.6rem;
+    color: #666;
+    position: absolute;
+    top: 2.2rem;
+    right: 2.2rem;
+}
+
+.music-nav__mobile-list {
+    margin-top: 64px;
+    list-style: none;
+    padding: 0;
+    font-size:1.8rem;
+}
+
+.music-nav__mobile-link {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    padding: 16px 32px;
+    font-size: 2rem;
+    font-weight: 500;
+    transition: all linear 0.3s;
+}
+
+.music-nav__input:checked ~ .music-nav__overlay {
+    display: block;
+}

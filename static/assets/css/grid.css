@@ -24,7 +24,14 @@
         overflow: scroll;
     }
 
+    .player {
+        transform: translateX(-248px);
+        transition: all linear 0.3s;
+    }
 
+    .player:focus {
+        transform: translateX(0);
+    }
 
 }
 
@@ -714,6 +721,16 @@
         margin-left: 0 !important;
         margin-right: 0 !important;
 
+    }
+
+    .player {
+        transform: translateX(-248px);
+        transition: all linear 0.3s;
+        bottom: 0 !important;
+    }
+
+    .player:focus {
+        transform: translateX(0);
     }
 }
 }
