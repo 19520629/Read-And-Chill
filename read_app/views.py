@@ -94,7 +94,7 @@ def search(request):
     return render(request, 'search-page.html', context)
 
 
-@login_required(login_url='/login/')
+
 def search_book1(request):
     dulieu='VN'
     recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
@@ -102,7 +102,7 @@ def search_book1(request):
     return render(request, 'search-page.html', context)
 
 
-@login_required(login_url='/login/')
+
 def search_book2(request):
     dulieu='nuocngoai'
     national=dulieu
@@ -110,7 +110,7 @@ def search_book2(request):
     context = {"titles": recommended_book,  "slug":dulieu}
     return render(request, 'search-page.html', context)
 
-@login_required(login_url='/login/')
+
 def search_music1(request):
     dulieu='VN'
     recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
@@ -118,7 +118,7 @@ def search_music1(request):
     return render(request, 'search-page.html', context)
 
 
-@login_required(login_url='/login/')
+
 def search_music2(request):
     dulieu='nuocngoai'
     recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
