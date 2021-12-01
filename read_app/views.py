@@ -6,7 +6,37 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+import re
+import sys
 # Create your views here.
+
+import re
+import sys
+
+patterns = {
+    '[àáảãạăắằẵặẳâầấậẫẩ]': 'a',
+    '[đ]': 'd',
+    '[èéẻẽẹêềếểễệ]': 'e',
+    '[ìíỉĩị]': 'i',
+    '[òóỏõọôồốổỗộơờớởỡợ]': 'o',
+    '[ùúủũụưừứửữự]': 'u',
+    '[ỳýỷỹỵ]': 'y'
+}
+
+def convert(text):
+    """
+    Convert from 'Tieng Viet co dau' thanh 'Tieng Viet khong dau'
+    text: input string to be converted
+    Return: string converted
+    """
+    output = text
+    for regex, replace in patterns.items():
+        output = re.sub(regex, replace, output)
+        # deal with upper case
+        output = re.sub(regex.upper(), replace.upper(), output)
+    return output
+
+#
 
 def register(request):
     form=RegistrationForm()
@@ -88,9 +118,20 @@ def readbook(request, slug, slug2):
 
 def search(request):
     dulieu=request.POST['search']
+    #Book
     recommended_book = Sach.objects.filter(Q(book_tensach__icontains=dulieu)|Q(book_tacgia__icontains=dulieu))
+    all_book=Sach.objects.all()
+    list_book=[]
+    for item in all_book:
+        bookname=convert(item.book_tensach) 
+        bookname.lower()
+        search_key=convert(dulieu)
+        if search_key in bookname:
+            list_book.append(item)
+        
+    #Musci
     recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
-    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
+    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu, "book_extend":list_book}    
     return render(request, 'search-page.html', context)
 
 

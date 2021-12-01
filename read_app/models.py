@@ -23,7 +23,7 @@ class Sach(models.Model):
     book_tensach= models.CharField(max_length=255)
     book_theloai_id =models.ForeignKey(TheLoai, on_delete=models.CASCADE, null=False)
     book_quocgia=models.CharField(max_length=100)
-    book_tacgia=models.ForeignKey(TacGia, on_delete=models.CASCADE)
+    book_tacgia=models.CharField(max_length=255, null=True)
     book_noidung=models.FileField(upload_to='pdf')
     book_anhbia=models.ImageField(upload_to='cover_book')
     book_tomtat=models.TextField()
