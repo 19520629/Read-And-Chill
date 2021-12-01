@@ -22,7 +22,7 @@
                 <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
             </div>
             <div class="slide">
-                <img src="{% static '/assets/img/slide2.png' %}" alt="">
+                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
             </div>
             <div class="slide">
                 <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
@@ -62,7 +62,7 @@
                 <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
             </div>
             <div class="slide">
-                <img src="{% static '/assets/img/slide2.png' %}" alt="">
+                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
             </div>
             <div class="slide">
                 <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
@@ -91,7 +91,7 @@
 
     {% endif %}
 
-    <div class="container">
+    <div class="container" style="background-image: url(https://images.assetsdelivery.com/compings_v2/pashabo/pashabo1610/pashabo161000196.jpg);">
         <h3 class="web-content_heading">Sách bạn nên đọc</h3>
         <div class="grid wide">
             <div class="row sm-gutter" style="margin-left: 60px; margin-right: -33px;">
@@ -170,10 +170,10 @@
                 <div class="col l-2-4 m-6 c-12">
                     <a href="{% url 'music' %}" class="book-item">
                         <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
-                        <div class="book-item_name">Nhạc đàn piano thư giãn</div>
+                        <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                         <div class="book-item_author">
-                            <span class="book-item_author-tittle">Thể loại</span>
-                            <span class="book-item_author_name">Nhạc không lời</span>
+                            <span class="book-item_author-tittle">Trình bày</span>
+                            <span class="book-item_author_name">{{ item.song_casi_id }}</span>
                         </div>
                         <div class="book-item_action">
                             <span class="book-item_action_like">
