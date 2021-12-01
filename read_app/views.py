@@ -5,7 +5,7 @@ from .models import Sach, Nhac, Account, Comment, Favorite
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+
 # Create your views here.
 
 def register(request):
@@ -88,7 +88,7 @@ def readbook(request, slug, slug2):
 
 def search(request):
     dulieu=request.POST['search']
-    recommended_book=Sach.objects.filter(Q(book_tacgia__icontains=dulieu) | Q(book_tensach__icontains=dulieu))
+    recommended_book = Sach.objects.filter(book_tensach__icontains=dulieu)
     recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
     context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
