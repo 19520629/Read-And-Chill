@@ -25,12 +25,14 @@
     }
 
     .player {
-        transform: translateX(-248px);
+        transform: translateX(-310px);
         transition: all linear 0.3s;
+        opacity: 0;
     }
 
-    .player:focus {
+    .nav__input:checked ~ .player {
         transform: translateX(0);
+        opacity: 1;
     }
 
 }
@@ -205,10 +207,17 @@
     .read-book-header button {
         padding: 7px 7px !important;
         height: 38px !important;
-        margin: 20px 5px !important;
+        margin: 7px 2px !important;
         font-size: 12px !important;
     }
 
+    .read-book-header {
+        flex-direction: unset !important;
+        height: auto !important;
+        display: block !important;
+        position: unset !important;
+        text-align: center !important;
+    }
     .grid.wide .row.sm-gutter {
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -723,15 +732,7 @@
 
     }
 
-    .player {
-        transform: translateX(-248px);
-        transition: all linear 0.3s;
-        bottom: 0 !important;
-    }
 
-    .player:focus {
-        transform: translateX(0);
-    }
 }
 }
 

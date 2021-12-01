@@ -32,14 +32,24 @@
                         <span class="category_book-type">Xuất xứ</span>
                         <ul class="category_book-type-list">
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Tất cả</a>
+                                <a href="{% url 'music' %}" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
+
+                        <form action="{% url 'search3' %}" method="post">
+                        {% csrf_token %}
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Nhạc Việt Nam</a>
+                                <a href="" class="category_book-type-list-item-link"><button >Nhạc Việt Nam</button></a>
                             </li>
+                         </form>
+
+                        <form action="{% url 'search4' %}" method="post">
+                        {% csrf_token %}
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Nhạc nước ngoài</a>
+                                <a href="" class="category_book-type-list-item-link"><button>Nhạc nước ngoài</button></a>
                             </li>
+                         </form>
+
+
                         </ul>
 
                         <span class="category_book-type">Thể loại</span>
@@ -60,7 +70,7 @@
                 </div>
 
                 <div class="col l-9">
-                    <div class="row sm-gutterr">
+                    <div class="row sm-gutter music-row">
                         {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
                         <div class="col l-3">
                             <div class="book-item song" data-index={{ item.id }}>
@@ -114,7 +124,7 @@
             <div class="name-music">
                 <h3>Bài hát đang phát: </h3>
                 <h2>Xích Linh</h2>
-                <label for="nav-mobile-input" class="option nav-mobile-input">
+                <label for="music-mobile-input" class="option music-mobile-input">
                     <i class="fas fa-ellipsis-h"></i>
                 </label>
             </div>
@@ -152,31 +162,28 @@
         </div>
 
 
-        <input type="checkbox" hidden name="" class="nav__input" id="nav-mobile-input">
+        <input type="checkbox" hidden name="" class="music-nav__input" id="music-mobile-input">
 
-        <label for="nav-mobile-input" class="nav__overlay"></label>
-        <nav class="nav__mobile">
-        <label for="nav-mobile-input" class="nav__mobile-close">
+        <label for="music-mobile-input" class="music-nav__overlay"></label>
+        <nav class="music-nav__mobile">
+        <label for="music-mobile-input" class="music-nav__mobile-close">
             <i class="fas fa-times"></i>
         </label>
-        <ul class="nav__mobile-list">
-            <li class="nav__mobile-item mute-Btn">
+        <ul class="music-nav__mobile-list">
+            <li class="music-nav__mobile-item mute-Btn">
                 <span class="mute-Btn-off"> Tắt âm thanh </span>
                 <span class="mute-Btn-on"> Mở âm thanh </span>
                 <i class="fas fa-volume-mute volume-mute-icon"></i>
                 <i class="fas fa-volume-up volume-open-icon"></i>
             </li>
-            <li class="nav__mobile-item">
+            <li class="music-nav__mobile-item">
                 Chỉnh âm lượng
                 <input id="volume" class="volume" type="range" name="" value="100" step="1" min="0" max="100">
             </li>
-            <li class="nav__mobile-item info-song">
-                Thông tin
-                <i class="fas fa-address-card info-icon"></i>
-            </li>
+
 
         </ul>
-        <div class="nav__mobile-img"></div>
+        <div class="music-nav__mobile-img"></div>
         </nav>
         <script>
 
@@ -196,7 +203,7 @@
             const playList = $('.play-list')
             const PLAYER_STORAGE_KEY = 'LEVIN_PLAYER'
 
-            const muteBtn = $('.nav__mobile-item.mute-Btn')
+            const muteBtn = $('.music-nav__mobile-item.mute-Btn')
             const volumeBtn = $('#volume')
             const firstPage = $('.first-background')
             const infoBtn = $('.info-song')

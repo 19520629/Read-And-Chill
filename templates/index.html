@@ -168,7 +168,7 @@
             <div class="row sm-gutter music-row">
                 {% block content_nhac %} {% for item in nhac %} {% if titles %}
                 <div class="col l-2-4 m-6 c-12">
-                    <a href="#" class="book-item">
+                    <a href="{% url 'music' %}" class="book-item">
                         <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                         <div class="book-item_name">Nhạc đàn piano thư giãn</div>
                         <div class="book-item_author">

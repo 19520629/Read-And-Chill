@@ -1702,7 +1702,7 @@
   left: 21px;
   height: 304px;
   width: 270px;
-  z-index: 1
+  z-index: 200;
 }
 
 .player.playing .icon-pause {
@@ -2841,4 +2841,13 @@ textarea#id_body {
 
 .music-nav__input:checked ~ .music-nav__overlay {
     display: block;
+}
+
+.category_book-type-list-item-link button {
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+}
 }
