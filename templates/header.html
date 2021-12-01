@@ -59,13 +59,13 @@
                                 </a>
                         <div class="header_book">
                             <ul class="header_book-list">
-                                <form action="{% url 'search1' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                <form action="{% url 'search1' %}" method="post">
                                     {% csrf_token %}
                                     <li class="header_book-list-item">
                                         <a href="" class="header_book-list-item-link"><button name="search1">Sách Việt Nam</button></a>
                                     </li>
                                 </form>
-                                <form action="{% url 'search2' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                <form action="{% url 'search2' %}" method="post">
                                     {% csrf_token %}
                                     <li class="header_book-list-item">
                                         <a href="" class="header_book-list-item-link"><button name="search2">Sách nước ngoài</button></a>
@@ -82,13 +82,13 @@
 
                         <div class="header_music">
                             <ul class="header_music-list">
-                                 <form action="{% url 'search3' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                 <form action="{% url 'search3' %}" method="post">
                                      {% csrf_token %}
                                 <li class="header_music-list-item">
                                     <a href="" class="header_music-list-item-link"><button>Nhạc Việt Nam</button></a>
                                 </li>
                                 </form>
-                                <form action="{% url 'search4' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
+                                <form action="{% url 'search4' %}" method="post">
                                     {% csrf_token %}
                                 <li class="header_music-list-item">
                                         <a href="" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
