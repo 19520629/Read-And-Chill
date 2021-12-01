@@ -1408,11 +1408,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #dbecf8;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .form-login {
-    background: #fff;
+    background: #ffffff9e;
     width: 500px;
     min-height: 200px;
     position: relative;
@@ -1435,7 +1437,7 @@
 .form-login label {
     font-size: 1.6rem;
     margin-right: 10px;
-    font-weight: 500;
+    font-weight: 800;
     line-height: 2.6rem;
 }
 

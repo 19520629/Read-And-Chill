@@ -84,7 +84,7 @@
                         <h4 style="padding-left:10px">{{ comment.date_added }}</h4>
                         <p>{{ comment.body }}</p>
                         {% if user.id == comment.user.id %}
-                        <form method="post">
+                        <form method="post" style="display: flex;justify-content: end;font-size: 1.4rem;">
                             {% csrf_token %} {% if request.user.is_authenticated %}
                             <input type="hidden" name="comment_id" value="{{comment.id}}">
                             <button name="delete" id="delete">Xóa</button>
