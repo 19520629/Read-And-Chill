@@ -116,18 +116,18 @@ def search(request):
     dulieu=request.POST['search']
     recommended_book1=[]
     recommended_music1=[]
-    dulieu=(convert(dulieu)).lower()
+    dulieu=(convert(dulieu)).lower().replace(" ", "")
     #book
     recommended_book = Sach.objects.all()
     for item in recommended_book:
-        tensach=convert(item.book_tensach).lower()
+        tensach=convert(item.book_tensach).lower().replace(" ", "")
         if dulieu in tensach:
             recommended_book1.append(item)
             
     #music
     recommended_music = Nhac.objects.all()    
     for item in recommended_music:
-        tennhac=convert(item.song_tenbaihat).lower()
+        tennhac=convert(item.song_tenbaihat).lower().replace(" ", "")
         if dulieu in tennhac:
             recommended_music1.append(item)
     context = {"titles": recommended_book1, "nhac": recommended_music1, "slug":dulieu}
