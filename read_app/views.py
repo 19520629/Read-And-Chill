@@ -5,9 +5,35 @@ from .models import Sach, Nhac, Account, Comment, Favorite
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+import re
+import sys
+
 
 # Create your views here.
+#function
+patterns = {
+    '[àáảãạăắằẵặẳâầấậẫẩ]': 'a',
+    '[đ]': 'd',
+    '[èéẻẽẹêềếểễệ]': 'e',
+    '[ìíỉĩị]': 'i',
+    '[òóỏõọôồốổỗộơờớởỡợ]': 'o',
+    '[ùúủũụưừứửữự]': 'u',
+    '[ỳýỷỹỵ]': 'y'
+}
 
+def convert(text):
+    """
+    Convert from 'Tieng Viet co dau' thanh 'Tieng Viet khong dau'
+    text: input string to be converted
+    Return: string converted
+    """
+    output = text
+    for regex, replace in patterns.items():
+        output = re.sub(regex, replace, output)
+        # deal with upper case
+        output = re.sub(regex.upper(), replace.upper(), output)
+    return output
+#
 def register(request):
     form=RegistrationForm()
     if request.method=='POST':
@@ -88,9 +114,23 @@ def readbook(request, slug, slug2):
 
 def search(request):
     dulieu=request.POST['search']
-    recommended_book = Sach.objects.filter(book_tensach__icontains=dulieu)
-    recommended_music = Nhac.objects.filter(song_tenbaihat=dulieu)
-    context = {"titles": recommended_book, "nhac": recommended_music, "slug":dulieu}
+    recommended_book1=[]
+    recommended_music1=[]
+    dulieu=(convert(dulieu)).lower()
+    #book
+    recommended_book = Sach.objects.all()
+    for item in recommended_book:
+        tensach=convert(item.book_tensach).lower()
+        if dulieu in tensach:
+            recommended_book1.append(item)
+            
+    #music
+    recommended_music = Nhac.objects.all()    
+    for item in recommended_music:
+        tennhac=convert(item.song_tenbaihat).lower()
+        if dulieu in tennhac:
+            recommended_music1.append(item)
+    context = {"titles": recommended_book1, "nhac": recommended_music1, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
