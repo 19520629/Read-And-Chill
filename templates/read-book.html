@@ -21,7 +21,7 @@
     {% endif %}
     {% if titles %}
     {% for item in titles %}{% if item.slug == slug %}
-    <div class="container">
+    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)"">
         <div class="read-book-container col">
             <div class="read-book-header">
                 <button class="prev-page">
@@ -29,7 +29,7 @@
                     </button>
                 <button class="select-page">
                         <span class="page-info">
-                            Trang <span class="page-num"></span> of <span class="page-count"></span>
+                            Trang <span class="page-num"></span> / <span class="page-count"></span>
                         </span>
                     </button>
                 <button class="next-page">
@@ -298,16 +298,6 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
                     const cdWidth = cd.offsetWidth
                     const cdHeight = cd.offsetHeight
 
-                    // Xử lý phóng to, thu nhỏ CD khi kéo thanh cuộn
-                    document.onscroll = function() {
-                        const scrollTop = window.scrollY || document.documentElement.scrollTop
-                        const newCdWidth = cdWidth - scrollTop
-                        const newCdHeight = cdHeight - scrollTop
-
-                        cd.style.width = newCdWidth > 5 ? newCdWidth + 'px' : 0
-                        cd.style.height = newCdHeight > 5 ? newCdHeight + 'px' : 0
-                        cd.style.opacity = newCdHeight / cdHeight
-                    }
 
                     // Xử lý khi click Play
                     playBtn.onclick = function() {

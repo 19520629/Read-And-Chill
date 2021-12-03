@@ -17,7 +17,7 @@
     <h3 class="space-navbar-content" style="padding: 0;"></h3>
 
     {% endif %} {% block preview %} {% for item in titles %} {% if item.slug == slug %}
-    <div class="container">
+    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
         <div class="intro-book-container col">
             <div class="introduce-book row">
                 <div class="intro-book-img">
@@ -58,7 +58,7 @@
                 <div class="comment-header">Nhận Xét Sách ({{comments.count}}):</div>
 
 
-                <form method="post">
+                <form method="post" class="cmt-post">
                     {% csrf_token %} {{ comment_form.as_p }} {% if request.user.is_authenticated %}
                     <input type="submit" name="comment" value="Nhận xét" class="btn-comment"> </input>
                     {% else %}
@@ -70,36 +70,35 @@
 
 
 
-                <div class="comment-body col">
+                <div class="col">
 
-                    {% if not comments %}
+                        {% if not comments %}
 
-                    <div class="comment-user">
-                        <h1>Chưa có bình luận nào!</h1>
-                        <a href="#">Thêm bình luận.</a>
-                    </div>
-                    {% else %} {% for comment in comments %}
-                    <div class="comment-user">
-                        <h1>{{ comment.user }}</h1>
-                        <h4 style="padding-left:10px">{{ comment.date_added }}</h4>
-                        <p>{{ comment.body }}</p>
-                        {% if user.id == comment.user.id %}
-                        <form method="post" style="display: flex;justify-content: end;font-size: 1.4rem;">
-                            {% csrf_token %} {% if request.user.is_authenticated %}
-                            <input type="hidden" name="comment_id" value="{{comment.id}}">
-                            <button name="delete" id="delete">Xóa</button>
-                            {% else %} {% endif %}
-                        </form>
-                        {% endif %}
-                    </div>
+                        <div class="comment-user">
+                            <h1>Chưa có bình luận nào!</h1>
+                            <a href="#">Thêm bình luận.</a>
+                        </div>
+                        {% else %} {% for comment in comments %}
+                        <div class="comment-body">
+                            <div class="comment-user">
+                                <div class="comment-user_img-name">
+                                    {{ comment.user }}
+                                </div>
 
-                    {% endfor %} {% endif %}
+                                <h4 style="padding-left:10px;padding-bottom: 10px;">{{ comment.date_added }}</h4>
+                                <p>{{ comment.body }}</p>
 
-
-
-
-
-
+                            </div>
+                            {% if user.id == comment.user.id %}
+                                <form method="post" style="font-size: 1.6rem;margin-left: 10px;">
+                                    {% csrf_token %} {% if request.user.is_authenticated %}
+                                    <input type="hidden" name="comment_id" value="{{comment.id}}">
+                                    <button name="delete" id="delete">Xóa</button>
+                                    {% else %} {% endif %}
+                                </form>
+                                {% endif %}
+                        </div>
+                        {% endfor %} {% endif %}
 
 
 

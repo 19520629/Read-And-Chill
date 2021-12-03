@@ -35,6 +35,14 @@
         opacity: 1;
     }
 
+    textarea#id_body {
+        width: 100% !important;
+    }
+
+    .cmt-post {
+        display: block !important;
+    }
+
 }
 
 @media (max-width: 739px) {
@@ -233,6 +241,11 @@
     .music-row{
         display: flex;
         justify-content: center;
+    }
+
+
+    .comment-body form {
+        margin-left: 0 !important;
     }
 }
 

@@ -23,7 +23,7 @@
 
     {% endif %}
 
-    <div class="container">
+    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
 
         <div class="grid wide">
             <div class="row sm-gutter">
@@ -77,7 +77,7 @@
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                                 <div class="book-item_author">
-                                    <span class="book-item_author-tittle">Ca sĩ</span>
+                                    <span class="book-item_author-tittle">Trình bày</span>
                                     <span class="book-item_author_name">{{ item.song_casi_id}}</span>
                                 </div>
                                 <div class="book-item_action">
@@ -264,16 +264,7 @@
                     const cdWidth = cd.offsetWidth
                     const cdHeight = cd.offsetHeight
 
-                    // Xử lý phóng to, thu nhỏ CD khi kéo thanh cuộn
-                    document.onscroll = function() {
-                        const scrollTop = window.scrollY || document.documentElement.scrollTop
-                        const newCdWidth = cdWidth - scrollTop
-                        const newCdHeight = cdHeight - scrollTop
 
-                        cd.style.width = newCdWidth > 5 ? newCdWidth + 'px' : 0
-                        cd.style.height = newCdHeight > 5 ? newCdHeight + 'px' : 0
-                        cd.style.opacity = newCdHeight / cdHeight
-                    }
 
                     // Xử lý khi click Play
                     playBtn.onclick = function() {

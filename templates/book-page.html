@@ -19,7 +19,7 @@
     <h3 class="space-navbar-content" style="padding: 0;"></h3>
 
     {% endif %}
-    <div class="container">
+    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
 
         <div class="grid wide">
             <div class="row sm-gutter">
@@ -30,16 +30,27 @@
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
+                            {% for item in titles|dictsort:'book_quocgia' %} {% ifchanged %}
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Sách Việt Nam</a>
+                                <a href="" class="category_book-type-list-item-link">{{ item.book_quocgia }}</a>
                             </li>
-                            <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Sách nước ngoài</a>
-                            </li>
+
+                            {% endifchanged %} {% endfor %}
+
+
                         </ul>
 
                         <span class="category_book-type">Tác giả</span>
                         <ul class="category_book-type-list">
+                            <li class="category_book-type-list-item">
+                                <a href="" class="category_book-type-list-item-link">Tất cả</a>
+                            </li>
+                            {% for item in tacgia %} {% if tacgia %}
+                            <li class="category_book-type-list-item">
+                                <a href="" class="category_book-type-list-item-link">{{ item }}</a>
+                            </li>
+
+                            {% endif %} {% endfor %}
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Nguyễn Nhật Ánh</a>
                             </li>
@@ -54,13 +65,22 @@
                         <span class="category_book-type">Thể loại</span>
                         <ul class="category_book-type-list">
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Thiếu nhi</a>
+                                <a href="" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
+                            {% for item in titles|dictsort:'book_theloai_id' %} {% ifchanged %}
+                            <li class="category_book-type-list-item">
+                                <a href="" class="category_book-type-list-item-link">{{ item.book_theloai_id }}</a>
+                            </li>
+
+                            {% endifchanged %} {% endfor %}
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Phiêu lưu</a>
                             </li>
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Phép thuật</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="" class="category_book-type-list-item-link">Thiếu nhi</a>
                             </li>
                         </ul>
 
