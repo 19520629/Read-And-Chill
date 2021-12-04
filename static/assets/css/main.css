@@ -1008,7 +1008,7 @@
 }
 
 .modal_user-header{
-    background-color: var(--primary-color);
+    background-color: #4f4f4f;
     height: 50px;
     display: flex;
     align-items: center;
@@ -1049,7 +1049,7 @@
 .modal_user-body-selection{
     width: 30%;
     height: 500px;
-    background-color: #00587A;
+    background-color: var(--gray-color);
     
 }
 
@@ -1078,7 +1078,7 @@
     margin-top: 10px;
     border-radius: 5px;
     font-size: 20px;
-    background-color: var(--primary-color);
+    background-color: #4f4f4f;
     color: white;
     font-weight: 500;
     border-style: none;
@@ -1104,7 +1104,7 @@
     margin-top: 20px;
     border-radius: 5px;
     border-style: none;
-    background-color: var(--primary-color);
+    background-color: #4f4f4f;
     color: white;
     font-weight: 500;
     font-size: 20px;
@@ -1187,7 +1187,7 @@
     border-radius: 5px;
     font-weight: 500;
     border: none;
-    background: var(--primary-color);
+    background: #4f4f4f;
     color: white;
     cursor: pointer;
 }
