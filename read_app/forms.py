@@ -2,7 +2,7 @@ from django import forms
 import re
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Comment
+from .models import Comment, Account
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Tài khoản', max_length=30)
@@ -36,6 +36,14 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
 
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
 
+class AccountUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['hoten', 'gioitinh','user_avt','tuoi']
 
 

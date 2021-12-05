@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block cssblock %}
+{% extends 'base.html' %} {% load static %} {% load social_share %} {% block cssblock %}
 <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
 <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
 <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
@@ -34,7 +34,12 @@
                     <a href="{% url 'readbook' item.slug item.slug %}"><button><i class="fas fa-book-open"></i> Đọc Ngay</button></a>
                     <a href=""><button><i class="fas fa-heart"></i> Yêu Thích</button></a>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
-                    <a href=""><button onclick="Hello()" ><i class="fas fa-share"></i> Chia Sẻ</button></a>
+                    <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button>
+                        <ul class="share-list">
+                           <li class="share-item"><i class="fab fa-facebook"></i>{% post_to_facebook object_or_url "Chia sẻ với Facebook!" %}</li>
+                            <li class="share-item"><i class="fab fa-twitter"></i>{% post_to_twitter "Sách hay: {{item.book_tensach}}. Mau đến đọc!" object_or_url "Chia sẻ với Twitter" %}</li>
+                        </ul>
+                    </a>
 
                     <script>
                         function Hello() {

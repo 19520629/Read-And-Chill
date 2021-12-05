@@ -1178,7 +1178,7 @@
     height: 10%;
 }
 
-.modal_info-button>button{
+.modal_info-button>input{
     height: 40px;
     width: 150px;
     margin-left: 10px;
@@ -1192,7 +1192,7 @@
     cursor: pointer;
 }
 
-.modal_info-button>button:hover{
+.modal_info-button>input:hover{
     background-color: #f05454;
 }
 
@@ -2884,4 +2884,18 @@ textarea#id_body {
     background-color: transparent;
     border: none;
 }
+}
+
+share-list {
+    list-style: none;
+    background-color: #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+share-item {
+    display: flex;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
 }

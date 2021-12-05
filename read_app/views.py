@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from .forms import RegistrationForm, CommentForm
+from .forms import RegistrationForm, CommentForm, UserUpdateForm, AccountUpdateForm
 from django.http import HttpResponseRedirect
 from .models import Sach, Nhac, Account, Comment, Favorite
 from django.contrib.auth import logout
@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 import re
 import sys
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -100,7 +101,7 @@ def delete_comment(request):
 @login_required(login_url='/login/')
 def readbook(request, slug, slug2):
     book = get_object_or_404(Sach, slug=slug2)
-    book.book_luotxem += 0.5
+    book.book_luotxem += 1
     book.save()
     recommended_music = Nhac.objects.all()
     recommended_book = Sach.objects.all()
@@ -164,3 +165,49 @@ def search_music2(request):
     recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
     context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
+
+# @login_required(login_url='/login/')
+# def profile(request):
+#     if request.method == 'POST':
+#         u_form = UserUpdateForm(request.POST, instance=request.user)
+#         p_form = AccountUpdateForm(request.POST, request.FILES,instance=request.user.profile)
+#         if u_form.is_valid() and p_form.is_valid():
+#             u_form.save()
+#             p_form.save()
+#     else:
+#         u_form = UserUpdateForm(instance=request.user)
+#         p_form = AccountUpdateForm(instance=request.user.profile)
+#         messages.success(request, f'Cập nhật thông tin thành công!')
+#         return redirect('profile')
+#
+#     context = {
+#         'u_form': u_form,
+#         'p_form': p_form
+#
+#     }
+#     return render(request, 'modal-user.html', context)
+
+
+# objects.get(id=request.user.id)
+
+
+@login_required(login_url='/login/')
+def edit_profile(request):
+    if request.method == 'POST':
+        # profile = Account.objects.get(user_ID=request.user.account.id)
+        user = User.objects.get(user_ID=request.user.account.id)
+        # profile.hoten = request.POST['hoten']
+        # profile.tuoi = request.POST['tuoi']
+        user.account.hoten = request.POST['hoten']
+        user.save()
+        user.account.hoten.save()
+        user.account.save()
+
+
+    return redirect('modal-user.html',{'profile':profile})
+
+
+
+
+
+
