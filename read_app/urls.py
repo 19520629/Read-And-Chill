@@ -26,5 +26,13 @@ urlpatterns = [
     path('filter-book-tg1/', views.filter_book_tacgia1, name='filter-book-tg1'),
     path('filter-book-tg2/', views.filter_book_tacgia2, name='filter-book-tg2'),
     path('filter-book-tg3/', views.filter_book_tacgia3, name='filter-book-tg3'),
+    path('filter-book-tl1/', views.filter_book_theloai1, name='filter-book-tl1'),
+    path('filter-book-tl2/', views.filter_book_theloai2, name='filter-book-tl2'),
+    path('filter-book-tl3/', views.filter_book_theloai3, name='filter-book-tl3'),
+    path('filter-music-qt1/', views.filter_music_quoctich1, name='filter-music-qt1'),
+    path('filter-music-qt2/', views.filter_music_quoctich2, name='filter-music-qt2'),
+    path('filter-music-tb1/', views.filter_music_trinhbay1, name='filter-music-tb1'),
+    path('filter-music-tb2/', views.filter_music_trinhbay2, name='filter-music-tb2'),
+    path('filter-music-tb3/', views.filter_music_trinhbay3, name='filter-music-tb3'),
 
 ]

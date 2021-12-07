@@ -63,20 +63,15 @@
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
-                            {% for item in titles|dictsort:'book_theloai_id' %} {% ifchanged %}
-                            <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">{{ item.book_theloai_id }}</a>
-                            </li>
 
-                            {% endifchanged %} {% endfor %}
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Phiêu lưu</a>
+                                <a href="{% url 'filter-book-tl1' %}" class="category_book-type-list-item-link">Phiêu lưu</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Phép thuật</a>
+                                <a href="{% url 'filter-book-tl2' %}" class="category_book-type-list-item-link">Phép thuật</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Thiếu nhi</a>
+                                <a href="{% url 'filter-book-tl3' %}" class="category_book-type-list-item-link">Thiếu nhi</a>
                             </li>
                         </ul>
 
