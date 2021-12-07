@@ -157,7 +157,7 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
         <div class="player" style="background-image: url({% static '/assets/img/icon-5974828_1280.png' %});">
             <div class="name-music">
                 <h3>Bài hát đang phát: </h3>
-                <h2>Xích Linh</h2>
+                <h2>Cùng nghe nhạc nào!</h2>
                 <label for="music-mobile-input" class="option music-mobile-input">
                     <i class="fas fa-ellipsis-h"></i>
                 </label>
@@ -214,10 +214,23 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
                 Chỉnh âm lượng
                 <input id="volume" class="volume" type="range" name="" value="100" step="1" min="0" max="100">
             </li>
+            <div class="music-list">
 
+                {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
+                <div class="song" data-index={{ item.id }}>
+                    <div class="thumb" style="background-image: url({{ item.song_anhbia.url }});"></div>
+                    <div class="body">
+                        <h3 class="title">{{ item.song_tenbaihat }}</h3>
+                        <p class="author">{{ item.song_casi_id}}</p>
+                    </div>
 
+                </div>
+
+                {% endif %} {% endfor %} {% endblock %}
+
+            </div>
         </ul>
-        <div class="music-nav__mobile-img"></div>
+
         </nav>
         <script>
 
@@ -241,7 +254,7 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
             const volumeBtn = $('#volume')
             const firstPage = $('.first-background')
             const infoBtn = $('.info-song')
-            const musicBtn = $$('.book-item')
+            const musicBtn = $$('.song')
 
 
 

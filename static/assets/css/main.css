@@ -1853,6 +1853,66 @@
   right: 12px;
 }
 
+.song {
+  margin: 10px 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  height: 65px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 25%);
+}
+
+.thumb {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  display: block;
+  margin: 13px 25px;
+
+}
+
+.song .body {
+      position: absolute;
+      padding: 14px 80px;
+}
+
+.title {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  padding-bottom: 2px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.author {
+  font-size: 1.4rem;
+  font-weight: 700;
+  opacity: 0.5;
+  line-height: 1.5rem;
+  padding-top: 2px;
+}
+
+.song.active {
+  background-image: linear-gradient(to bottom right, #ebc9d0, #f15171, #f196a9);
+}
+
+.song.active .title {
+  color: #fff;
+}
+
+.song.active .option,
+.song.active .author {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.song:active {
+  opacity: 0.7;
+}
 
 
 
@@ -2028,23 +2088,23 @@
   display: inline-block;
 }
 
-.nav__mobile-item.mute-Btn.muted {
+.music-nav__mobile-item.mute-Btn.muted {
   color: #f15171;
 }
 
-.nav__mobile-item.mute-Btn.muted  .volume-mute-icon {
+.music-nav__mobile-item.mute-Btn.muted  .volume-mute-icon {
   display: inline-block;
 }
 
-.nav__mobile-item.mute-Btn.muted  .volume-open-icon {
+.music-nav__mobile-item.mute-Btn.muted  .volume-open-icon {
   display: none;
 }
 
-.nav__mobile-item.mute-Btn.muted  .mute-Btn-off {
+.music-nav__mobile-item.mute-Btn.muted  .mute-Btn-off {
   display: none;
 }
 
-.nav__mobile-item.mute-Btn.muted  .mute-Btn-on {
+.music-nav__mobile-item.mute-Btn.muted  .mute-Btn-on {
   display: inline-block;
 }
 
@@ -2884,18 +2944,9 @@ textarea#id_body {
     background-color: transparent;
     border: none;
 }
-}
 
-share-list {
-    list-style: none;
-    background-color: #ccc;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-share-item {
-    display: flex;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 600;
+.music-list {
+    height: 180px;
+    overflow-y: scroll;
+    position: relative;
 }
