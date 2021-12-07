@@ -53,9 +53,7 @@ class Nhac(models.Model):
 
 
 class Favorite(models.Model):
-    favlist_id=models.ForeignKey(User, on_delete=models.CASCADE)
-    item_id=models.ForeignKey(Sach, on_delete=models.CASCADE)
-    is_Sach=models.BooleanField(null=False)
+    user_book=models.CharField(max_length=50, default='')
 
 
 # class User(models.Model):
