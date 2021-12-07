@@ -46,7 +46,6 @@ def register(request):
     return render(request, 'dangki.html', {'form':form})
 
 def updateuser(request, id):
-    """ id = request.user.Account.id """
     user = User.objects.get( id = id)
     form=UserUpdateForm()
     if request.method=='POST':
