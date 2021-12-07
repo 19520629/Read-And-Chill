@@ -290,11 +290,10 @@
 
             <div class="modal_user-body-book js-modal_user-body-book">
                 <div class="modal_fav-book">
-                    <img src="https://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg" alt="" class="modal_fav-book-img">
-                    <img src="https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894" alt="" class="modal_fav-book-img">
-                    <img src="https://nhungcuonsachhay.com/wp-content/uploads/2021/05/Thang-quy-nho-Nguyen-Nhat-Anh.jpg" alt="" class="modal_fav-book-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif" alt="" class="modal_fav-book-img">
-                    <img src="https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif" alt="" class="modal_fav-book-img">
+                    {% for item in fav %}
+                    <img src="{{ item.book_anhbia.url }}" alt="" width="10%" height="10%" > 
+                    <a href="{% url 'introbook' item.slug %}">{{ item.book_tensach }}</a>
+                    {% endfor%}
                 </div>
                 <div class="modal_fav-book-button">
                     <button>Thêm sách</button>
@@ -515,11 +514,10 @@
 
             <div class="modal_user-body-book js-modal_user-body-book">
                 <div class="modal_fav-book">
-                    <img src="https://isach.info/images/story/cover/di_qua_hoa_cuc__nguyen_nhat_anh.jpg" alt="" class="modal_fav-book-img">
-                    <img src="https://cf.shopee.vn/file/b7f6522b239f46875eb0386737200894" alt="" class="modal_fav-book-img">
-                    <img src="https://nhungcuonsachhay.com/wp-content/uploads/2021/05/Thang-quy-nho-Nguyen-Nhat-Anh.jpg" alt="" class="modal_fav-book-img">
-                    <img src="https://upload.wikimedia.org/wikipedia/vi/9/92/Mat_Biec.gif" alt="" class="modal_fav-book-img">
-                    <img src="https://cungdocsach.vn/wp-content/uploads/2019/10/Harry-potter-v%C3%A0-h%C3%B2n-%C4%91%C3%A1-ph%C3%B9-th%E1%BB%A7y.gif" alt="" class="modal_fav-book-img">
+                    {% for item in fav%}
+                    <img src="{{ item.book_anhbia.url }}" alt="" width="10%" height="10%" > 
+                    <a href="{% url 'introbook' item.slug %}">{{ item.book_tensach }}</a>
+                    {% endfor%}
                 </div>
                 <div class="modal_fav-book-button">
                     <button>Thêm sách</button>
