@@ -182,6 +182,50 @@ def search_music2(request):
     context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
+@login_required(login_url='/login/')
+def search_book1(request):
+    dulieu='VN'
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'search-page.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_quoctich1(request):
+    dulieu='VN'
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_quoctich2(request):
+    dulieu='nuocngoai'
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+
+# Chỗ này bị hư nè !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+@login_required(login_url='/login/')
+def filter_book_tacgia1(request):
+    dulieu='Nguyễn Nhật Ánh'
+    recommended_book = Sach.objects.filter(book_tacgia=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_tacgia2(request):
+    dulieu='J.K. Rowling'
+    recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_tacgia3(request):
+    dulieu='Paulo Coelho'
+    recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
 # @login_required(login_url='/login/')
 # def profile(request):
 #     if request.method == 'POST':

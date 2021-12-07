@@ -20,4 +20,10 @@ urlpatterns = [
     path('search2/', views.search_book2, name='search2'),
     path('search3/', views.search_music1, name='search3'),
     path('search4/', views.search_music2, name='search4'),
+    path('filter-book-qt1/', views.filter_book_quoctich1, name='filter-book-qt1'),
+    path('filter-book-qt2/', views.filter_book_quoctich2, name='filter-book-qt2'),
+    path('filter-book-tg1/', views.filter_book_tacgia1, name='filter-book-tg1'),
+    path('filter-book-tg2/', views.filter_book_tacgia2, name='filter-book-tg2'),
+    path('filter-book-tg3/', views.filter_book_tacgia3, name='filter-book-tg3'),
+
 ]
