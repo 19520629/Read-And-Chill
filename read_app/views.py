@@ -66,7 +66,12 @@ def updateuser(request):
 love_book=Favorite.objects.filter(user_id=User.id)
 def home(request):
     recommended_book = Sach.objects.all()
-    recommended_music = Nhac.objects.all()          
+    recommended_music = Nhac.objects.all()
+    fav=[]
+    fav_list=Favorite.objects.filter(user_id=User.id)
+    for item in fav_list:
+        fav.append(Sach.objects.get(id=item.book_id))
+    
     context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5], "fav":love_book}
     return render(request, 'index.html', context)
 
