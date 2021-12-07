@@ -44,6 +44,25 @@ def register(request):
             return HttpResponseRedirect('/')
     return render(request, 'dangki.html', {'form':form})
 
+def updateuser(request):
+    user = request.user
+    account = Account.objects.get(user=user)
+    form=AccountUpdateForm()
+    if user.is_anonymous:
+        #permissiondenied
+        return redirect('/')
+    else:
+        if request.method=='POST':
+            form=AccountUpdateForm(request.POST or None,request.FILES, instance=account)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                print(request.POST)
+                instance.save()
+                print(instance.user_avt)
+                return redirect('book')
+    return render(request, 'updateuser.html', {'form':form, 'user': user})
+
+
 love_book=Favorite.objects.filter(user_id=User.id)
 def home(request):
     recommended_book = Sach.objects.all()

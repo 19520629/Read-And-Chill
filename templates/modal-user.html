@@ -16,8 +16,7 @@
             <div class="modal_user-body-selection column">
                 <div class="modal_user-avt">
                     <img src="{{ user.account.user_avt.url }}" alt="" class="modal_user-img">
-                    <p class="modal_user-name">User name</p>
-                    <button class="modal_user-avt-btn ">Đổi ảnh</button>
+                    <p class="modal_user-name">{{ user.username }}</p>
                 </div>
                 <ul class="modal_user-li">
                     <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
@@ -50,7 +49,7 @@
 
                         <li>
                             <p>Độ tuổi</p>
-                            <input type="number" class="info-input" name="tuoi" value="{{ user.account.id }}">
+                            <input type="number" class="info-input" name="tuoi" value="{{ user.account.tuoi }}">
                         </li>
 
                         <li>
@@ -59,7 +58,7 @@
                         </li>
                     </ul>
                     <div class="modal_info-button">
-                        <input type="submit" name="edit-user" value="Lưu thông tin">
+                        <a href="{% url 'updateuser' %}">Cập nhật thông tin</a>
                     </div>
                 </form>
 

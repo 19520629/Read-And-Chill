@@ -75,7 +75,7 @@ class Account(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     sex_choice = (
         ('F', 'Nu'),
-        ('M', 'NAM'),
+        ('M', 'Nam'),
         ('A', 'Khac')
     )
     hoten = models.CharField(max_length=255, null=True)

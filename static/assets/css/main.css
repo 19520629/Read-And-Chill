@@ -1178,9 +1178,9 @@
     height: 10%;
 }
 
-.modal_info-button>input{
+.modal_info-button>a{
     height: 40px;
-    width: 150px;
+    width: 200px;
     margin-left: 10px;
     margin-right: 10px;
     font-size: 20px;
@@ -1190,9 +1190,14 @@
     background: #4f4f4f;
     color: white;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    text-decoration-line: none;
 }
 
-.modal_info-button>input:hover{
+.modal_info-button>a:hover{
     background-color: #f05454;
 }
 
