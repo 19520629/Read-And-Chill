@@ -44,11 +44,11 @@ def register(request):
             return HttpResponseRedirect('/')
     return render(request, 'dangki.html', {'form':form})
 
-
+love_book=Favorite.objects.filter(user_id=User.id)
 def home(request):
     recommended_book = Sach.objects.all()
     recommended_music = Nhac.objects.all()          
-    context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5]}
+    context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5], "fav":love_book}
     return render(request, 'index.html', context)
 
 
