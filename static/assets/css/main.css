@@ -2955,3 +2955,7 @@ textarea#id_body {
     overflow-y: scroll;
     position: relative;
 }
+
+.share-btn:hover .share-list {
+    display: block;
+}
