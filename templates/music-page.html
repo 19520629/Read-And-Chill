@@ -72,8 +72,8 @@
                 <div class="col l-9">
                     <div class="row sm-gutter music-row">
                         {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
-                        <div class="col l-3">
-                            <div class="book-item song" data-index={{ item.id }}>
+                        <div class="col l-3 m-6 c-12">
+                            <div class="book-item" data-index={{ item.id }}>
                                 <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
                                 <div class="book-item_name">{{ item.song_tenbaihat }}</div>
                                 <div class="book-item_author">
