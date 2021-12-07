@@ -1,0 +1,334 @@
+{% extends 'base.html' %} {% load static %} {% block cssblock %}
+<link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> {% endblock %} {% block content %}
+<div id="main">
+    <!--header-->
+    {% if user.is_authenticated %}
+    <div class="slider">
+        <div class="slides">
+
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <div class="slide first">
+                <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
+            </div>
+
+
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+            </div>
+
+        </div>
+
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+
+    </div>
+    {% else %}
+    <div class="slider" style="margin: 0;">
+        <div class="slides">
+
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+
+            <div class="slide first">
+                <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
+            </div>
+
+
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+            </div>
+
+        </div>
+
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+        </div>
+    </div>
+
+    {% endif %}
+
+    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
+        <h3 class="web-content_heading">Sách bạn nên đọc</h3>
+        <div class="grid wide">
+            <div class="row sm-gutter" style="margin-left: 60px; margin-right: -33px;">
+
+
+                {% block content_tensach %} {% for item in titles %} {% if titles %}
+
+                <div class="col l-4 m-6 c-12">
+
+
+                    <ul class="align">
+                        <li>
+                            <figure class='book'>
+                                <!-- Front -->
+                                <ul class='hardcover_front'>
+                                    <li>
+                                        <img src="{{ item.book_anhbia.url }}" alt="" width="100%" height="100%">
+                                    </li>
+                                    <li></li>
+                                </ul>
+                                <!-- Pages -->
+                                <ul class='page'>
+                                    <li></li>
+                                    <li>
+                                        <a class="btn-page btn" href="{% url 'introbook' item.slug %}">Đọc ngay</a>
+                                    </li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <!-- Back -->
+                                <ul class='hardcover_back'>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <ul class='book_spine'>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <figcaption>
+                                    <h1>{{ item.book_tensach }}</h1>
+                                    <span>{{ item.book_tacgia }}</span>
+                                    <div class="book-actions">
+                                        <span class="book-item_action_like">
+                                            <i class="fas fa-heart"></i>
+                                        </span>
+                                        <div class="book-actions__rate">
+                                            <i class="fas fa-star music-item_action_rating--gold"></i>
+                                            <i class="fas fa-star music-item_action_rating--gold"></i>
+                                            <i class="fas fa-star music-item_action_rating--gold"></i>
+                                            <i class="fas fa-star music-item_action_rating--gold"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+
+                                    </div>
+                                    <p class="book-view">Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
+
+                                </figcaption>
+                            </figure>
+                        </li>
+
+
+                    </ul>
+
+
+
+                </div>
+                {% endif %} {% endfor %} {% endblock %}
+            </div>
+        </div>
+
+        <h3 class="web-content_heading">Nhạc bạn nên nghe</h3>
+        <div class="grid wide">
+            <div class="row sm-gutter music-row">
+                {% block content_nhac %} {% for item in nhac %} {% if titles %}
+                <div class="col l-2-4 m-6 c-12">
+                    <a href="{% url 'music' %}" class="book-item">
+                        <div class="book-item_img" style="background-image: url({{ item.song_anhbia.url }});"></div>
+                        <div class="book-item_name">{{ item.song_tenbaihat }}</div>
+                        <div class="book-item_author">
+                            <span class="book-item_author-tittle">Trình bày</span>
+                            <span class="book-item_author_name">{{ item.song_casi_id }}</span>
+                        </div>
+                        <div class="book-item_action">
+                            <span class="book-item_action_like">
+                                    <i class="fas fa-heart"></i>
+
+                                </span>
+                            <div class="music-item_action_rating">
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star music-item_action_rating--gold"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="book-item_seen">
+                            <i class="fas fa-music book-item_seen-icon"></i> 12 lượt nghe
+                        </div>
+                    </a>
+                </div>
+                {% endif %} {% endfor %} {% endblock %}
+            </div>
+        </div>
+        <h3 class="web-content_heading"></h3>
+    </div>
+
+</div>
+
+
+{% endblock %} {% block jsblock %}
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mong muốn của chúng ta
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirmed('#password_confirmation', function() {
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mật khẩu nhập lại không chính xác')
+            ],
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
+            }
+        });
+
+
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+            ],
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
+            }
+        });
+    });
+</script>
+
+<script>
+    // Hiệu ứng thả tym yêu thích
+    const likedBtn = document.querySelectorAll(".book-item_action_like");
+    var elements = Array.from(likedBtn)
+
+    elements.forEach(function liked(e) {
+        e.addEventListener('click', () => {
+            if (e.classList.contains("liked")) {
+                e.classList.remove("liked");
+            } else {
+                e.classList.add("liked");
+            }
+        });
+    })
+</script>
+
+<!--  -->
+<!-- Hiệu ứng chuyển trang slideshow sau 5s -->
+<script type="text/javascript">
+    var counter = 1;
+    setInterval(function() {
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if (counter > 4) {
+            counter = 1;
+        }
+    }, 5000);
+</script>
+
+
+
+
+<!-- JS Đăng nhập, đăng ký -->
+<script src="{% static '/validator.js' %}">
+</script>
+<!--  -->
+
+<script>
+    const modalLogin = document.querySelector(".modal-login")
+    const modalLoginClose = document.querySelector(".modal-login_close")
+    const modalLoginContainer = document.querySelector(".modal-login_container")
+    const loginBtn = document.querySelector(".header_btn-sign-in")
+
+    function showModalLogin() {
+        modalLogin.classList.add("open")
+    }
+
+    function hideModalLogin() {
+        modalLogin.classList.remove("open")
+    }
+
+    loginBtn.addEventListener('click', showModalLogin)
+    loginBtn.addEventListener('click', hideModalregister)
+    modalLoginClose.addEventListener('click', hideModalLogin)
+    modalLogin.addEventListener('click', hideModalLogin)
+    modalLoginContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+
+
+
+    const modalregister = document.querySelector(".modal-register")
+    const modalregisterClose = document.querySelector(".modal-register_close")
+    const modalregisterContainer = document.querySelector(".modal-register_container")
+    const registerBtn = document.querySelector(".header_btn-sign-up")
+
+    function showModalregister() {
+        modalregister.classList.add("open")
+    }
+
+    function hideModalregister() {
+        modalregister.classList.remove("open")
+    }
+
+    registerBtn.addEventListener('click', showModalregister)
+    registerBtn.addEventListener('click', hideModalLogin)
+    modalregisterClose.addEventListener('click', hideModalregister)
+    modalregister.addEventListener('click', hideModalregister)
+    modalregisterContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+</script>
+
+
+
+{% endblock %}
