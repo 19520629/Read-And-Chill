@@ -64,11 +64,12 @@ def book_page(request):
 
 @login_required(login_url='/login/')
 def introbook(request, slug):
+    dulieu=slug
     post = get_object_or_404(Sach, slug=slug)
-    recommended_book = Sach.objects.all()
+    recommended_book = Sach.objects.filter(slug=slug)
     comment_object = Comment.objects.filter(post=post)
     comment_form = CommentForm(request.POST)
-
+    book = get_object_or_404(Sach, slug=slug)
     if request.method == 'POST':
         if 'comment' in request.POST:
             comment_form = CommentForm(request.POST or None)
@@ -83,6 +84,11 @@ def introbook(request, slug):
             comment = Comment.objects.get(id=request.POST['comment_id'])
             comment.delete()
             return HttpResponseRedirect(request.path_info)
+        elif 'like' in request.POST:
+            book.book_danhgia+=1
+            book.save()
+            return HttpResponseRedirect(request.path_info)
+            
         
     
 

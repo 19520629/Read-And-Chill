@@ -32,7 +32,13 @@
 
                 <div class="introduce-button row">
                     <a href="{% url 'readbook' item.slug item.slug %}"><button><i class="fas fa-book-open"></i> Đọc Ngay</button></a>
-                    <a href=""><button><i class="fas fa-heart"></i> Yêu Thích</button></a>
+                   
+                    <form method="post" style="font-size: 1.6rem;margin-left: 10px;">
+                        {% csrf_token %} {% if request.user.is_authenticated %}
+                        <input type="hidden" name="comment_id" value="{{comment.id}}">
+                        <button name="like" id="like">Yêu thích</button>
+                        {% else %} {% endif %}
+                    </form>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
                     <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button>
                         <ul class="share-list">
