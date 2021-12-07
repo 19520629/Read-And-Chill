@@ -70,6 +70,7 @@ def introbook(request, slug):
     comment_object = Comment.objects.filter(post=post)
     comment_form = CommentForm(request.POST)
     book = get_object_or_404(Sach, slug=slug)
+    path=str(User.id)+str(book.id)
     if request.method == 'POST':
         if 'comment' in request.POST:
             comment_form = CommentForm(request.POST or None)
@@ -85,10 +86,10 @@ def introbook(request, slug):
             comment.delete()
             return HttpResponseRedirect(request.path_info)
         elif 'like' in request.POST:
-            path=str(User.id)+str(book.id)
+            
             check_exists=Favorite.objects.filter(user_book=path).exists()
             if check_exists==False:
-                b = Favorite(user_book=path)
+                b = Favorite(user_book=path, user_id=User.id, book_id=book.id)
                 b.save()
                 book.book_danhgia+=1
                 book.save()
@@ -101,9 +102,8 @@ def introbook(request, slug):
             
         
     
-
-    context = {"titles": recommended_book, "slug":slug,
-               "comments": comment_object,"comment_form": comment_form}
+    fav_check=Favorite.objects.filter(user_book=path)
+    context = {"titles": recommended_book, "slug":slug, "comments": comment_object,"comment_form": comment_form,"fav":fav_check}
     return render(request, 'intro-book.html', context)
 
 @login_required(login_url='/login/')

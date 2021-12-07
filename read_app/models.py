@@ -54,7 +54,8 @@ class Nhac(models.Model):
 
 class Favorite(models.Model):
     user_book=models.CharField(max_length=50, default='')
-
+    user_id=models.CharField(max_length=50, default='')
+    book_id=models.CharField(max_length=50, default='')
 
 # class User(models.Model):
 #     sex_choice=(

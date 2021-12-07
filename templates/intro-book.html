@@ -36,7 +36,11 @@
                     <form method="post" style="font-size: 1.6rem;margin-left: 10px;">
                         {% csrf_token %} {% if request.user.is_authenticated %}
                         <input type="hidden" name="comment_id" value="{{comment.id}}">
+                        {% if fav %}
                         <button name="like" id="like">Yêu thích</button>
+                        {% else %}
+                        <button name="like" id="like">Bỏ thích</button>
+                        {% endif %}
                         {% else %} {% endif %}
                     </form>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
