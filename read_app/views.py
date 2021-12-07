@@ -85,19 +85,18 @@ def introbook(request, slug):
             comment.delete()
             return HttpResponseRedirect(request.path_info)
         elif 'like' in request.POST:
-            # path=str(User.id)+str(book.id)
-            check_exists=Favorite.objects.filter(user_book=book.id)
-            check_exists=check_exists.filter(user_id=User.id).exists()
+            path=str(User.id)+str(book.id)
+            check_exists=Favorite.objects.filter(user_book=path).exists()
             if check_exists==False:
-                b = Favorite(user_book=book.id, user_id=User.id)
+                b = Favorite(user_book=path)
                 b.save()
                 book.book_danhgia+=1
                 book.save()
-            else:                
-                b=Favorite.objects.filter(user_book=book.id, user_id=User.id)
-                b.delete()
+            else:
                 book.book_danhgia-=1
                 book.save()
+                b=Favorite.objects.get(user_book=path)
+                b.delete()
             return HttpResponseRedirect(request.path_info)
             
         

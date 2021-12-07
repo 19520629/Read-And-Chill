@@ -54,7 +54,6 @@ class Nhac(models.Model):
 
 class Favorite(models.Model):
     user_book=models.CharField(max_length=50, default='')
-    user_id=models.CharField(max_length=255, default='')
 
 
 # class User(models.Model):
@@ -94,3 +93,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.post.book_tensach, self.user.username)
+
+
+
