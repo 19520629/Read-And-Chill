@@ -35,14 +35,14 @@
                                 <a href="{% url 'music' %}" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
 
-                        <form action="{% url 'filter-music-qt1' %}" method="post">
+                        <form action="{% url 'search3' %}" method="post">
                         {% csrf_token %}
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link"><button >Nhạc Việt Nam</button></a>
                             </li>
                          </form>
 
-                        <form action="{% url 'filter-music-qt2' %}" method="post">
+                        <form action="{% url 'search4' %}" method="post">
                         {% csrf_token %}
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link"><button>Nhạc nước ngoài</button></a>
@@ -52,16 +52,16 @@
 
                         </ul>
 
-                        <span class="category_book-type">Trình bày</span>
+                        <span class="category_book-type">Thể loại</span>
                         <ul class="category_book-type-list">
                             <li class="category_book-type-list-item">
-                                <a href="{% url 'filter-music-tb1' %}" class="category_book-type-list-item-link">Nhạc không lời</a>
+                                <a href="" class="category_book-type-list-item-link">Nhạc không lời</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="{% url 'filter-music-tb2' %}" class="category_book-type-list-item-link">Yumira</a>
+                                <a href="" class="category_book-type-list-item-link">Nhạc thư giãn</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="{% url 'filter-music-tb3' %}" class="category_book-type-list-item-link">Reii</a>
+                                <a href="" class="category_book-type-list-item-link">Nhạc cổ phong</a>
                             </li>
                         </ul>
 
