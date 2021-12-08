@@ -70,8 +70,7 @@
             <div class="modal_user-body-book js-modal_user-body-book">
                 <div class="modal_fav-book">
                     {% block favorite %}{% for item in fav %}
-                    <img src="{{ item.book_anhbia.url }}" alt="" width="10%" height="10%"> 
-                    {% endfor %}  {% endblock %}
+                    <img src="{{ 'item.book_anhbia.url' }}" alt="" width="10%" height="10%"> {% endfor %}  {% endblock %}
                 </div>
                 <div class="modal_fav-book-button">
                     <button>Thêm sách</button>

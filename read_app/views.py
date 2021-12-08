@@ -63,18 +63,16 @@ def updateuser(request):
     return render(request, 'updateuser.html', {'form':form, 'user': user})
 
 
-love_book=Favorite.objects.filter(user_id=User.username)
-
+love_book=Favorite.objects.filter(user_id=User.id)
 def home(request):
-    
     recommended_book = Sach.objects.all()
     recommended_music = Nhac.objects.all()
-    current_user=request.user
     fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-    context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5], "fav":fav}
+    fav_list=Favorite.objects.filter(user_id=User.id)
+    for item in fav_list:
+        fav.append(Sach.objects.get(id=item.book_id))
+    
+    context={"titles":recommended_book[0:10], "nhac":recommended_music[0:5], "fav":love_book}
     return render(request, 'index.html', context)
 
 
@@ -88,19 +86,15 @@ def book_page(request):
     context = {"titles": recommended_book}
     return render(request, 'book-page.html', context)
 
-
-
 @login_required(login_url='/login/')
 def introbook(request, slug):
     dulieu=slug
     post = get_object_or_404(Sach, slug=slug)
     recommended_book = Sach.objects.filter(slug=slug)
-    fav_list=Sach.objects.filter(slug=slug)
     comment_object = Comment.objects.filter(post=post)
     comment_form = CommentForm(request.POST)
-    book =  get_object_or_404(Sach, slug=slug)
-    current_user = request.user
-    path=  str(current_user.username) + str(book.id)
+    book = get_object_or_404(Sach, slug=slug)
+    path=str(User.id)+str(book.id)
     if request.method == 'POST':
         if 'comment' in request.POST:
             comment_form = CommentForm(request.POST or None)
@@ -115,12 +109,11 @@ def introbook(request, slug):
             comment = Comment.objects.get(id=request.POST['comment_id'])
             comment.delete()
             return HttpResponseRedirect(request.path_info)
-
-
-        elif 'like' in request.POST:            
+        elif 'like' in request.POST:
+            
             check_exists=Favorite.objects.filter(user_book=path).exists()
             if check_exists==False:
-                b = Favorite(user_book=path, user_id=current_user.username, book_id=book.id)
+                b = Favorite(user_book=path, user_id=User.id, book_id=book.id)
                 b.save()
                 book.book_danhgia+=1
                 book.save()
@@ -130,17 +123,12 @@ def introbook(request, slug):
                 b=Favorite.objects.get(user_book=path)
                 b.delete()
             return HttpResponseRedirect(request.path_info)
+            
+        
     
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-    
-    fav_list = Favorite.objects.filter(book_id=book.id)
-    fav_list=fav_list.filter(book_id=book.id)
-    context = {"titles": recommended_book, "slug":slug, "comments": comment_object, "comment_form": comment_form, "fav_check":fav_list, "fav":fav}
+    fav_check=Favorite.objects.filter(user_book=path)
+    context = {"titles": recommended_book, "slug":slug, "comments": comment_object,"comment_form": comment_form,"fav":fav_check}
     return render(request, 'intro-book.html', context)
-
 
 @login_required(login_url='/login/')
 def delete_comment(request):
@@ -159,16 +147,8 @@ def readbook(request, slug, slug2):
     recommended_book = Sach.objects.all()
 
 
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":slug, "nhac": recommended_music,"fav":fav}
+    context = {"titles": recommended_book, "slug":slug, "nhac": recommended_music}
     book.save()
-
-    
     return render(request, 'read-book.html', context)
 
 
@@ -191,15 +171,7 @@ def search(request):
         tennhac=convert(item.song_tenbaihat + item.song_casi_id.song_casi_ten).lower().replace(" ", "")
         if dulieu in tennhac:
             recommended_music1.append(item)
-
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-
-    context = {"titles": recommended_book1, "nhac": recommended_music1, "slug":dulieu, "fav":fav}
+    context = {"titles": recommended_book1, "nhac": recommended_music1, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
@@ -207,44 +179,23 @@ def search(request):
 def search_book1(request):
     dulieu='VN'
     recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
-
-
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-        
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
+    context = {"titles": recommended_book, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
 @login_required(login_url='/login/')
 def search_book2(request):
     dulieu='nuocngoai'
-    
-    recommended_book = Sach.objects.filter(book_quocgia=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
+    national=dulieu
+    recommended_book = Sach.objects.filter(book_quocgia__icontains=national)
+    context = {"titles": recommended_book,  "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 @login_required(login_url='/login/')
 def search_music1(request):
     dulieu='VN'
     recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
+    context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 
@@ -252,40 +203,22 @@ def search_music1(request):
 def search_music2(request):
     dulieu='nuocngoai'
     recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
+    context = {"nhac": recommended_music, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 @login_required(login_url='/login/')
 def search_book1(request):
     dulieu='VN'
     recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
+    context = {"titles": recommended_book, "slug":dulieu}
     return render(request, 'search-page.html', context)
 
 @login_required(login_url='/login/')
 def filter_book_quoctich1(request):
     dulieu='VN'
     recommended_book = Sach.objects.filter(book_quocgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
 
 @login_required(login_url='/login/')
 def filter_book_quoctich2(request):
@@ -295,44 +228,27 @@ def filter_book_quoctich2(request):
     return render(request, 'book-filter.html', context)
 
 
-
+# Chỗ này bị hư nè !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 @login_required(login_url='/login/')
 def filter_book_tacgia1(request):
     dulieu='Nguyễn Nhật Ánh'
     recommended_book = Sach.objects.filter(book_tacgia=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
 
 @login_required(login_url='/login/')
 def filter_book_tacgia2(request):
     dulieu='J.K. Rowling'
     recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
 
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
 @login_required(login_url='/login/')
 def filter_book_tacgia3(request):
     dulieu='Paulo Coelho'
     recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
-    current_user=request.user
-    fav=[]
-    fav_list=Favorite.objects.filter(user_id=current_user)
-    for i in fav_list:
-        fav.append(Sach.objects.get(id=i.book_id))
-
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
 
 # @login_required(login_url='/login/')
 # def profile(request):
