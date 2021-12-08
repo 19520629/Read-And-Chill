@@ -68,9 +68,14 @@
             </div>
 
             <div class="modal_user-body-book js-modal_user-body-book">
-                <div class="modal_fav-book">
+                <div class="modal_fav-book" style=" overflow-y: scroll;">
                     {% block favorite %}{% for item in fav %}
-                    <img src="{{ 'item.book_anhbia.url' }}" alt="" width="10%" height="10%"> {% endfor %}  {% endblock %}
+                   
+                    <div class="modal_favoritebook">
+                        <img src="{{ item.book_anhbia.url }}" alt="">
+                        <a href="{% url 'introbook' item.slug %}">{{ item.book_tensach }}</a>
+                    </div>
+                    {% endfor %}  {% endblock %}
                 </div>
                 <div class="modal_fav-book-button">
                     <button>Thêm sách</button>
