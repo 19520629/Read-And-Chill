@@ -135,9 +135,19 @@
                                     <h1>{{ item.book_tensach }}</h1>
                                     <span>{{ item.book_tacgia }}</span>
                                     <div class="book-actions">
-                                        <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-                                        </span>
+
+<!--                                        {% if request.user.is_authenticated %} {% if fav %}-->
+
+<!--                                        <span class="book-item_action_like liked">-->
+<!--                                            <i class="fas fa-heart"></i>Thích nè-->
+<!--                                        </span>-->
+<!--                                        {% else %}-->
+<!--                                        <span class="book-item_action_like">-->
+<!--                                            <i class="fas fa-heart"></i>ko Thích nè-->
+<!--                                        </span>-->
+<!--                                        {% endif %}-->
+<!--                                        {% else %} {% endif %}-->
+
                                         <div class="book-actions__rate">
                                             <i class="fas fa-star music-item_action_rating--gold"></i>
                                             <i class="fas fa-star music-item_action_rating--gold"></i>
@@ -148,7 +158,7 @@
 
                                     </div>
                                     <p class="book-view">Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
-
+                                    <p class="book-view">Lượt thích: {{ item.book_danhgia }}</p>
                                 </figcaption>
                             </figure>
                         </li>

@@ -63,20 +63,15 @@
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
-                            {% for item in titles|dictsort:'book_theloai_id' %} {% ifchanged %}
-                            <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">{{ item.book_theloai_id }}</a>
-                            </li>
 
-                            {% endifchanged %} {% endfor %}
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Phiêu lưu</a>
+                                <a href="{% url 'filter-book-tl1' %}" class="category_book-type-list-item-link">Phiêu lưu</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Phép thuật</a>
+                                <a href="{% url 'filter-book-tl2' %}" class="category_book-type-list-item-link">Phép thuật</a>
                             </li>
                             <li class="category_book-type-list-item">
-                                <a href="" class="category_book-type-list-item-link">Thiếu nhi</a>
+                                <a href="{% url 'filter-book-tl3' %}" class="category_book-type-list-item-link">Thiếu nhi</a>
                             </li>
                         </ul>
 
@@ -123,9 +118,9 @@
                                         <h1>{{ item.book_tensach }}</h1>
                                         <span>{{ item.book_tacgia }}</span>
                                         <div class="book-actions">
-                                            <span class="book-item_action_like">
-                                                <i class="fas fa-heart"></i>
-                                            </span>
+<!--                                            <span class="book-item_action_like">-->
+<!--                                                <i class="fas fa-heart"></i>-->
+<!--                                            </span>-->
                                             <div class="book-actions__rate">
                                                 <i class="fas fa-star music-item_action_rating--gold"></i>
                                                 <i class="fas fa-star music-item_action_rating--gold"></i>
@@ -135,8 +130,8 @@
                                             </div>
 
                                         </div>
-                                        <p class="book-view">Lượt xem: 12</p>
-
+                                        <p class="book-view">Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
+                                        <p class="book-view">Lượt thích: {{ item.book_danhgia }}</p>
                                     </figcaption>
                                   </figure>
                                 </li>
