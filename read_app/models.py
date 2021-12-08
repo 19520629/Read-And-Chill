@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.urls import reverse
 # Create your models here.
 
 
@@ -48,14 +50,25 @@ class Nhac(models.Model):
     song_danhgia=models.FloatField(default=0)
     song_file=models.FileField(upload_to='music')
     song_casi_id=models.ForeignKey(CaSi, on_delete=models.CASCADE)
+    favorited_by = models.ManyToManyField ( settings.AUTH_USER_MODEL,related_name='favorite_songs' )
     def __str__(self):
         return self.song_tenbaihat
+    def get_absolute_url(self):
+        return reverse('/', kwargs={'pk': self.pk})
 
 
 class Favorite(models.Model):
     user_book=models.CharField(max_length=50, default='')
     user_id=models.CharField(max_length=50, default='')
     book_id=models.CharField(max_length=50, default='')
+
+class FavoriteListSong(models.Model):
+    name =models.CharField(max_length=50, default='')
+
+class FavoriteItems(models.Model):
+    user_book=models.CharField(max_length=50, default='')
+    favorite_list= models.ForeignKey(FavoriteListSong, on_delete=models.CASCADE)
+    book_id=models.ForeignKey(Sach , on_delete=models.CASCADE)
 
 # class User(models.Model):
 #     sex_choice=(

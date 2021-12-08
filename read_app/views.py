@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 import re
 import sys
 from django.contrib.auth.models import User
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
 
 
 # Create your views here.
@@ -241,7 +244,29 @@ def edit_profile(request):
 
     return redirect('modal-user.html',{'profile':profile})
 
+@login_required
+def add_to_fav_songs(request, **kwargs):
+    fav_song = Nhac.objects.filter(id=kwargs.get('id'))
+    print(request, f'Added to favourite songs')
+    return redirect('/')
 
+""" class Fav_songs(LoginRequiredMixin, ListView):
+    model = Nhac
+    template_name = 'fav_songs.html'
+    context_object_name = 'fav_song'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return Nhac.objects.filter(favorited_by=self.request.user) """
+
+class Fav_songs(LoginRequiredMixin, ListView):
+    model = Nhac
+    template_name = 'fav_songs.html'
+    context_object_name = 'fav_song'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return Nhac.objects.filter(favorited_by=self.request.user)
 
 
 
