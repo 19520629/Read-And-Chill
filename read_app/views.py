@@ -69,8 +69,6 @@ def home(request):
     
     recommended_book = Sach.objects.all()
     recommended_music = Nhac.objects.all()
-
-
     current_user=request.user
     fav=[]
     fav_list=Favorite.objects.filter(user_id=current_user)
@@ -246,7 +244,7 @@ def search_music1(request):
     for i in fav_list:
         fav.append(Sach.objects.get(id=i.book_id))
 
-    context = {"titles": recommended_music, "slug":dulieu, "fav":fav}
+    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
     return render(request, 'search-page.html', context)
 
 
@@ -260,7 +258,7 @@ def search_music2(request):
     for i in fav_list:
         fav.append(Sach.objects.get(id=i.book_id))
 
-    context = {"titles": recommended_music, "slug":dulieu, "fav":fav}
+    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
     return render(request, 'search-page.html', context)
 
 @login_required(login_url='/login/')
