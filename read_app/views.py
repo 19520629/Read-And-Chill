@@ -219,7 +219,7 @@ def search_book1(request):
         
 
     context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    return render(request, 'book-filter.html', context)
 
 
 @login_required(login_url='/login/')
@@ -234,7 +234,7 @@ def search_book2(request):
         fav.append(Sach.objects.get(id=i.book_id))
 
     context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    return render(request, 'book-filter.html', context)
 
 @login_required(login_url='/login/')
 def search_music1(request):
