@@ -11,7 +11,7 @@
 
 #header {
     height: 42px;
-    background-color: #807f80;
+    background-color: rgba(0,0,0,0.6);
     position: fixed;
     top: 0;
     left: 0;
@@ -374,15 +374,15 @@
 /* Phần Slides show */
 
 .slider {
-    margin: 42px auto 0;
+    margin: auto;
     width: 100%;
-    height: 274px;
+    height: 335px;
     overflow: hidden;
 }
 
 .slides {
     width: 500%;
-    height: 290px;
+    height: 335px;
     display: flex;
 }
 
@@ -409,7 +409,7 @@
 }
 
 .manual-btn {
-    border: 2px solid #fff;
+    border: 2px solid #035cff;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -445,7 +445,7 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-top: 250px;
+    margin-top: 295px;
 }
 
 .navigation-auto div {
