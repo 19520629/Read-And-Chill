@@ -1157,15 +1157,6 @@
     font-weight: 500;
 }
 
-.info-input-radio {
-    margin: 10px;
-    width: 70%;
-    font-size: 16px;
-}
-
-.info-input-radio>input {
-    margin-left: 10px;
-}
 
 .modal_info-button {
     display: flex;
@@ -1548,6 +1539,8 @@
     font-size: 1.8rem;
     padding-top: 5px;
     padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .comment-user p {

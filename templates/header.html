@@ -102,7 +102,7 @@
         {% if user.is_authenticated %}
         <div class="header_user">
             <img src="{{ user.account.user_avt.url }}" alt="" class="header_user-img">
-            <span class="header_user-name">{{ user.username }}</span>
+            <span class="header_user-name">{{user.account.hoten}}</span>
             <!-- <div class="header_user__">
                         <ul class="header_user-list">
                             <li class="header_user-list-item">

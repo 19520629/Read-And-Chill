@@ -16,7 +16,7 @@
             <div class="modal_user-body-selection column">
                 <div class="modal_user-avt">
                     <img src="{{ user.account.user_avt.url }}" alt="" class="modal_user-img">
-                    <p class="modal_user-name">{{ user.username }}</p>
+                    <p class="modal_user-name">{{ user.account.hoten }}</p>
                 </div>
                 <ul class="modal_user-li">
                     <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
@@ -39,10 +39,13 @@
                         <li>
                             <p>Giới tính</p>
                             <div class="info-input-radio">
-
-                                <input checked="checked" type="radio" name="gender" id="raido-gender1" value="Nam"> Nam
-                                <input type="radio" name="gender" id="raido-gender2" value="Nữ"> Nữ
-                                <input type="radio" name="gender" id="raido-gender3" value="Khác"> Khác
+                                {% if user.account.gioitinh == "M" %}
+                                <input type="text" class="info-input" value="Nam">
+                                {% elif user.account.gioitinh == "F" %}
+                                <input type="text" class="info-input" value="Nữ">
+                                {% else %}
+                                <input type="text" class="info-input" value="Khác">
+                                {% endif %}
                             </div>
 
                         </li>

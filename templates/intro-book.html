@@ -44,11 +44,8 @@
                         {% else %} {% endif %}
                     </form>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
-                    <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button>
-                        <ul class="share-list">
-                           <li class="share-item"><i class="fab fa-facebook"></i>{% post_to_facebook object_or_url "Chia sẻ với Facebook!" %}</li>
-                            <li class="share-item"><i class="fab fa-twitter"></i>{% post_to_twitter "Sách hay: {{item.book_tensach}}. Mau đến đọc!" object_or_url "Chia sẻ với Twitter" %}</li>
-                        </ul>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000{% url 'introbook' item.slug %}"><button><i class="fas fa-share"></i> Chia Sẻ</button>
+
                     </a>
 
                     <script>
@@ -97,6 +94,7 @@
                         <div class="comment-body">
                             <div class="comment-user">
                                 <div class="comment-user_img-name">
+                                    <img src="{{ comment.user.account.user_avt.url }}" alt="" style="width: 50px;height: 50px;border-radius: 50%;margin-right: 15px;">
                                     {{ comment.user }}
                                 </div>
 

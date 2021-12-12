@@ -59,7 +59,7 @@ def updateuser(request):
                 print(request.POST)
                 instance.save()
                 print(instance.user_avt)
-                return redirect('book')
+                return redirect('/')
     return render(request, 'updateuser.html', {'form':form, 'user': user})
 
 
@@ -287,7 +287,7 @@ def filter_book_quoctich1(request):
         fav.append(Sach.objects.get(id=i.book_id))
 
     context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    return render(request, 'book-filter.html', context)
 
 @login_required(login_url='/login/')
 def filter_book_quoctich2(request):
@@ -300,41 +300,95 @@ def filter_book_quoctich2(request):
 
 @login_required(login_url='/login/')
 def filter_book_tacgia1(request):
-    dulieu='Nguyễn Nhật Ánh'
-    recommended_book = Sach.objects.filter(book_tacgia=dulieu)
+    recommended_book = Sach.objects.filter(book_tacgia=1)
     current_user=request.user
     fav=[]
     fav_list=Favorite.objects.filter(user_id=current_user)
     for i in fav_list:
         fav.append(Sach.objects.get(id=i.book_id))
 
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "fav":fav}
+    return render(request, 'book-filter.html', context)
 
 @login_required(login_url='/login/')
 def filter_book_tacgia2(request):
-    dulieu='J.K. Rowling'
-    recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
+    recommended_book = Sach.objects.filter(book_tacgia=4)
     current_user=request.user
     fav=[]
     fav_list=Favorite.objects.filter(user_id=current_user)
     for i in fav_list:
         fav.append(Sach.objects.get(id=i.book_id))
 
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "fav":fav}
+    return render(request, 'book-filter.html', context)
 @login_required(login_url='/login/')
 def filter_book_tacgia3(request):
     dulieu='Paulo Coelho'
-    recommended_book = Sach.objects.filter(book_tacgia__icontains=dulieu)
+    recommended_book = Sach.objects.filter(book_tacgia=5)
     current_user=request.user
     fav=[]
     fav_list=Favorite.objects.filter(user_id=current_user)
     for i in fav_list:
         fav.append(Sach.objects.get(id=i.book_id))
 
-    context = {"titles": recommended_book, "slug":dulieu, "fav":fav}
-    return render(request, 'search-page.html', context)
+    context = {"titles": recommended_book, "fav":fav}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_theloai1(request):
+    dulieu='Phiêu lưu'
+    recommended_book = Sach.objects.filter(book_theloai_id=4)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_theloai2(request):
+    dulieu='Phép thuật'
+    recommended_book = Sach.objects.filter(book_theloai_id=3)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_book_theloai3(request):
+    dulieu='Thiếu nhi'
+    recommended_book = Sach.objects.filter(book_theloai_id=2)
+    context = {"titles": recommended_book, "slug":dulieu}
+    return render(request, 'book-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_music_quoctich1(request):
+    dulieu='VN'
+    recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'music-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_music_quoctich2(request):
+    dulieu='nuocngoai'
+    recommended_music = Nhac.objects.filter(song_quocgia__icontains=dulieu)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'music-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_music_trinhbay1(request):
+    dulieu='Nhạc không lời'
+    recommended_music = Nhac.objects.filter(song_casi_id=3)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'music-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_music_trinhbay2(request):
+    dulieu='Yumira'
+    recommended_music = Nhac.objects.filter(song_casi_id=4)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'music-filter.html', context)
+
+@login_required(login_url='/login/')
+def filter_music_trinhbay3(request):
+    dulieu='Reii'
+    recommended_music = Nhac.objects.filter(song_casi_id=2)
+    context = {"nhac": recommended_music, "slug":dulieu}
+    return render(request, 'music-filter.html', context)
 
 # @login_required(login_url='/login/')
 # def profile(request):
