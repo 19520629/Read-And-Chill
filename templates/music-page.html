@@ -216,21 +216,17 @@
             this.config[key] = value
             localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
         },
-        songs: [{ % block content_nhac %
-        } { %
-            for item in nhac %
-        } { %
-            if nhac %
-        } {
+        songs: [
+        {% block content_nhac %} {% for item in nhac %} {% if nhac %}
+        {
             name: '{{ item.song_tenbaihat }}',
             singer: '{{ item.song_casi_id}}',
             path: '{{ item.song_file.url}}',
             img: '{{ item.song_anhbia.url }}',
             id: '{{ item.id }}'
-        }, { % endif %
-        } { % endfor %
-        } { % endblock %
-        }],
+        },
+        {% endif %} {% endfor %} {% endblock %}
+        ],
         render: function() {
             const htmls = this.songs.map((song, index) => {
                 return `
