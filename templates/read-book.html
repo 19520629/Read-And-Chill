@@ -21,7 +21,7 @@
     {% endif %}
     {% if titles %}
     {% for item in titles %}{% if item.slug == slug %}
-    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)"">
+    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})"">
         <div class="read-book-container col">
             <div class="read-book-header">
                 <button class="prev-page">
