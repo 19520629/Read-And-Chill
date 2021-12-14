@@ -98,3 +98,7 @@ class Comment(models.Model):
 
 
 
+class Favorite_music(models.Model):
+    user_music=models.CharField(max_length=50, default='')
+    user_id=models.CharField(max_length=50, default='')
+    music_id=models.CharField(max_length=50, default='')
