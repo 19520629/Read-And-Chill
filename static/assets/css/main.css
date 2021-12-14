@@ -1049,7 +1049,7 @@
 .modal_user-body-selection {
     width: 30%;
     height: 500px;
-    background-color: var(--gray-color);
+    background-color: #dbecf8;
 }
 
 .modal_user-avt {
@@ -1068,7 +1068,7 @@
     font-size: 25px;
     font-weight: 500;
     margin-top: 10px;
-    color: white;
+    color: black;
 }
 
 .modal_user-avt-btn {
@@ -1102,7 +1102,7 @@
     margin-top: 20px;
     border-radius: 5px;
     border-style: none;
-    background-color: #4f4f4f;
+    background-color: #1687A7;
     color: white;
     font-weight: 500;
     font-size: 20px;
@@ -1196,7 +1196,7 @@
     background-color: white;
     height: 500px;
     display: none;
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     flex-direction: column;
 }
 
@@ -1222,7 +1222,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    height: 10%;
+    height: 15%;
 }
 
 .modal_fav-book-button>a {
@@ -1505,7 +1505,7 @@
     margin: 20px 15px;
     border-radius: 10px;
     border-style: none;
-    background-color: #807f80;
+    background-color: #1687A7;
     color: white;
     font-weight: 500;
     font-size: 20px;
@@ -1585,7 +1585,7 @@
     margin: 20px 15px;
     border-radius: 5px;
     border-style: none;
-    background-color: #807f80;
+    background-color: #1687A7;
     color: white;
     font-weight: 500;
     font-size: 20px;
@@ -1659,7 +1659,7 @@
 
 .player {
     overflow: hidden;
-    background-color: #fff;
+    background-color: lightblue;
     box-shadow: 0 2px 2px 0 rgb(0 0 0 / 25%);
     background-position: center;
     background-size: cover;
@@ -1772,6 +1772,7 @@
 
 .player .progress {
     padding: 0 10px;
+    background-color: lightblue;
 }
 
 .btn-music.active {
@@ -2041,6 +2042,7 @@ input[type=range]:focus::-ms-fill-upper {
 .volume-open-icon {
     padding: 0 10px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .info-icon {
@@ -2791,7 +2793,7 @@ textarea {
     padding: 5px 10px;
     border-radius: 5px;
     border-style: none;
-    background-color: #807f80;
+    background-color: #1687A7;
     color: white;
     font-weight: 500;
     font-size: 1.8rem;

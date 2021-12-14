@@ -190,7 +190,7 @@ def delete_comment(request):
 @login_required(login_url='/login/')
 def readbook(request, slug, slug2):
     book = get_object_or_404(Sach, slug=slug2)
-    book.book_luotxem += 1
+    book.book_luotxem += 0.5
     book.save()
     recommended_music = Nhac.objects.all()
     recommended_book = Sach.objects.all()

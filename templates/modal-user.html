@@ -73,7 +73,6 @@
             <div class="modal_user-body-book js-modal_user-body-book">
                 <div class="modal_fav-book" style=" overflow-y: scroll;">
                     {% block favorite %}{% for item in fav %}
-                   
                     <div class="modal_favoritebook">
                         <img src="{{ item.book_anhbia.url }}" alt="">
                         <a href="{% url 'introbook' item.slug %}">{{ item.book_tensach }}</a>
