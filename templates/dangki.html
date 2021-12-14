@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,19 +17,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
+
 <body>
     <center>
         <div class="login-container" style="background-image: url({% static '/assets/img/reading-book-background.jpg' %});">
             <form class="form-login" action="." method="POST">
+                {% csrf_token %}
                 <div class="login-logo">
                     <img src="{% static '/assets/img/shortcut icon.png' %}" alt="" class="login-logo-img">
                 </div>
-                {% csrf_token %}
+
                 {{form.as_p}}
-                <input class='btn login-btn' type="submit" value="Đăng ký"/>
+                <input class='btn login-btn' type="submit" value="Đăng ký" />
             </form>
         </div>
 
     </center>
 </body>
+
 </html>

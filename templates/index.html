@@ -19,16 +19,16 @@
             <input type="radio" name="radio-btn" id="radio4">
 
             <div class="slide first">
-                <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
+                <img src="{% static '/assets/img/slide1.png' %}" alt="">
             </div>
             <div class="slide">
-                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
+                <img src="{% static '/assets/img/slide2.png' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide4.png' %}" alt="">
             </div>
             <div class="slide">
                 <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
-            </div>
-            <div class="slide">
-                <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
             </div>
 
 
@@ -59,16 +59,16 @@
             <input type="radio" name="radio-btn" id="radio4">
 
             <div class="slide first">
-                <img src="{% static '/assets/img/slide1.jpg' %}" alt="">
+                <img src="{% static '/assets/img/slide1.png' %}" alt="">
             </div>
             <div class="slide">
-                <img src="{% static '/assets/img/slide5.jpg' %}" alt="">
+                <img src="{% static '/assets/img/slide2.png' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static '/assets/img/slide4.png' %}" alt="">
             </div>
             <div class="slide">
                 <img src="{% static '/assets/img/slide3.jpg' %}" alt="">
-            </div>
-            <div class="slide">
-                <img src="{% static '/assets/img/slide4.jpg' %}" alt="">
             </div>
 
 
@@ -91,13 +91,13 @@
 
     {% endif %}
 
-    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
+    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
         <h3 class="web-content_heading">Sách bạn nên đọc</h3>
         <div class="grid wide">
             <div class="row sm-gutter" style="margin-left: 60px; margin-right: -33px;">
 
 
-                {% block content_tensach %} {% for item in titles %} {% if titles %}
+                {% block content_tensach %} {% for item in titles %}
 
                 <div class="col l-4 m-6 c-12">
 
@@ -134,21 +134,9 @@
                                 <figcaption>
                                     <h1>{{ item.book_tensach }}</h1>
                                     <span>{{ item.book_tacgia }}</span>
-                                    <div class="book-actions">
-                                        <span class="book-item_action_like">
-                                            <i class="fas fa-heart"></i>
-                                        </span>
-                                        <div class="book-actions__rate">
-                                            <i class="fas fa-star music-item_action_rating--gold"></i>
-                                            <i class="fas fa-star music-item_action_rating--gold"></i>
-                                            <i class="fas fa-star music-item_action_rating--gold"></i>
-                                            <i class="fas fa-star music-item_action_rating--gold"></i>
-                                            <i class="fas fa-star"></i>
-                                        </div>
 
-                                    </div>
-                                    <p class="book-view">Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
-
+                                    <p class="book-view"><i class="fas fa-eye"></i> Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
+                                    <p class="book-view"><i class="fas fa-thumbs-up"></i> Lượt thích: {{ item.book_danhgia|floatformat:"0" }}</p>
                                 </figcaption>
                             </figure>
                         </li>
@@ -159,7 +147,7 @@
 
 
                 </div>
-                {% endif %} {% endfor %} {% endblock %}
+                 {% endfor %} {% endblock %}
             </div>
         </div>
 
@@ -175,24 +163,8 @@
                             <span class="book-item_author-tittle">Trình bày</span>
                             <span class="book-item_author_name">{{ item.song_casi_id }}</span>
                         </div>
-                        <div class="book-item_action">
-                            <span class="book-item_action_like">
-                                    <i class="fas fa-heart"></i>
 
-                                </span>
-                            <div class="music-item_action_rating">
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star music-item_action_rating--gold"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
 
-                        </div>
-
-                        <div class="book-item_seen">
-                            <i class="fas fa-music book-item_seen-icon"></i> 12 lượt nghe
-                        </div>
                     </a>
                 </div>
                 {% endif %} {% endfor %} {% endblock %}

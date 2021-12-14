@@ -17,7 +17,7 @@
     <h3 class="space-navbar-content" style="padding: 0;"></h3>
 
     {% endif %} {% block preview %} {% for item in titles %} {% if item.slug == slug %}
-    <div class="container" style="background-image: url(https://image.freepik.com/free-vector/white-abstract-background-design_23-2148825582.jpg)">
+    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
         <div class="intro-book-container col">
             <div class="introduce-book row">
                 <div class="intro-book-img">
@@ -36,19 +36,16 @@
                     <form method="post" style="font-size: 1.6rem;margin-left: 10px;">
                         {% csrf_token %} {% if request.user.is_authenticated %}
                         <input type="hidden" name="comment_id" value="{{comment.id}}">
-                        {% if fav %}
-                        <button name="like" id="like">Yêu thích</button>
-                        {% else %}
+                        {% if fav_check %}                        
                         <button name="like" id="like">Bỏ thích</button>
+                        {% else %}
+                        <button name="like" id="like">Yêu thích</button>
                         {% endif %}
                         {% else %} {% endif %}
                     </form>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
-                    <a href=""><button><i class="fas fa-share"></i> Chia Sẻ</button>
-                        <ul class="share-list">
-                           <li class="share-item"><i class="fab fa-facebook"></i>{% post_to_facebook object_or_url "Chia sẻ với Facebook!" %}</li>
-                            <li class="share-item"><i class="fab fa-twitter"></i>{% post_to_twitter "Sách hay: {{item.book_tensach}}. Mau đến đọc!" object_or_url "Chia sẻ với Twitter" %}</li>
-                        </ul>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000{% url 'introbook' item.slug %}"><button><i class="fas fa-share"></i> Chia Sẻ</button>
+
                     </a>
 
                     <script>
@@ -97,6 +94,7 @@
                         <div class="comment-body">
                             <div class="comment-user">
                                 <div class="comment-user_img-name">
+                                    <img src="{{ comment.user.account.user_avt.url }}" alt="" style="width: 50px;height: 50px;border-radius: 50%;margin-right: 15px;">
                                     {{ comment.user }}
                                 </div>
 

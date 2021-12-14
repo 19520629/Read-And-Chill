@@ -8,103 +8,101 @@
         </div>
         <form action="{% url 'search' %}" method="post" style="display: flex; margin: 0 20px; flex: 1;">
             {% csrf_token %}
-                <div class="header_bars_mobile">
-                    <label for="nav-mobile-input">
+            <div class="header_bars_mobile">
+                <label for="nav-mobile-input">
                         <i class="fas fa-bars"></i>
 
                     </label>
-                </div>
+            </div>
 
-                <div class="header_search_mobile">
-                    <label for="mobile-search-checkbox" class="header__mobile-search">
+            <div class="header_search_mobile">
+                <label for="mobile-search-checkbox" class="header__mobile-search">
                         <i class="fas fa-search header_search-btn-icon"></i>
 
                     </label>
+            </div>
+
+
+
+            <div class="header_search hide-on-mobile">
+
+                <div class="header_search-input-wrap">
+                    <input type="search" name="search" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
+                    <div class="header_search-history">
+                        <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
+                        <ul class="header_search-history-list">
+                            <li class="header_search-history-item">
+                                <a href="">Mắt biếc</a>
+                            </li>
+                            <li class="header_search-history-item">
+                                <a href="">Xích linh</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header_search-history">
+
                 </div>
 
-
-
-                <div class="header_search hide-on-mobile">
-
-                    <div class="header_search-input-wrap">
-                        <input type="search" name="search" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
-                        <div class="header_search-history">
-                            <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
-                            <ul class="header_search-history-list">
-                                <li class="header_search-history-item">
-                                    <a href="">Mắt biếc</a>
-                                </li>
-                                <li class="header_search-history-item">
-                                    <a href="">Xích linh</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="header_search-history">
-
-                    </div>
-
-                    <button class="header_search-btn">
+                <button class="header_search-btn">
                                 <i class="fas fa-search header_search-btn-icon"></i>
                     </button>
 
-                </div>
+            </div>
         </form>
 
-            <div class="header_navbar hide-on-mobile-tablet">
-                <ul class="header_navbar-list">
-                    <li class="header_navbar-item header_navbar-item-book">
-                        <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
+        <div class="header_navbar hide-on-mobile-tablet">
+            <ul class="header_navbar-list">
+                <li class="header_navbar-item header_navbar-item-book">
+                    <a href="http://127.0.0.1:8000/book/" class="header_navbar-item-link">
                                     Đọc sách
                                 </a>
-                        <div class="header_book">
-                            <ul class="header_book-list">
-                                <form action="{% url 'search1' %}" method="post">
-                                    {% csrf_token %}
-                                    <li class="header_book-list-item">
-                                        <a href="" class="header_book-list-item-link"><button name="search1">Sách Việt Nam</button></a>
-                                    </li>
-                                </form>
-                                <form action="{% url 'search2' %}" method="post">
-                                    {% csrf_token %}
-                                    <li class="header_book-list-item">
-                                        <a href="" class="header_book-list-item-link"><button name="search2">Sách nước ngoài</button></a>
-                                    </li>
-                                </form>
-                            </ul>
-                        </div>
+                    <div class="header_book">
+                        <ul class="header_book-list">
+                            <form action="{% url 'filter-book-qt1' %}" method="post">
+                                {% csrf_token %}
+                                <li class="header_book-list-item">
+                                    <a href="" class="header_book-list-item-link"><button name="search1">Sách Việt Nam</button></a>
+                                </li>
+                            </form>
+                            <form action="{% url 'search2' %}" method="post">
+                                {% csrf_token %}
+                                <li class="header_book-list-item">
+                                    <a href="" class="header_book-list-item-link"><button name="search2">Sách nước ngoài</button></a>
+                                </li>
+                            </form>
+                        </ul>
+                    </div>
 
-                    </li>
-                    <li class="header_navbar-item header_navbar-item-music">
-                        <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
+                </li>
+                <li class="header_navbar-item header_navbar-item-music">
+                    <a href="http://127.0.0.1:8000/music/" class="header_navbar-item-link">
                                     Nghe nhạc
                                 </a>
 
-                        <div class="header_music">
-                            <ul class="header_music-list">
-                                 <form action="{% url 'search3' %}" method="post">
-                                     {% csrf_token %}
-                                <li class="header_music-list-item">
-                                    <a href="" class="header_music-list-item-link"><button>Nhạc Việt Nam</button></a>
-                                </li>
-                                </form>
-                                <form action="{% url 'search4' %}" method="post">
-                                    {% csrf_token %}
-                                <li class="header_music-list-item">
-                                        <a href="" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
-                                </li>
-                                </form>
-                            </ul>
+                    <div class="header_music">
+                        <ul class="header_music-list">
 
-                        </div>
-                    </li>
-                </ul>
-            </div>
+                            <li class="header_music-list-item">
+                                <a href="{% url 'music1' %}" class="header_music-list-item-link"><button>Nhạc Việt Nam</button></a>
+                            </li>
+
+
+                            <li class="header_music-list-item">
+                                <a href="{% url 'music2' %}" class="header_music-list-item-link"><button>Nhạc nước ngoài</button></a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
 
         {% if user.is_authenticated %}
         <div class="header_user">
             <img src="{{ user.account.user_avt.url }}" alt="" class="header_user-img">
-            <span class="header_user-name">{{ user.username }}</span>
+            <span class="header_user-name">{{user.account.hoten}}</span>
             <!-- <div class="header_user__">
                         <ul class="header_user-list">
                             <li class="header_user-list-item">
@@ -125,8 +123,8 @@
         </div>
         {% else %}
         <div class="header_btn">
-                <a class="header_btn-sign-up btn" href="http://127.0.0.1:8000/login/" class="csw-btn-button" rel="nofollow" >Đăng nhập</a>
-                <a class="header_btn-sign-up btn" href="http://127.0.0.1:8000/register/" class="csw-btn-button" rel="nofollow" >Đăng kí</a>
+            <a class="header_btn-sign-up btn" href="http://127.0.0.1:8000/login/" class="csw-btn-button" rel="nofollow">Đăng nhập</a>
+            <a class="header_btn-sign-up btn" href="http://127.0.0.1:8000/register/" class="csw-btn-button" rel="nofollow">Đăng kí</a>
 
 
 
@@ -136,69 +134,67 @@
     </div>
 </div>
 
-        <input type="checkbox" hidden class="nav__input" id="nav-mobile-input">
-        <label for="nav-mobile-input" class="nav__overlay"></label>
-        <nav class="nav__mobile">
-            <label for="nav-mobile-input" class="nav__mobile-close">
+<input type="checkbox" hidden class="nav__input" id="nav-mobile-input">
+<label for="nav-mobile-input" class="nav__overlay"></label>
+<nav class="nav__mobile">
+    <label for="nav-mobile-input" class="nav__mobile-close">
                 <i class="fas fa-times"></i>
             </label>
-            <ul class="nav__mobile-list">
-                <li>
-                    <a href="{% url 'home' %}" class="nav__mobile-link"><button >Quay lại Trang chủ</button></a>
+    <ul class="nav__mobile-list">
+        <li>
+            <a href="{% url 'home' %}" class="nav__mobile-link"><button >Quay lại Trang chủ</button></a>
+        </li>
+
+        <form action="{% url 'search1' %}" method="post">
+            {% csrf_token %}
+            <li>
+                <a href="" class="nav__mobile-link"><button name="search1">Sách Việt Nam</button></a>
+            </li>
+        </form>
+
+        <form action="{% url 'search2' %}" method="post">
+            {% csrf_token %}
+            <li>
+                <a href="" class="nav__mobile-link"><button name="search2">Sách nước ngoài</button></a>
+            </li>
+        </form>
+
+
+        <li>
+            <a href="{% url 'music1' %}" class="nav__mobile-link"><button>Nhạc Việt Nam</button></a>
+        </li>
+
+
+
+        <li>
+            <a href="{% url 'music2' %}" class="nav__mobile-link"><button>Nhạc nước ngoài</button></a>
+        </li>
+
+
+
+    </ul>
+</nav>
+
+
+<input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
+
+
+<div class="header__search">
+    <div class="header_search-input-wrap">
+        <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
+        <div class="header_search-history">
+            <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
+            <ul class="header_search-history-list">
+                <li class="header_search-history-item">
+                    <a href="">Mắt biếc</a>
                 </li>
-
-                <form action="{% url 'search1' %}" method="post">
-                    {% csrf_token %}
-                    <li>
-                        <a href="" class="nav__mobile-link"><button name="search1">Sách Việt Nam</button></a>
-                    </li>
-                </form>
-
-                <form action="{% url 'search2' %}" method="post">
-                    {% csrf_token %}
-                    <li>
-                        <a href="" class="nav__mobile-link"><button name="search2">Sách nước ngoài</button></a>
-                    </li>
-                </form>
-
-                <form action="{% url 'search3' %}" method="post">
-                    {% csrf_token %}
-                    <li>
-                        <a href="" class="nav__mobile-link"><button>Nhạc Việt Nam</button></a>
-                    </li>
-                </form>
-
-                <form action="{% url 'search4' %}" method="post">
-                    {% csrf_token %}
-                    <li>
-                        <a href="" class="nav__mobile-link"><button>Nhạc nước ngoài</button></a>
-                    </li>
-                </form>
-
-
+                <li class="header_search-history-item">
+                    <a href="">Xích linh</a>
+                </li>
             </ul>
-        </nav>
-
-
-        <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-
-
-        <div class="header__search">
-            <div class="header_search-input-wrap">
-                <input type="text" name="" id="" class="header_search-input" placeholder="Bạn muốn tìm kiếm điều gì?">
-                <div class="header_search-history">
-                    <h3 class="header_search-history-heading">Lịch sử tìm kiếm</h3>
-                    <ul class="header_search-history-list">
-                        <li class="header_search-history-item">
-                            <a href="">Mắt biếc</a>
-                        </li>
-                        <li class="header_search-history-item">
-                            <a href="">Xích linh</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <button class="header_search-btn">
+        </div>
+    </div>
+    <button class="header_search-btn">
                 <i class="fas fa-search header_search-btn-icon"></i>
             </button>
-        </div>
+</div>

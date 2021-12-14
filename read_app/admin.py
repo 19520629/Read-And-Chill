@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  FavoriteListSong, Sach, Nhac, CaSi, TacGia, TheLoai, Favorite, Account, Comment
+from .models import  Sach, Nhac, CaSi, TacGia, TheLoai, Favorite, Account, Comment, Favorite_music
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
@@ -20,8 +20,8 @@ admin.site.register(CaSi)
 admin.site.register(TacGia)
 admin.site.register(TheLoai)
 admin.site.register(Favorite)
+admin.site.register(Favorite_music)
 admin.site.register(Sach)
 admin.site.unregister(User)
 admin.site.register(User, CustomizedUserAdmin)
 admin.site.register(Comment)
-admin.site.register(FavoriteListSong)

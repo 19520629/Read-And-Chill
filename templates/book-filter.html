@@ -1,0 +1,442 @@
+{% extends 'base.html' %} {% load static %} {% block cssblock %}
+<link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
+<link rel="stylesheet" href="{% static '/assets/css/main.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+{% endblock %} {% block content %}
+<div id="main">
+<!--headder-->
+    {% if user.is_authenticated %}
+
+    <h3 class="space-navbar-content"></h3>
+
+    {% else %}
+
+    <h3 class="space-navbar-content" style="padding: 0;"></h3>
+
+    {% endif %}
+    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
+
+        <div class="grid wide">
+            <div class="row sm-gutter">
+                <div class="col l-2">
+                    <nav class="category">
+                        <span class="category_book-type">Xuất xứ</span>
+                        <ul class="category_book-type-list">
+                            <li class="category_book-type-list-item">
+                                <a href="http://127.0.0.1:8000/book/" class="category_book-type-list-item-link">Tất cả</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-qt1' %}" class="category_book-type-list-item-link">Sách Việt Nam</a>
+                            </li>
+
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-qt2' %}" class="category_book-type-list-item-link">Sách nước ngoài</a>
+                            </li>
+
+
+                        </ul>
+
+                        <span class="category_book-type">Tác giả</span>
+                        <ul class="category_book-type-list">
+                            <li class="category_book-type-list-item">
+                                <a href="" class="category_book-type-list-item-link">Tất cả</a>
+                            </li>
+
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tg1' %}" class="category_book-type-list-item-link">Nguyễn Nhật Ánh</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tg2' %}" class="category_book-type-list-item-link">J.K. Rowling</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tg3' %}" class="category_book-type-list-item-link">Paulo Coelho</a>
+                            </li>
+                        </ul>
+
+                        <span class="category_book-type">Thể loại</span>
+                        <ul class="category_book-type-list">
+                            <li class="category_book-type-list-item">
+                                <a href="http://127.0.0.1:8000/book/" class="category_book-type-list-item-link">Tất cả</a>
+                            </li>
+
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tl1' %}" class="category_book-type-list-item-link">Phiêu lưu</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tl2' %}" class="category_book-type-list-item-link">Phép thuật</a>
+                            </li>
+                            <li class="category_book-type-list-item">
+                                <a href="{% url 'filter-book-tl3' %}" class="category_book-type-list-item-link">Thiếu nhi</a>
+                            </li>
+                        </ul>
+
+
+                    </nav>
+                </div>
+
+
+                <div class="col l-10">
+                    <div class="row sm-gutterr" style="margin-left: 60px; margin-right: -33px;">
+                        {% block content_tensach %} {% for item in titles %} {% if titles %}
+                        <div class="col l-5">
+
+                            <ul class="align">
+                                <li>
+                                  <figure class='book'>
+                                    <!-- Front -->
+                                    <ul class='hardcover_front'>
+                                      <li>
+                                        <img src="{{ item.book_anhbia.url }}" alt="" width="100%" height="100%">
+                                      </li>
+                                      <li></li>
+                                    </ul>
+                                    <!-- Pages -->
+                                    <ul class='page'>
+                                      <li></li>
+                                      <li>
+                                          <a class="btn-page btn" href="{% url 'introbook' item.slug %}">Đọc ngay</a>
+                                      </li>
+                                      <li></li>
+                                      <li></li>
+                                      <li></li>
+                                    </ul>
+                                    <!-- Back -->
+                                    <ul class='hardcover_back'>
+                                      <li></li>
+                                      <li></li>
+                                    </ul>
+                                    <ul class='book_spine'>
+                                      <li></li>
+                                      <li></li>
+                                    </ul>
+                                    <figcaption>
+                                        <h1>{{ item.book_tensach }}</h1>
+                                        <span>{{ item.book_tacgia }}</span>
+
+                                        <p class="book-view"><i class="fas fa-eye"></i> Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
+                                        <p class="book-view"><i class="fas fa-thumbs-up"></i> Lượt thích: {{ item.book_danhgia|floatformat:"0" }}</p>
+
+                                    </figcaption>
+                                  </figure>
+                                </li>
+
+
+                            </ul>
+
+                        </div>
+                        {% endif %} {% endfor %} {% endblock %}
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <h3 class="web-content_heading"></h3>
+    </div>
+
+
+</div>
+
+
+<div class="modal-login">
+    <div class="modal-login_container">
+        <div class="modal-login_close">
+            <i class="fas fa-times modal-login_close-icon"></i>
+        </div>
+        <header class="modal-login_header">
+            Đăng nhập tài khoản
+        </header>
+        <div class="modal-login_body">
+
+            <form action="" method="POST" class="form" id="form-2">
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <button class="form-submit">Đăng nhập</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-register">
+    <div class="modal-register_container">
+        <div class="modal-register_close">
+            <i class="fas fa-times modal-register_close-icon"></i>
+        </div>
+        <header class="modal-register_header">
+            Đăng ký tài khoản
+        </header>
+        <div class="modal-register_body">
+
+            <form action="" method="POST" class="form" id="form-1">
+
+                <div class="form-group">
+                    <label for="fullname" class="form-label">Tên đầy đủ</label>
+                    <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Mật khẩu</label>
+                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+                    <span class="form-message"></span>
+                </div>
+
+                <button class="form-submit">Đăng ký</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="modal_user js-modal_user">
+    <div class="modal_user-container js-modal_user-container">
+
+        <button class="modal_user-close js-modal_user-close">
+                <i class="fas fa-times modal-user_close-icon"></i>
+            </button>
+
+        <header class="modal_user-header">
+            <i class="modal_user-heading-icon ti-briefcase"></i> Góc người dùng
+        </header>
+
+        <div class="modal_user-body row">
+            <div class="modal_user-body-selection column">
+                <div class="modal_user-avt">
+                    <img src="{{ user.account.user_avt.url }}" alt="" class="modal_user-img">
+                    <p class="modal_user-name">User name</p>
+                    <button class="modal_user-avt-btn ">Đổi ảnh</button>
+                </div>
+                <ul class="modal_user-li">
+                    <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
+                    <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
+                    <li><button class="modal_user-select js_select-fav-song">Nhạc yêu thích</button></li>
+                    <a href="logout/"><li><button href="logout" class="modal_user-select">Đăng xuất</button></li></a>
+                </ul>
+            </div>
+            <div class="modal_user-body-info  js-modal_user-body-info">
+                <ul class="modal_info-input ">
+                    <li>
+                        <p>Họ tên</p>
+                        <input type="text" class="info-input" placeholder="{{ user.account.hoten }}">
+                    </li>
+
+                    <li>
+                        <p>Giới tính</p>
+                        <div class="info-input-radio">
+                            <input checked="checked" type="radio" name="gender" id="raido-gender1" value="Nam"> Nam
+                            <input type="radio" name="gender" id="raido-gender2" value="Nữ"> Nữ
+                            <input type="radio" name="gender" id="raido-gender3" value="Khác"> Khác
+                        </div>
+
+                    </li>
+
+                    <li>
+                        <p>Độ tuổi</p>
+                        <input type="number" class="info-input" placeholder="{{ user.account.tuoi }}">
+                    </li>
+
+                    <li>
+                        <p>Địa chỉ email</p>
+                        <input type="email" class="info-input" placeholder="{{ user.email }}">
+                    </li>
+                </ul>
+
+                <div class="modal_info-button">
+                    <button>Đổi mật khẩu</button>
+                    <button>Lưu thông tin</button>
+                </div>
+            </div>
+
+            <div class="modal_user-body-book js-modal_user-body-book">
+                <div class="modal_fav-book">
+                    {% for item in fav %}
+                    <img src="{{ item.book_anhbia.url }}" alt="" width="10%" height="10%" > 
+                    <a href="{% url 'introbook' item.slug %}">{{ item.book_tensach }}</a>
+                    {% endfor%}
+                </div>
+                <div class="modal_fav-book-button">
+                    <button>Thêm sách</button>
+                    <button>Xóa sách</button>
+                </div>
+            </div>
+
+            <div class="modal_user-body-song js-modal_user-body-song">
+                <ul class="modal_fav-song">
+                    <li>
+                        <div class="modal_fav-song-li row">
+                            <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <div class="fav-song-info ">
+                                <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
+                                <p>Thể loại: Nhạc không lời</p>
+                            </div>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="modal_fav-song-li row">
+                            <img src="{% static '/assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <div class="fav-song-info ">
+                                <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
+                                <p>Thể loại: Nhạc không lời</p>
+                            </div>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="modal_fav-song-li row">
+                            <img src="{% static 'assets/img/music/nhac-piano.png' %}" alt="" class="fav-song-img">
+                            <div class="fav-song-info ">
+                                <p style="font-weight: bold; font-size: 17px;">Nhạc đàn piano thư giãn</p>
+                                <p>Thể loại: Nhạc không lời</p>
+                            </div>
+                            <i class="fas fa-play fav-song-icon-play"></i>
+                        </div>
+                    </li>
+                </ul>
+                <div class="modal_fav-song-button">
+                    <button>Thêm nhạc</button>
+                    <button>Xóa nhạc</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block jsblock %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mong muốn của chúng ta
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirmed('#password_confirmation', function() {
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mật khẩu nhập lại không chính xác')
+            ],
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
+            }
+        });
+
+
+        Validator({
+            form: '#form-2',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isEmail('#email'),
+                Validator.minLength('#password', 6),
+            ],
+            onSubmit: function(data) {
+                // Call API
+                console.log(data);
+            }
+        });
+    });
+</script>
+
+<script>
+    // Hiệu ứng thả tym yêu thích
+    const likedBtn = document.querySelectorAll(".book-item_action_like");
+    var elements = Array.from(likedBtn)
+
+    elements.forEach(function liked(e) {
+        e.addEventListener('click', () => {
+            if (e.classList.contains("liked")) {
+                e.classList.remove("liked");
+            } else {
+                e.classList.add("liked");
+            }
+        });
+    })
+</script>
+
+<!-- JS Đăng nhập, đăng ký -->
+<script src="./validator.js">
+</script>
+<!--  -->
+
+<script>
+    const modalLogin = document.querySelector(".modal-login")
+    const modalLoginClose = document.querySelector(".modal-login_close")
+    const modalLoginContainer = document.querySelector(".modal-login_container")
+    const loginBtn = document.querySelector(".header_btn-sign-in")
+
+    function showModalLogin() {
+        modalLogin.classList.add("open")
+    }
+
+    function hideModalLogin() {
+        modalLogin.classList.remove("open")
+    }
+
+    loginBtn.addEventListener('click', showModalLogin)
+    loginBtn.addEventListener('click', hideModalregister)
+    modalLoginClose.addEventListener('click', hideModalLogin)
+    modalLogin.addEventListener('click', hideModalLogin)
+    modalLoginContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+
+
+
+    const modalregister = document.querySelector(".modal-register")
+    const modalregisterClose = document.querySelector(".modal-register_close")
+    const modalregisterContainer = document.querySelector(".modal-register_container")
+    const registerBtn = document.querySelector(".header_btn-sign-up")
+
+    function showModalregister() {
+        modalregister.classList.add("open")
+    }
+
+    function hideModalregister() {
+        modalregister.classList.remove("open")
+    }
+
+    registerBtn.addEventListener('click', showModalregister)
+    registerBtn.addEventListener('click', hideModalLogin)
+    modalregisterClose.addEventListener('click', hideModalregister)
+    modalregister.addEventListener('click', hideModalregister)
+    modalregisterContainer.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+</script>
+{% endblock %}
