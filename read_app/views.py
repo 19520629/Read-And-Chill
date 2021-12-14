@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 import re
 import sys
 from django.contrib.auth.models import User
+import smtplib
+from email.message import EmailMessage
 
 
 # Create your views here.
@@ -37,11 +39,44 @@ def convert(text):
 #
 def register(request):
     form=RegistrationForm()
+    
     if request.method=='POST':
         form=RegistrationForm(request.POST)
         if form.is_valid():
+            dulieu=form.data['email']
             form.save()
+            EMAIL_ADDRESS = 'readandchill17@gmail.com'
+            EMAIL_PASSWORD = 'django123456'
+            msg = EmailMessage()
+            msg['Subject'] = 'This is my first Python email'
+            msg['From'] = 'readandchill17@gmail.com'
+            msg['To'] = dulieu
+            msg.set_content('''
+                            <!DOCTYPE html>
+                            <html>
+                                <body>
+                                    <div style="background-color:#eee;padding:10px 20px;">
+                                        <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;color#454349;">Thư chào mừng,</h2>
+                                    </div>
+                                    <div style="padding:20px 0px">
+                                        <div style="height: 500px;width:400px">
+                                            <img src="https://dummyimage.com/500x300/000/fff&text=Dummy+image" style="height: 300px;">
+                                            <div style="text-align:center;">
+                                                <h3>Article 1</h3>
+                                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A ducimus deleniti nemo quibusdam iste sint!</p>
+                                                <a href="#">Read more</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </body> 
+                            </html>
+                            ''', subtype='html')
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD) 
+                smtp.send_message(msg)
+            
             return HttpResponseRedirect('/')
+    
     return render(request, 'dangki.html', {'form':form})
 
 def updateuser(request):
