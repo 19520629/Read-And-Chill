@@ -48,7 +48,7 @@ def register(request):
             EMAIL_ADDRESS = 'readandchill17@gmail.com'
             EMAIL_PASSWORD = 'django123456'
             msg = EmailMessage()
-            msg['Subject'] = 'This is my first Python email'
+            msg['Subject'] = '[R&C] Mail xác nhận đăng ký thành công!'
             msg['From'] = 'readandchill17@gmail.com'
             msg['To'] = dulieu
             msg.set_content('''
@@ -56,14 +56,14 @@ def register(request):
                             <html>
                                 <body>
                                     <div style="background-color:#eee;padding:10px 20px;">
-                                        <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;color#454349;">Thư chào mừng,</h2>
+                                        <h2 style="font-family:Georgia, 'Times New Roman', Times, serif;color#454349;">Chúc mừng bạn đã đăng ký thành công!</h2>
                                     </div>
                                     <div style="padding:20px 0px">
                                         <div style="height: 500px;width:400px">
-                                            <img src="https://dummyimage.com/500x300/000/fff&text=Dummy+image" style="height: 300px;">
+                                            <img src="https://img.freepik.com/free-vector/flat-design-world-book-day-concept_52683-35711.jpg?size=338&ext=jpg" style="height: 300px;">
                                             <div style="text-align:center;">
-                                                <h3>Article 1</h3>
-                                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A ducimus deleniti nemo quibusdam iste sint!</p>
+                                                <h3>Chào mừng bạn đến với Read & Chill</h3>
+                                                <p>Hãy cùng nhau tận hưởng khoảng thời gian yên bình và thoải mái bên cạnh những cuốn sách hay và những bản nhạc du dương...</p>
                                                 <a href="#">Read more</a>
                                             </div>
                                         </div>
