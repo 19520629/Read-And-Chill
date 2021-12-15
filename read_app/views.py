@@ -75,7 +75,7 @@ def register(request):
                 smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD) 
                 smtp.send_message(msg)
             
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/login')
     
     return render(request, 'dangki.html', {'form':form})
 

@@ -18,6 +18,17 @@ class RegistrationForm(forms.Form):
                 return password2
             raise forms.ValidationError("Mat khau khong hop le")
 
+
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+        
+    #     try:
+    #         User.objects.filter(email=email)
+    #     except ObjectDoesNotExist:
+    #         return email
+    #     raise forms.ValidationError("Email đã được đăng kí")
+
+
     def clean_username(self):
         username = self.cleaned_data['username']
         if not re.search(r'^\w+$', username):
