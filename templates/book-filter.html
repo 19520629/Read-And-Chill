@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block cssblock %}
+<meta charset="UTF-8">
 <link rel="stylesheet" href="{% static '/assets/fonts/fontawesome-free-5.15.4-web/css/all.min.css' %}">
 <link rel="stylesheet" href="{% static '/assets/css/grid.css' %}">
 <link rel="stylesheet" href="{% static '/assets/css/base.css' %}">
@@ -11,16 +12,11 @@
 <div id="main">
 <!--headder-->
     {% if user.is_authenticated %}
-
-    <h3 class="space-navbar-content"></h3>
-
+    <div class="space-navbar-content"></div>
     {% else %}
-
-    <h3 class="space-navbar-content" style="padding: 0;"></h3>
-
+    <div class="space-navbar-content" style="padding: 0;"></div>
     {% endif %}
     <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
-
         <div class="grid wide">
             <div class="row sm-gutter">
                 <div class="col l-2">
@@ -37,16 +33,12 @@
                             <li class="category_book-type-list-item">
                                 <a href="{% url 'filter-book-qt2' %}" class="category_book-type-list-item-link">Sách nước ngoài</a>
                             </li>
-
-
                         </ul>
-
                         <span class="category_book-type">Tác giả</span>
                         <ul class="category_book-type-list">
                             <li class="category_book-type-list-item">
                                 <a href="" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
-
                             <li class="category_book-type-list-item">
                                 <a href="{% url 'filter-book-tg1' %}" class="category_book-type-list-item-link">Nguyễn Nhật Ánh</a>
                             </li>
@@ -57,13 +49,11 @@
                                 <a href="{% url 'filter-book-tg3' %}" class="category_book-type-list-item-link">Paulo Coelho</a>
                             </li>
                         </ul>
-
                         <span class="category_book-type">Thể loại</span>
                         <ul class="category_book-type-list">
                             <li class="category_book-type-list-item">
                                 <a href="http://127.0.0.1:8000/book/" class="category_book-type-list-item-link">Tất cả</a>
                             </li>
-
                             <li class="category_book-type-list-item">
                                 <a href="{% url 'filter-book-tl1' %}" class="category_book-type-list-item-link">Phiêu lưu</a>
                             </li>
@@ -74,24 +64,19 @@
                                 <a href="{% url 'filter-book-tl3' %}" class="category_book-type-list-item-link">Thiếu nhi</a>
                             </li>
                         </ul>
-
-
                     </nav>
                 </div>
-
-
                 <div class="col l-10">
                     <div class="row sm-gutterr" style="margin-left: 60px; margin-right: -33px;">
                         {% block content_tensach %} {% for item in titles %} {% if titles %}
                         <div class="col l-5">
-
                             <ul class="align">
                                 <li>
                                   <figure class='book'>
                                     <!-- Front -->
                                     <ul class='hardcover_front'>
                                       <li>
-                                        <img src="{{ item.book_anhbia.url }}" alt="" width="100%" height="100%">
+                                        <img src="{{ item.book_anhbia.url }}" alt="" style="width: 100%; height: 100%">
                                       </li>
                                       <li></li>
                                     </ul>
@@ -117,212 +102,19 @@
                                     <figcaption>
                                         <h1>{{ item.book_tensach }}</h1>
                                         <span>{{ item.book_tacgia }}</span>
-
                                         <p class="book-view"><i class="fas fa-eye"></i> Lượt xem: {{ item.book_luotxem|floatformat:"0" }}</p>
                                         <p class="book-view"><i class="fas fa-thumbs-up"></i> Lượt thích: {{ item.book_danhgia|floatformat:"0" }}</p>
-
                                     </figcaption>
                                   </figure>
                                 </li>
-
-
                             </ul>
-
                         </div>
                         {% endif %} {% endfor %} {% endblock %}
                     </div>
                 </div>
-
-
-
             </div>
         </div>
-        <h3 class="web-content_heading"></h3>
-    </div>
-
-
-</div>
-
-
-<div class="modal-login">
-    <div class="modal-login_container">
-        <div class="modal-login_close">
-            <i class="fas fa-times modal-login_close-icon"></i>
-        </div>
-        <header class="modal-login_header">
-            Đăng nhập tài khoản
-        </header>
-        <div class="modal-login_body">
-
-            <form action="" method="POST" class="form" id="form-2">
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng nhập</button>
-            </form>
-
-        </div>
+        <h3 class="web-content_heading">.</h3>
     </div>
 </div>
-
-
-<div class="modal-register">
-    <div class="modal-register_container">
-        <div class="modal-register_close">
-            <i class="fas fa-times modal-register_close-icon"></i>
-        </div>
-        <header class="modal-register_header">
-            Đăng ký tài khoản
-        </header>
-        <div class="modal-register_body">
-
-            <form action="" method="POST" class="form" id="form-1">
-
-                <div class="form-group">
-                    <label for="fullname" class="form-label">Tên đầy đủ</label>
-                    <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng ký</button>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-{% endblock %} {% block jsblock %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mong muốn của chúng ta
-        Validator({
-            form: '#form-1',
-            formGroupSelector: '.form-group',
-            errorSelector: '.form-message',
-            rules: [
-                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-                Validator.isRequired('#password_confirmation'),
-                Validator.isConfirmed('#password_confirmation', function() {
-                    return document.querySelector('#form-1 #password').value;
-                }, 'Mật khẩu nhập lại không chính xác')
-            ],
-            onSubmit: function(data) {
-                // Call API
-                console.log(data);
-            }
-        });
-
-
-        Validator({
-            form: '#form-2',
-            formGroupSelector: '.form-group',
-            errorSelector: '.form-message',
-            rules: [
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-            ],
-            onSubmit: function(data) {
-                // Call API
-                console.log(data);
-            }
-        });
-    });
-</script>
-
-<script>
-    // Hiệu ứng thả tym yêu thích
-    const likedBtn = document.querySelectorAll(".book-item_action_like");
-    var elements = Array.from(likedBtn)
-
-    elements.forEach(function liked(e) {
-        e.addEventListener('click', () => {
-            if (e.classList.contains("liked")) {
-                e.classList.remove("liked");
-            } else {
-                e.classList.add("liked");
-            }
-        });
-    })
-</script>
-
-<!-- JS Đăng nhập, đăng ký -->
-<script src="./validator.js">
-</script>
-<!--  -->
-
-<script>
-    const modalLogin = document.querySelector(".modal-login")
-    const modalLoginClose = document.querySelector(".modal-login_close")
-    const modalLoginContainer = document.querySelector(".modal-login_container")
-    const loginBtn = document.querySelector(".header_btn-sign-in")
-
-    function showModalLogin() {
-        modalLogin.classList.add("open")
-    }
-
-    function hideModalLogin() {
-        modalLogin.classList.remove("open")
-    }
-
-    loginBtn.addEventListener('click', showModalLogin)
-    loginBtn.addEventListener('click', hideModalregister)
-    modalLoginClose.addEventListener('click', hideModalLogin)
-    modalLogin.addEventListener('click', hideModalLogin)
-    modalLoginContainer.addEventListener('click', function(e) {
-        e.stopPropagation()
-    })
-
-
-
-    const modalregister = document.querySelector(".modal-register")
-    const modalregisterClose = document.querySelector(".modal-register_close")
-    const modalregisterContainer = document.querySelector(".modal-register_container")
-    const registerBtn = document.querySelector(".header_btn-sign-up")
-
-    function showModalregister() {
-        modalregister.classList.add("open")
-    }
-
-    function hideModalregister() {
-        modalregister.classList.remove("open")
-    }
-
-    registerBtn.addEventListener('click', showModalregister)
-    registerBtn.addEventListener('click', hideModalLogin)
-    modalregisterClose.addEventListener('click', hideModalregister)
-    modalregister.addEventListener('click', hideModalregister)
-    modalregisterContainer.addEventListener('click', function(e) {
-        e.stopPropagation()
-    })
-</script>
 {% endblock %}
