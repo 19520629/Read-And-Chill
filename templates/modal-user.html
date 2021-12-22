@@ -3,15 +3,12 @@
 <!-- Modal user -->
 <div class="modal_user js-modal_user">
     <div class="modal_user-container js-modal_user-container">
-
         <button class="modal_user-close js-modal_user-close">
                 <i class="fas fa-times modal-user_close-icon"></i>
             </button>
-
         <header class="modal_user-header">
             <i class="modal_user-heading-icon ti-briefcase"></i> Góc người dùng
         </header>
-
         <div class="modal_user-body row">
             <div class="modal_user-body-selection column">
                 <div class="modal_user-avt">
@@ -21,7 +18,6 @@
                 <ul class="modal_user-li">
                     <li><button class="modal_user-select js_select-info">Thông tin cá nhân</button></li>
                     <li><button class="modal_user-select js_select-fav-book">Sách yêu thích</button></li>
-                    
                     <a href="logout/">
                         <li><button href="logout" class="modal_user-select">Đăng xuất</button></li>
                     </a>
@@ -35,7 +31,6 @@
                             <p>Họ tên</p>
                             <input type="text" class="info-input" name="hoten" value="{{user.account.hoten}}">
                         </li>
-
                         <li>
                             <p>Giới tính</p>
                             <div class="info-input-radio">
@@ -47,14 +42,11 @@
                                 <input type="text" class="info-input" value="Khác">
                                 {% endif %}
                             </div>
-
                         </li>
-
                         <li>
                             <p>Độ tuổi</p>
                             <input type="number" class="info-input" name="tuoi" value="{{ user.account.tuoi }}">
                         </li>
-
                         <li>
                             <p>Địa chỉ email</p>
                             <input type="email" class="info-input" name="email" placeholder="{{ user.email }}">
@@ -64,12 +56,7 @@
                         <a href="{% url 'updateuser' %}">Cập nhật thông tin</a>
                     </div>
                 </form>
-
-
-
-
             </div>
-
             <div class="modal_user-body-book js-modal_user-body-book">
                 <div class="modal_fav-book" style=" overflow-y: scroll;">
                     {% block favorite %}{% for item in fav %}
@@ -86,7 +73,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     /* <!-- Đóng mở hộp user --> */

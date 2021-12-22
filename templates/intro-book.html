@@ -9,13 +9,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> {% endblock %} {% block content %}
 <div id="main">
     {% if user.is_authenticated %}
-
-    <h3 class="space-navbar-content"></h3>
-
+    <div class="space-navbar-content"></div>
     {% else %}
-
-    <h3 class="space-navbar-content" style="padding: 0;"></h3>
-
+    <div class="space-navbar-content" style="padding: 0;"></div>
     {% endif %} {% block preview %} {% for item in titles %} {% if item.slug == slug %}
     <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
         <div class="intro-book-container col">
@@ -29,7 +25,6 @@
                     <p style="font-weight: bold;">Giới thiệu chung:</p>
                     <p> {{ item.book_tomtat }}</p>
                 </div>
-
                 <div class="introduce-button row">
                     <a href="{% url 'readbook' item.slug item.slug %}"><button><i class="fas fa-book-open"></i> Đọc Ngay</button></a>
                    
@@ -45,9 +40,7 @@
                     </form>
                     <input type="text" style="display: None" id="Copy" value="http://127.0.0.1:8000{% url 'introbook' item.slug %}">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000{% url 'introbook' item.slug %}"><button><i class="fas fa-share"></i> Chia Sẻ</button>
-
                     </a>
-
                     <script>
                         function Hello() {
                             var copyText = document.getElementById("Copy");
@@ -65,27 +58,17 @@
                     </script>
                 </div>
             </div>
-
             <div class="introduce-comment col">
                 <div class="comment-header">Nhận Xét Sách ({{comments.count}}):</div>
-
-
                 <form method="post" class="cmt-post">
                     {% csrf_token %} {{ comment_form.as_p }} {% if request.user.is_authenticated %}
-                    <input type="submit" name="comment" value="Nhận xét" class="btn-comment"> </input>
+                    <input type="submit" name="comment" value="Nhận xét" class="btn-comment">
                     {% else %}
-                    <input type="submit" value="Đăng nhập để bình luận" disabled> </input>
+                    <input type="submit" value="Đăng nhập để bình luận" disabled>
                     {% endif %}
                 </form>
-
-
-
-
-
                 <div class="col">
-
                         {% if not comments %}
-
                         <div class="comment-user">
                             <h1>Chưa có bình luận nào!</h1>
                             <a href="#">Thêm bình luận.</a>
@@ -97,10 +80,8 @@
                                     <img src="{{ comment.user.account.user_avt.url }}" alt="" style="width: 50px;height: 50px;border-radius: 50%;margin-right: 15px;">
                                     {{ comment.user }}
                                 </div>
-
                                 <h4 style="padding-left:10px;padding-bottom: 10px;">{{ comment.date_added }}</h4>
                                 <p>{{ comment.body }}</p>
-
                             </div>
                             {% if user.id == comment.user.id %}
                                 <form method="post" style="font-size: 1.6rem;margin-left: 10px;">
@@ -112,198 +93,11 @@
                                 {% endif %}
                         </div>
                         {% endfor %} {% endif %}
-
-
-
                 </div>
             </div>
         </div>
     </div>
     {% endif %} {% endfor %} {% endblock %}
-
 </div>
-
-<div class="modal-login">
-    <div class="modal-login_container">
-        <div class="modal-login_close">
-            <i class="fas fa-times modal-login_close-icon"></i>
-        </div>
-        <header class="modal-login_header">
-            Đăng nhập tài khoản
-        </header>
-        <div class="modal-login_body">
-
-            <form action="" method="POST" class="form" id="form-2">
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng nhập</button>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="modal-register">
-    <div class="modal-register_container">
-        <div class="modal-register_close">
-            <i class="fas fa-times modal-register_close-icon"></i>
-        </div>
-        <header class="modal-register_header">
-            Đăng ký tài khoản
-        </header>
-        <div class="modal-register_body">
-
-            <form action="" method="POST" class="form" id="form-1">
-
-                <div class="form-group">
-                    <label for="fullname" class="form-label">Tên đầy đủ</label>
-                    <input id="fullname" name="fullname" type="text" placeholder="VD: Khoa Đặng" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
-                    <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password" class="form-label">Mật khẩu</label>
-                    <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
-                    <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
-                    <span class="form-message"></span>
-                </div>
-
-                <button class="form-submit">Đăng ký</button>
-            </form>
-
-        </div>
-    </div>
-</div>
-{% endblock %} {% block jsblock %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mong muốn của chúng ta
-        Validator({
-            form: '#form-1',
-            formGroupSelector: '.form-group',
-            errorSelector: '.form-message',
-            rules: [
-                Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-                Validator.isRequired('#password_confirmation'),
-                Validator.isConfirmed('#password_confirmation', function() {
-                    return document.querySelector('#form-1 #password').value;
-                }, 'Mật khẩu nhập lại không chính xác')
-            ],
-            onSubmit: function(data) {
-                // Call API
-                console.log(data);
-            }
-        });
-
-
-        Validator({
-            form: '#form-2',
-            formGroupSelector: '.form-group',
-            errorSelector: '.form-message',
-            rules: [
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-            ],
-            onSubmit: function(data) {
-                // Call API
-                console.log(data);
-            }
-        });
-    });
-</script>
-
-<script>
-    // Hiệu ứng thả tym yêu thích
-    const likedBtn = document.querySelectorAll(".book-item_action_like");
-    var elements = Array.from(likedBtn)
-
-    elements.forEach(function liked(e) {
-        e.addEventListener('click', () => {
-            if (e.classList.contains("liked")) {
-                e.classList.remove("liked");
-            } else {
-                e.classList.add("liked");
-            }
-        });
-    })
-</script>
-
-<!-- JS Đăng nhập, đăng ký -->
-<script src="./validator.js">
-</script>
-<!--  -->
-
-<script>
-    const modalLogin = document.querySelector(".modal-login")
-    const modalLoginClose = document.querySelector(".modal-login_close")
-    const modalLoginContainer = document.querySelector(".modal-login_container")
-    const loginBtn = document.querySelector(".header_btn-sign-in")
-
-    function showModalLogin() {
-        modalLogin.classList.add("open")
-    }
-
-    function hideModalLogin() {
-        modalLogin.classList.remove("open")
-    }
-
-    loginBtn.addEventListener('click', showModalLogin)
-    loginBtn.addEventListener('click', hideModalregister)
-    modalLoginClose.addEventListener('click', hideModalLogin)
-    modalLogin.addEventListener('click', hideModalLogin)
-    modalLoginContainer.addEventListener('click', function(e) {
-        e.stopPropagation()
-    })
-
-
-
-    const modalregister = document.querySelector(".modal-register")
-    const modalregisterClose = document.querySelector(".modal-register_close")
-    const modalregisterContainer = document.querySelector(".modal-register_container")
-    const registerBtn = document.querySelector(".header_btn-sign-up")
-
-    function showModalregister() {
-        modalregister.classList.add("open")
-    }
-
-    function hideModalregister() {
-        modalregister.classList.remove("open")
-    }
-
-    registerBtn.addEventListener('click', showModalregister)
-    registerBtn.addEventListener('click', hideModalLogin)
-    modalregisterClose.addEventListener('click', hideModalregister)
-    modalregister.addEventListener('click', hideModalregister)
-    modalregisterContainer.addEventListener('click', function(e) {
-        e.stopPropagation()
-    })
-</script>
-
-
 
 {% endblock %}

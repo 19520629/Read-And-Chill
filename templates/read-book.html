@@ -9,19 +9,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 {% endblock %} {% block content %}
 <div id="main">
-
     {% if user.is_authenticated %}
-
-    <h3 class="space-navbar-content"></h3>
-
+    <div class="space-navbar-content"></div>
     {% else %}
-
-    <h3 class="space-navbar-content" style="padding: 0;"></h3>
-
+    <div class="space-navbar-content" style="padding: 0;"></div>
     {% endif %}
     {% if titles %}
-    {% for item in titles %}{% if item.slug == slug %}
-    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})"">
+    {% for item in titles %} {% if item.slug == slug %}
+    <div class="container" style="background-image: url({% static 'assets/img/background-homepage.png' %})">
         <div class="read-book-container col">
             <div class="read-book-header">
                 <button class="prev-page">
@@ -35,125 +30,112 @@
                 <button class="next-page">
                         Trang Sau<i class="fas fa-arrow-circle-right"></i>
                     </button>
-
-
             </div>
             <div class="read-book-body">
                 <canvas id="pdf-render"></canvas>
             </div>
-
-
-
         </div>
-
-
         <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
         <!--read pdf-->
         <script >
             {% if titles %}
             const url = '{{ item.book_noidung.url }}';
             {% endif %}
+            let pdfDoc = null,
+              pageNum = 1,
+              pageIsRendering = false,
+              pageNumIsPending = null;
 
+            const scale = 1.5,
+              canvas = document.querySelector('#pdf-render'),
+              ctx = canvas.getContext('2d');
 
+            // Render the page
+            const renderPage = num => {
+              pageIsRendering = true;
 
-let pdfDoc = null,
-  pageNum = 1,
-  pageIsRendering = false,
-  pageNumIsPending = null;
+              // Get page
+              pdfDoc.getPage(num).then(page => {
+                // Set scale
+                const viewport = page.getViewport({ scale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
 
-const scale = 1.5,
-  canvas = document.querySelector('#pdf-render'),
-  ctx = canvas.getContext('2d');
+                const renderCtx = {
+                  canvasContext: ctx,
+                  viewport
+                };
 
-// Render the page
-const renderPage = num => {
-  pageIsRendering = true;
+                page.render(renderCtx).promise.then(() => {
+                  pageIsRendering = false;
 
-  // Get page
-  pdfDoc.getPage(num).then(page => {
-    // Set scale
-    const viewport = page.getViewport({ scale });
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+                  if (pageNumIsPending !== null) {
+                    renderPage(pageNumIsPending);
+                    pageNumIsPending = null;
+                  }
+                });
 
-    const renderCtx = {
-      canvasContext: ctx,
-      viewport
-    };
+                // Output current page
+                document.querySelector('.page-num').textContent = num;
+              });
+            };
 
-    page.render(renderCtx).promise.then(() => {
-      pageIsRendering = false;
+            // Check for pages rendering
+            const queueRenderPage = num => {
+              if (pageIsRendering) {
+                pageNumIsPending = num;
+              } else {
+                renderPage(num);
+              }
+            };
 
-      if (pageNumIsPending !== null) {
-        renderPage(pageNumIsPending);
-        pageNumIsPending = null;
-      }
-    });
+            // Show Prev Page
+            const showPrevPage = () => {
+              if (pageNum <= 1) {
+                return;
+              }
+              pageNum--;
+              queueRenderPage(pageNum);
+            };
 
-    // Output current page
-    document.querySelector('.page-num').textContent = num;
-  });
-};
+            // Show Next Page
+            const showNextPage = () => {
+              if (pageNum >= pdfDoc.numPages) {
+                return;
+              }
+              pageNum++;
+              queueRenderPage(pageNum);
+            };
 
-// Check for pages rendering
-const queueRenderPage = num => {
-  if (pageIsRendering) {
-    pageNumIsPending = num;
-  } else {
-    renderPage(num);
-  }
-};
+            // Get Document
+            pdfjsLib
+              .getDocument(url)
+              .promise.then(pdfDoc_ => {
+                pdfDoc = pdfDoc_;
 
-// Show Prev Page
-const showPrevPage = () => {
-  if (pageNum <= 1) {
-    return;
-  }
-  pageNum--;
-  queueRenderPage(pageNum);
-};
+                document.querySelector('.page-count').textContent = pdfDoc.numPages;
 
-// Show Next Page
-const showNextPage = () => {
-  if (pageNum >= pdfDoc.numPages) {
-    return;
-  }
-  pageNum++;
-  queueRenderPage(pageNum);
-};
+                renderPage(pageNum);
+              })
+              .catch(err => {
+                // Display error
+                const div = document.createElement('div');
+                div.className = 'error';
+                div.appendChild(document.createTextNode(err.message));
+                document.querySelector('body').insertBefore(div, canvas);
+                // Remove top bar
+                document.querySelector('#header').style.display = 'none';
+              });
 
-// Get Document
-pdfjsLib
-  .getDocument(url)
-  .promise.then(pdfDoc_ => {
-    pdfDoc = pdfDoc_;
-
-    document.querySelector('.page-count').textContent = pdfDoc.numPages;
-
-    renderPage(pageNum);
-  })
-  .catch(err => {
-    // Display error
-    const div = document.createElement('div');
-    div.className = 'error';
-    div.appendChild(document.createTextNode(err.message));
-    document.querySelector('body').insertBefore(div, canvas);
-    // Remove top bar
-    document.querySelector('#header').style.display = 'none';
-  });
-
-// Button Events
-document.querySelector('.prev-page').addEventListener('click', showPrevPage);
-document.querySelector('.next-page').addEventListener('click', showNextPage);
+            // Button Events
+            document.querySelector('.prev-page').addEventListener('click', showPrevPage);
+            document.querySelector('.next-page').addEventListener('click', showNextPage);
         </script>
-
-
     </div>
     {% endif %}
     {% endfor %}
     {% endif %}
 </div>
-
         <div class="player" style="background-image: url({% static '/assets/img/icon-5974828_1280.png' %});">
             <div class="name-music">
                 <h3>Bài hát đang phát: </h3>
@@ -183,20 +165,14 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
                     <i class="fas fa-random"></i>
                 </div>
             </div>
-
-            <input id="progress" class="progress" type="range" name="" value="0" step="1" min="0" max="100">
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
             {% for item in nhac %} {% if nhac %}
             <audio id="audio" src="{{ item.song_file }}"></audio>
             {% endif %} {% endfor %}
-
         </div>
-
         <div class="play-list">
-
         </div>
-
-
-        <input type="checkbox" hidden name="" class="music-nav__input" id="music-mobile-input">
+        <input type="checkbox" hidden class="music-nav__input" id="music-mobile-input">
 
         <label for="music-mobile-input" class="music-nav__overlay"></label>
         <nav class="music-nav__mobile">
@@ -212,10 +188,9 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
             </li>
             <li class="music-nav__mobile-item">
                 Chỉnh âm lượng
-                <input id="volume" class="volume" type="range" name="" value="100" step="1" min="0" max="100">
+                <input id="volume" class="volume" type="range" value="100" step="1" min="0" max="100">
             </li>
             <div class="music-list">
-
                 {% block content_tennhac %} {% for item in nhac %} {% if nhac %}
                 <div class="song" data-index={{ item.id }}>
                     <div class="thumb" style="background-image: url({{ item.song_anhbia.url }});"></div>
@@ -225,12 +200,9 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
                     </div>
 
                 </div>
-
                 {% endif %} {% endfor %} {% endblock %}
-
             </div>
         </ul>
-
         </nav>
         <script>
 
@@ -532,14 +504,6 @@ document.querySelector('.next-page').addEventListener('click', showNextPage);
                 }
             }
 
-
-
             app.start();
-
-
-
-
-
-
         </script>
 {% endblock %}
